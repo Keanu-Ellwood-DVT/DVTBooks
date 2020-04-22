@@ -6,7 +6,9 @@ They now require your help to provide this functionality to users. Using Angular
 
 The DVTBooks API endpoints are secured with OAuth,users will have to present a JWT when making requests.Users can acquire access tokens from an identity server that the backend developers have provisioned. The Angular application can do this through OAuth2.0 implicit flow.
 
-The application will allow users with the Administrator role to create, read,search,update and delete books. Users with the User role can only read and search for books.Some users maybe using a mobile phone, tablet or desktop computer and some users may even prefer another language, such as isiZulu or Afrikaans it is important that you take these factors into consideration while building your application.
+The application will allow users with the Administrator role to create, read,search,update and delete books. Users with the User role can only read and search for books.
+
+Some users maybe using a mobile phone, tablet or desktop computer and some users may even prefer another language, such as isiZulu or Afrikaans it is important that you take these factors into consideration while building your application.
 
 For consistency with other DVT applications, the web application needs to follow the company’s corporate guideline. This guideline will be provided to you.
 
