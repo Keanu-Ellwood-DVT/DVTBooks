@@ -26,5 +26,5 @@ For consistency with other DVT applications, the web application needs to follow
 
 # Status Badges
 
-Master: 
-Develop: 
+Master: [![CircleCI](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master.svg?style=svg&circle-token=ce74c2d56052e4b14f8a75512ff2d7e0bf527895)](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master)
+Develop: [![CircleCI](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/develop.svg?style=svg&circle-token=ce74c2d56052e4b14f8a75512ff2d7e0bf527895)](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/develop)
