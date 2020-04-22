@@ -11,18 +11,18 @@ The application will allow users with the Administrator role to create, read,sea
 For consistency with other DVT applications, the web application needs to follow the company’s corporate guideline. This guideline will be provided to you.
 
 # Outcomes
-1.Practiced building components and services
-2.Practiced authentication using OAuth & OpenID Connect (OIDC)
-3.Practiced consuming REST APIs
-4.Used server-side filtering
-5.Practiced formatting field values
-6.Practiced input validation
-7.Implemented unit tests using Karma & Jasmine
-8.Used Internationalization (i18n)
-9.Practiced Reactive Programming using Rx and Observables
-10.Used server-side pagination
-11.Loaded data & assets from cache when offline (PWA)
-12.Practiced using Docker in an Angular web application13. Built a modern app using a web framework that calls a secure back-end service
+1. Practiced building components and services
+2. Practiced authentication using OAuth & OpenID Connect (OIDC)
+3. Practiced consuming REST APIs
+4. Used server-side filtering
+5. Practiced formatting field values
+6. Practiced input validation
+7. Implemented unit tests using Karma & Jasmine
+8. Used Internationalization (i18n)
+9. Practiced Reactive Programming using Rx and Observables
+10. Used server-side pagination
+11. Loaded data & assets from cache when offline (PWA)
+12. Practiced using Docker in an Angular web application13. Built a modern app using a web framework that calls a secure back-end service
 
 # Status Badges
 
