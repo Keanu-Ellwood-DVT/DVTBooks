@@ -14,7 +14,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
 
-    //let isAdmin : boolean = this.auth._checkAdmin(this.auth.userProfile$);
+    // let isAdmin : boolean = this.auth._checkAdmin(this.auth.userProfile$);
     if (this.auth.isAdmin) {
       return true;
     }

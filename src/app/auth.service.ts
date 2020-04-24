@@ -45,7 +45,7 @@ export class AuthService {
     this.localAuthSetup();
     // Handle redirect from Auth0 login
     this.handleAuthCallback();
-    //this.userProfile$.subscribe(data => console.log(data));
+    // this.userProfile$.subscribe(data => console.log(data));
   }
 
   // When calling, options can be passed if desired
@@ -123,14 +123,14 @@ export class AuthService {
 
   _checkAdmin(profile): boolean {
 
-    //let profile = this.userProfile$.pipe(debounceTime(500)).subscribe(data => this.userProfileData = data);
-    //console.log(profile);
-    //this.isAdmin = this._checkAdmin(this.userProfileData);
-    //console.log("isAdmin: " + this.isAdmin);
+    // let profile = this.userProfile$.pipe(debounceTime(500)).subscribe(data => this.userProfileData = data);
+    // console.log(profile);
+    // this.isAdmin = this._checkAdmin(this.userProfileData);
+    // console.log("isAdmin: " + this.isAdmin);
 
     const roles = profile[AUTH_CONFIG.NAMESPACE] || [];
 
-    if(roles.indexOf('Admin') > -1){
+    if (roles.indexOf('Admin') > -1 ) {
       return true;
     }
 
