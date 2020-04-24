@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from '../profile/profile.component';
 import { AuthGuard } from '../auth.guard';
+import { ForbiddenComponent } from '../forbidden/forbidden.component';
+import { AdminComponent } from '../admin/admin.component';
+import { AdminGuard } from '../admin.guard';
 
 const routes: Routes = [
   {
@@ -13,6 +16,17 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard, AdminGuard]
+    // ,
+    // data: {permittedRoles: ["admin"]}
+  },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent
   }
 ];
 
