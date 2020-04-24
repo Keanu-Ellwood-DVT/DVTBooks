@@ -59,6 +59,22 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "af": {
+              "aot": true,
+              "outputPath": "dist/nav-bar-af/",
+              "i18nFile": "src/locale/messages.af.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "af",
+              "i18nMissingTranslation": "error"
+            },
+            "zu": {
+              "aot": true,
+              "outputPath": "dist/nav-bar-zu/",
+              "i18nFile": "src/locale/messages.zu.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "zu",
+              "i18nMissingTranslation": "error"
             }
           }
         },
@@ -70,6 +86,12 @@
           "configurations": {
             "production": {
               "browserTarget": "DVTBooks:build:production"
+            },
+            "af": {
+              "browserTarget": "DVTBooks:build:af"
+            },
+            "zu": {
+              "browserTarget": "DVTBooks:build:zu"
             }
           }
         },
