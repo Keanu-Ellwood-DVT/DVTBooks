@@ -6,7 +6,7 @@ services:
       - NODE_ENV=development
       - PORT=4200
     volumes:
-      - ./src/app:/usr/src/app
+      - ./:/usr/src/app
     ports:
       - 4200:4200
 
