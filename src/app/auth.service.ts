@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
+import { tap, catchError, concatMap, shareReplay, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AUTH_CONFIG } from './auth.config';
 
 @Injectable({
   providedIn: 'root'
@@ -36,13 +37,15 @@ export class AuthService {
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
   loggedIn: boolean = null;
-
+  private userProfileData = {};
+  isAdmin: boolean = null;
   constructor(private router: Router) {
     // On initial load, check authentication state with authorization server
     // Set up local auth streams if user is already authenticated
     this.localAuthSetup();
     // Handle redirect from Auth0 login
     this.handleAuthCallback();
+    //this.userProfile$.subscribe(data => console.log(data));
   }
 
   // When calling, options can be passed if desired
@@ -62,6 +65,12 @@ export class AuthService {
         if (loggedIn) {
           // If authenticated, get user and set in app
           // NOTE: you could pass options here if needed
+
+          // this.userProfile$.subscribe(data => this.userProfileData = data);
+          // console.log(this.userProfileData);
+          // this.isAdmin = this._checkAdmin(this.userProfileData);
+          // console.log("isAdmin: " + this.isAdmin);
+
           return this.getUser$();
         }
         // If not authenticated, return stream that emits 'false'
@@ -88,7 +97,7 @@ export class AuthService {
     // Call when app reloads after user logs in with Auth0
     const params = window.location.search;
     if (params.includes('code=') && params.includes('state=')) {
-      let targetRoute: string; // Path to redirect to after login processsed
+      let targetRoute: string; // Path to redirect to after login processed
       const authComplete$ = this.handleRedirectCallback$.pipe(
         // Have client, now call method to handle auth callback redirect
         tap(cbRes => {
@@ -110,6 +119,22 @@ export class AuthService {
         this.router.navigate([targetRoute]);
       });
     }
+  }
+
+  _checkAdmin(profile): boolean {
+
+    //let profile = this.userProfile$.pipe(debounceTime(500)).subscribe(data => this.userProfileData = data);
+    //console.log(profile);
+    //this.isAdmin = this._checkAdmin(this.userProfileData);
+    //console.log("isAdmin: " + this.isAdmin);
+
+    const roles = profile[AUTH_CONFIG.NAMESPACE] || [];
+
+    if(roles.indexOf('Admin') > -1){
+      return true;
+    }
+
+    return false;
   }
 
   logout() {
