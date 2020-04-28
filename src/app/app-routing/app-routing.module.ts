@@ -27,8 +27,16 @@ const routes: Routes = [
         component: AdminComponent
       }
     ]
-    // ,
-    // data: {permittedRoles: ["admin"]}
+  },
+  {
+    path: 'books',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'author',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'forbidden',
