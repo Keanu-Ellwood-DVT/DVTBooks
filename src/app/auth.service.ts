@@ -37,7 +37,6 @@ export class AuthService {
 
   loggedIn: boolean = null;
   userProfileData: UserProfile = null;
-  private userRoles: string[] = [];
   isAdmin: boolean = null;
   constructor(private router: Router) {
     this.localAuthSetup();
