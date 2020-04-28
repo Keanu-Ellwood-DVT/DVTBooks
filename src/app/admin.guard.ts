@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,13 @@ export class AdminGuard implements CanActivate {
     private router: Router
   ) { }
 
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-
-    // let isAdmin : boolean = this.auth._checkAdmin(this.auth.userProfile$);
-    if (this.auth.isAdmin) {
-      return true;
+  canActivate(): boolean {
+    if(this.auth.userProfileData !== null){
+      if(!!this.auth.userProfileData[environment.NAMESPACE] && this.auth.userProfileData[environment.NAMESPACE].includes('Admin') ){
+        return true;
+      }
     }
     this.router.navigate(['/forbidden']);
     return false;
   }
-
 }

@@ -19,8 +19,14 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard, AdminGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canActivate: [AdminGuard],
+        component: AdminComponent
+      }
+    ]
     // ,
     // data: {permittedRoles: ["admin"]}
   },
