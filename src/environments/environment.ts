@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  NAMESPACE: 'http://localhost:4200/role',
+  domain: 'dvt-web-grad.auth0.com',
+  client_id: 'S0t2pnTp9SSrKg4JcOLmL981NF2z22wt'
 };
 
 /*
