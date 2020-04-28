@@ -15,6 +15,7 @@ export class AdminGuard implements CanActivate {
   canActivate(): boolean {
     if (this.auth.userProfileData !== null) {
       if (!!this.auth.userProfileData[environment.NAMESPACE] && this.auth.userProfileData[environment.NAMESPACE].includes('Admin')) {
+        this.auth.isAdmin = true;
         return true;
       }
     }
