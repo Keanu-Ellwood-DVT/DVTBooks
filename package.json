@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --port 4200 --poll 1000",
+    "start:af": "ng serve --host 0.0.0.0 --port 4200 --poll 1000 --configuration=af",
+    "start:zu": "ng serve --host 0.0.0.0 --port 4200 --poll 1000 --configuration=zu",
     "build": "ng build",
+    "build:af": "ng build --configuration=af",
+    "build:zu": "ng build --configuration=zu",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "int:extract": "ng xi18n --output-path src/locale"
   },
   "private": true,
   "dependencies": {
@@ -16,9 +21,12 @@
     "@angular/compiler": "~9.0.2",
     "@angular/core": "~9.0.2",
     "@angular/forms": "~9.0.2",
+    "@angular/localize": "^9.1.3",
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "@angular/service-worker": "~9.0.2",
+    "@auth0/auth0-spa-js": "^1.7.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

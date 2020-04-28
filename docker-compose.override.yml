@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  spa:
+    environment:
+      - NODE_ENV=development
+      - PORT=4200
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 4200:4200
+
+  booksapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DVTBooksDb=Server=mssql;Database=DVTBooksDev;User=sa;Password=P@ssw0rd
+    ports:
+      - 4201:80
+
+  mssql:
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd
+    volumes:
+      - mssqldata:/var/opt/mssql
+    ports:
+      - 1433:1433
+
+volumes:
+  mssqldata:

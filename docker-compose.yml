@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  spa:
+    container_name: spa
+    image: dvt-books/spa
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - booksapi
+      - mssql
+
+  booksapi:
+    container_name: booksapi
+    image: str1zzwald/dvt-books-api
+    depends_on:
+      - mssql
+
+  mssql:
+    container_name: mssql
+    image: mcr.microsoft.com/mssql/server:2017-latest

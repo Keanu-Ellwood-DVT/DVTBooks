@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="titleName" datatype="html">
+        <source>
+    <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
+    books
+  </source>
+  <target>
+    <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
+    boeke
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description"> Site title</note>
+        <note priority="1" from="meaning">Title </note>
+      </trans-unit>
+      <trans-unit id="homeLnk" datatype="html">
+        <source>Home<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target>Tuisblad<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description"> Returns users to home page.</note>
+        <note priority="1" from="meaning">Home lnk </note>
+      </trans-unit>
+      <trans-unit id="adminDrop" datatype="html">
+        <source>Administrator</source>
+        <target>Administrateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description"> A dropdown containing CRUD operations for admins</note>
+        <note priority="1" from="meaning">Admin dropdown </note>
+      </trans-unit>
+      <trans-unit id="createLnk" datatype="html">
+        <source>Create</source>
+        <target>Skep</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description"> Navigates the admin to the create form.</note>
+        <note priority="1" from="meaning">Create lnk </note>
+      </trans-unit>
+      <trans-unit id="updateLnk" datatype="html">
+        <source>Update</source>
+        <target>Opdateer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description"> Navigates the admin to the update form.</note>
+        <note priority="1" from="meaning">Update lnk </note>
+      </trans-unit>
+      <trans-unit id="deleteLnk" datatype="html">
+        <source>Delete</source>
+        <target>Verwyder</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description"> Navigates the admin to the delete form.</note>
+        <note priority="1" from="meaning">Delete lnk </note>
+      </trans-unit>
+      <trans-unit id="loginBtn" datatype="html">
+        <source>Log In</source>
+        <target>Teken Aan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description"> A button that allows the user to Login if they aren&apos;t already Logged in.</note>
+        <note priority="1" from="meaning">Log in btn </note>
+      </trans-unit>
+      <trans-unit id="logoutBtn" datatype="html">
+        <source>Log Out</source>
+        <target>Teken Uit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">A button that allows the user to Log out if they are already Logged in.</note>
+        <note priority="1" from="meaning">Log out btn </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
