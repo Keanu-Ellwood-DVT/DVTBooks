@@ -1,19 +1,19 @@
-import { BookMin } from './book';
+import { BookRef } from './book';
 
 export class Author {
   href: string;
   id: string;
-  firstName: string;
-  middleNames: string;
-  lastName: string;
+  first_name: string;
+  middle_names: string;
+  last_name: string;
   name: string;
   about: string;
   version: string;
-  books: BookMin[];
+  books: BookRef[];
 }
 
 
-export class AuthorMin {
+export class AuthorRef {
   href: string;
   id: string;
   name: string;

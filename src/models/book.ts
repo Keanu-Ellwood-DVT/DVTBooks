@@ -1,5 +1,5 @@
 import { Tag } from './tag';
-import { AuthorMin } from './author';
+import { AuthorRef } from './author';
 
 export class Book {
   isbN10: string;
@@ -7,16 +7,15 @@ export class Book {
   title: string;
   about: string;
   abstract: string;
-  author: AuthorMin;
+  author: AuthorRef;
   publisher: string;
-  datePublished: string;
+  date_published: string;
   image: string;
   tags: Tag[];
   version: string;
 }
 
-
-export class BookMin {
+export class BookRef {
   href: string;
   id: string;
   isbN10: string;
