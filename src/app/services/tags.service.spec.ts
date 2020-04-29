@@ -4,18 +4,18 @@ import { TagsService } from './tags.service';
 
 describe('TagsService', () => {
   let service: TagsService;
-  let httpTestingController : HttpTestingController;
+  let httpTestingController: HttpTestingController;
 
   const testTags = [
     {
-      id: "Redux",
-      href: "/Tags/Redux",
-      description: "Redux"
+      id: 'Redux',
+      href: '/Tags/Redux',
+      description: 'Redux'
     },
     {
-      id: "UI/UX",
-      href: "/Tags/UI/UX",
-      description: "UI/UX"
+      id: 'UI/UX',
+      href: '/Tags/UI/UX',
+      description: `UI/UX`
     }
   ];
 
@@ -25,7 +25,7 @@ describe('TagsService', () => {
       providers: [TagsService]
     });
     service = TestBed.inject(TagsService);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -38,7 +38,7 @@ describe('TagsService', () => {
     it('should call get with the correct url', () => {
 
       service.getTag('HTML').subscribe(tag => {
-        expect(tag).toBe(testTags[0])
+        expect(tag).toBe(testTags[0]);
       });
 
       const req = httpTestingController.expectOne('http://localhost:4201/Tags/HTML');
@@ -46,15 +46,15 @@ describe('TagsService', () => {
       req.flush(testTags[0]);
 
       httpTestingController.verify();
-    })
-  })
+    });
+  });
 
   describe('getTags', () => {
 
     it('should call get with the correct url', () => {
 
       service.getTags().subscribe(tags => {
-        expect(tags).toBe(testTags)
+        expect(tags).toBe(testTags);
       });
 
       const req = httpTestingController.expectOne('http://localhost:4201/Tags');
@@ -63,9 +63,7 @@ describe('TagsService', () => {
 
       httpTestingController.verify();
 
-    })
-  })
-
-
+    });
+  });
 
 });

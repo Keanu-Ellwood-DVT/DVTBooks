@@ -20,5 +20,5 @@ export class BookRef {
   id: string;
   isbN10: string;
   isbN13: string;
-  title: string
+  title: string;
 }

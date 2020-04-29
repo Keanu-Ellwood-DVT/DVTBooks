@@ -11,11 +11,11 @@ export class TagsService {
 
   constructor(private http: HttpClient) {}
 
-  getTag(name: string) : Observable<Tag> {
+  getTag(name: string): Observable<Tag> {
     return this.http.get<Tag>(`${environment.apiUri}/Tags/${name}`);
   }
 
-  getTags() : Observable<Tag[]> {
+  getTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(`${environment.apiUri}/Tags`);
   }
 

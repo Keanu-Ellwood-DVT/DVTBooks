@@ -11,11 +11,11 @@ export class AuthorService {
 
   constructor(private http: HttpClient) {}
 
-  getAuthor(id: string) : Observable<Author> {
+  getAuthor(id: string): Observable<Author> {
     return this.http.get<Author>(`${environment.apiUri}/Authors/${id}`);
   }
 
-  getAuthors() : Observable<Author[]> {
+  getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${environment.apiUri}/Authors`);
   }
 }

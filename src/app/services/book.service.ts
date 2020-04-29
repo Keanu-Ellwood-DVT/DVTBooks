@@ -11,11 +11,11 @@ export class BookService {
 
   constructor(private http: HttpClient) {}
 
-  getBook(isbn: string) : Observable<Book> {
+  getBook(isbn: string): Observable<Book> {
     return this.http.get<Book>(`${environment.apiUri}/Books/${isbn}`);
   }
 
-  getBooks() : Observable<Book[]> {
+  getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${environment.apiUri}/Books`);
   }
 }
