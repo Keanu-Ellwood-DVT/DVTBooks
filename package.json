@@ -12,7 +12,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "int:extract": "ng xi18n --output-path src/locale"
+    "int:extract": "ng xi18n --output-path src/locale",
+    "docker:compose": "docker-compose -f docker-compose.yml -f docker-compose.override.yml -p dvt-books up",
+    "docker:start": "docker logs c969aa648ac2 -f"
   },
   "private": true,
   "dependencies": {
