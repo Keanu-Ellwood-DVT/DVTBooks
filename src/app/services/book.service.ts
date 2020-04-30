@@ -21,12 +21,12 @@ export class BookService {
 
   patchBook(patchBook: Book, isbn?: string) {
     this.http.patch(`${environment.apiUri}/Books/${isbn ? isbn : ''}`, patchBook)
-      .subscribe(data => {console.log('PATCH request was successful. Patched: ', data);}, error => {console.log('Error', error);});
+      .subscribe(data => {console.log('PATCH request was successful. Patched: ', data); }, error => {console.log('Error', error); });
   }
 
   createBook(postBook: Book) {
-    this.http.patch(`${environment.apiUri}/Books`, postBook)
-      .subscribe(data => {console.log('POST request was successful. Posted: ', data);}, error => {console.log('Error', error);});
+    this.http.post(`${environment.apiUri}/Books`, postBook)
+      .subscribe(data => {console.log('POST request was successful. Posted: ', data); }, error => {console.log('Error', error); });
   }
 
 }
