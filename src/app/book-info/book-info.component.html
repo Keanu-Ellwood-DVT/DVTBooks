@@ -1,5 +1,5 @@
 <ng-container *ngIf="(pageLoading$ | async) === false">
-  <div class="container my-5 py-5 z-depth-1" *ngIf="book">
+  <div class="container my-5 py-5 z-depth-1" *ngIf="isbn">
     <section class="text-center">
 
       <div class="row">
@@ -7,8 +7,7 @@
           <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
             <div class="carousel-inner text-center text-md-left" role="listbox">
               <div class="carousel-item active">
-                <img src="" alt="First slide"
-                  class="img-fluid">
+                <img src="../../assets/images/default.png" alt="Book cover not found" class="img-fluid">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
@@ -27,17 +26,10 @@
             class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
             <strong>{{book.title}}</strong>
           </h2>
-          <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">bestseller</span>
-          <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-            <span class="red-text font-weight-bold">
-              <strong>$49</strong>
-            </span>
-            <span class="grey-text">
-              <small>
-                <s>$89</s>
-              </small>
-            </span>
-          </h3>
+          <h5
+            class="h3-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
+            by <strong>{{book.author.name}}</strong></h5>
+          <span class="badge badge-primary product mb-4 ml-xl-0 ml-4">Highly Rated</span>
 
           <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
             <div class="card">
@@ -53,11 +45,7 @@
               <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                 data-parent="#accordionEx">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                  moon
-                  tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                  {{book.about}}
                 </div>
               </div>
             </div>
@@ -74,20 +62,45 @@
               <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
                 data-parent="#accordionEx">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                  moon
-                  tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Title</th>
+                          <td>{{book.title}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Author</th>
+                          <td>{{book.author.name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Publisher</th>
+                          <td>{{book.publisher}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Published on</th>
+                          <td>{{book.date_published.slice(0, 10)}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">ISBN-13</th>
+                          <td>{{book.isbn13}}</td>
+                        </tr>
+                        <tr *ngIf="book.isbn10">
+                          <th scope="row">ISBN-10</th>
+                          <td>{{book.isbn10}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div class="card" *ngIf="auth.isAdmin">
               <div class="card-header" role="tab" id="headingThree3">
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
                   aria-expanded="false" aria-controls="collapseThree3">
                   <h5 class="mb-0">
-                    Shipping
+                    Admin
                     <i class="fas fa-angle-down rotate-icon"></i>
                   </h5>
                 </a>
@@ -95,11 +108,13 @@
               <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
                 data-parent="#accordionEx">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                  moon
-                  tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                  <ul>
+                    <li (click)="openModal(updateBook)" class="btn-link">Update book</li>
+                    <li (click)="openModal(updateAuthor)" class="btn-link">Update author</li>
+                    <hr />
+                    <li class="btn-link">Remove book</li>
+                    <li class="btn-link">Remove author</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -116,3 +131,33 @@
     <app-spinner></app-spinner>
   </ng-container>
 </div>
+
+<ng-template #updateBook let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Update Book</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-new-book [state]="state" [currentBook]="book"></app-new-book>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #updateAuthor let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Update Author</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-new-author [state]="state" [currentAuth]="book.author"></app-new-author>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

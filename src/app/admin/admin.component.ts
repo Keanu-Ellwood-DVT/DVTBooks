@@ -28,7 +28,8 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
-
+  state = 'Add';
+  
   constructor(
     private authorService: AuthorService,
     private bookService: BookService,
@@ -56,18 +57,6 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.imageName$.subscribe();
 
-  }
-
-  addBook() {
-    this.bookService.putBook(this.newBook, this.newBook.isbN13);
-  }
-
-  uploadPicture(event) {
-    if (event.target.files.length > 0) {
-      this.imageName.next(event.target.files[0].name);
-    } else {
-      this.imageName.next('Choose File');
-    }
   }
 
   ngOnDestroy() {

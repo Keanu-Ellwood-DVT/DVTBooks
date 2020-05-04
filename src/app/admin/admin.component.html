@@ -21,12 +21,12 @@
     <div class="tab-content" id="authorTabContent">
       <!-- Book Tab -->
       <div class="tab-pane fade show active" id="add-book" role="tabpanel" aria-labelledby="book-tab">
-        <app-new-book></app-new-book>
+        <app-new-book [state]="state"></app-new-book>
       </div>
 
       <!-- Author Tab-->
       <div class="tab-pane fade show" id="add-author" role="tabpanel" aria-labelledby="author-tab">
-        <app-new-author></app-new-author>
+        <app-new-author [state]="state"></app-new-author>
       </div>
     </div>
   </div>
