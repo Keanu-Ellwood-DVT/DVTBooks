@@ -15,6 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ResultsComponent } from './results/results.component';
+import { BookInfoComponent } from './book-info/book-info.component';
+import { NewBookComponent } from './admin/new-book/new-book.component';
+import { NewAuthorComponent } from './admin/new-author/new-author.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminDeleteComponent,
     AdminUpdateComponent,
     HomeComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ResultsComponent,
+    BookInfoComponent,
+    NewBookComponent,
+    NewAuthorComponent
   ],
   imports: [
     BrowserModule,
