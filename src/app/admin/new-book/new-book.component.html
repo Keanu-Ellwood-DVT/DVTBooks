@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+    <h2 class="text-primary">New Book</h2>
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+    <form id="book-form" class="form" action="#" role="form" id="add-book" aria-labelledby="book-tab">
+
+      <div class="form-group">
+        <label class="form-label text-primary" for="title">Title <i placement="right" ngbTooltip="Required"
+            class="text-warning">*</i></label>
+        <input type="text" [(ngModel)]="newBook.title" class="form-control" id="title" name="title" placeholder="Title"
+          tabindex="3" required>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="form-group" style="width: 49%;" *ngIf="authors">
+          <label class="form-label text-primary" for="author">Author <i placement="right" ngbTooltip="Required"
+              class="text-warning">*</i></label>
+          <select class="form-control" [(ngModel)]="selectedAuth" (ngModelChange)="changeAuth($event)" [ngModelOptions]="{standalone: true}">
+            <!-- selectpicker  -->
+            <option disabled selected>--Select Author--</option>
+            <option *ngFor="let author of authors" [ngValue]="author">
+              {{author.name}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group" style="width: 49%;" *ngIf="tags">
+          <label class="form-label text-primary" for="tags">Tag <i placement="right" ngbTooltip="Required"
+              class="text-warning">*</i></label>
+          <select class="form-control" [(ngModel)]="selectedTag" (ngModelChange)="changeTag($event)" [ngModelOptions]="{standalone: true}">
+            <option disabled selected>--Select Tag--</option>
+            <option *ngFor="let tag of tags" [ngValue]="tag">
+              {{tag.description}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="form-group" style="width: 49%;">
+          <label class="form-label text-primary" for="isbn13">ISBN-13 <i placement="right" ngbTooltip="Required"
+              class="text-warning">*</i></label>
+          <input type="email" class="form-control" id="isbn13" name="isbn13" placeholder="ISBN-13" tabindex="2" required
+            [(ngModel)]="newBook.isbN13">
+        </div>
+
+        <div class="form-group" style="width: 49%;">
+          <label class="form-label text-primary" for="isbn10">ISBN-10 <i placement="right"
+              ngbTooltip="ISBN-10 can be converted to ISBN-13" class="text-secondary">(?)</i></label>
+          <input type="text" class="form-control" id="isbn10" name="isbn10" placeholder="ISBN-10" tabindex="1"
+            [(ngModel)]="newBook.isbN10">
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="form-group" style="width: 49%;">
+          <label class="form-label text-primary" for="publisher">Publisher <i placement="right" ngbTooltip="Required"
+              class="text-warning">*</i></label>
+          <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher" required
+            [(ngModel)]="newBook.publisher">
+        </div>
+
+        <div class="form-group" style="width: 49%;">
+          <label class="form-label text-primary" for="dp">Date Published <i placement="right" ngbTooltip="Required"
+              class="text-warning">*</i></label>
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+              #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" style="border: none;" (click)="d.toggle()" type="button"><i
+                  class="gg-calendar-dates"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label text-primary" for="about">About</label>
+        <textarea rows="5" cols="50" name="about" class="form-control" id="about" placeholder="About..." tabindex="4"
+          [(ngModel)]="newBook.about"></textarea>
+      </div>
+
+      <div class="form-group" style="width: 49%;">
+        <label class="form-label text-primary" for="filename">Cover Picture</label>
+        <div class="custom-file">
+          <input type="file" class="form-control-file custom-file-input" id="customFile" name="filename"
+            accept="image/bmp,image/gif,image/jpeg,image/png" autocomplete="none" autocorrect="off" autocapitalize="off"
+            spellcheck="false" (change)="uploadPicture($event)" [(ngModel)]="file" [ngModelOptions]="{standalone: true}"/>
+          <label class="custom-file-label" style="overflow: hidden" for="customFile" id="imageName"
+            placeholder="Choose File">{{ imageName$ | async }}</label>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" (click)="addBook()">Add Book</button>
+      </div>
+    </form>
+  </div>
+</div>
