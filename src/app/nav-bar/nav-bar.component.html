@@ -17,14 +17,9 @@
         <a class="nav-link" routerLink="profile" i18n="Home lnk | Returns users to home page.@@homeLnk">Profile</a>
       </li>
       <li class="nav-item dropdown" *ngIf="auth.loggedIn && auth.isAdmin">
-        <a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" i18n="Admin dropdown | A dropdown containing CRUD operations for admins@@adminDrop">
+        <a class="nav-link" routerLink="admin" i18n="Admin dropdown | A dropdown containing CRUD operations for admins@@adminDrop">
           Administrator
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/" i18n="Create lnk | Navigates the admin to the create form.@@createLnk">New Book</a>
-          <a class="dropdown-item" routerLink="/" i18n="Update lnk | Navigates the admin to the update form.@@updateLnk">New Author</a>
-        </div>
       </li>
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
