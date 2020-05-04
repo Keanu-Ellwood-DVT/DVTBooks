@@ -2,17 +2,17 @@ import { Tag } from './tag';
 import { AuthorRef } from './author';
 
 export class Book {
-  isbN10: string;
+  isbN10: string | null;
   isbN13: string;
   title: string;
-  about: string;
-  abstract: string;
+  about: string | null;
+  abstract: string | null;
   author: AuthorRef;
   publisher: string;
   date_published: string;
-  image: string;
+  image: string | null;
   tags: Tag[];
-  version: string;
+  version: string | null;
 }
 
 export class BookRef {
