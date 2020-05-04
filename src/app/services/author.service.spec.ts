@@ -124,7 +124,7 @@ describe('AuthorService', () => {
         version: 'AAAAAAAAB9Q=',
         books: [
           {
-            title: "",
+            title: '',
             href: 'http://localhost:4201/Books/$9780133966153',
             id: '9780133966153',
             isbN10: '0133966151',
@@ -156,7 +156,7 @@ describe('AuthorService', () => {
         version: 'AAAAAAAAB9Q=',
         books: [
           {
-            title: "",
+            title: '',
             href: 'http://localhost:4201/Books/$9780133966153',
             id: '9780133966153',
             isbN10: '0133966151',
