@@ -8,7 +8,7 @@ describe('BookService', () => {
   let service: BookService;
   let httpTestingController: HttpTestingController;
 
-  let mockBook:Book = {
+  const mockBook: Book = {
     isbN10: null,
     isbN13: '9781119038634',
     title: 'Web Design with HTML, CSS, JavaScript and jQuery Set',
@@ -30,7 +30,7 @@ describe('BookService', () => {
       }
     ],
     version: null
-  }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -136,7 +136,7 @@ describe('BookService', () => {
 
     it('should call patch with the correct url', () => {
 
-      service.patchBook(mockBook, "0201633612");
+      service.patchBook(mockBook, '0201633612');
       const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
 
       httpTestingController.verify();
@@ -150,7 +150,7 @@ describe('BookService', () => {
 
     it('should call put with the correct url', () => {
 
-      service.putBook(mockBook, "0201633612");
+      service.putBook(mockBook, '0201633612');
       const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
 
       httpTestingController.verify();

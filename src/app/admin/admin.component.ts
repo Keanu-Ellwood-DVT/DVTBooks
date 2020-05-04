@@ -43,12 +43,12 @@ export class AdminComponent implements OnInit {
     });
 
     this.tagService.getTags().subscribe(x => {
-      this.tags = x
+      this.tags = x;
     });
   }
 
   private addBook() {
-    this.bookService.putBook(this.newBook,"");
+    this.bookService.putBook(this.newBook, '');
   }
 
   uploadPicture(event) {
