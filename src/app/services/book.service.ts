@@ -38,8 +38,8 @@ export class BookService {
     return this.http.get<Book>(`${environment.apiUri}/Books/${isbn}/picture`);
   }
 
-  postPicture(isbn: string, file: File) {
-    return this.http.post(`${environment.apiUri}/Books/${isbn}/picture`, file);
+  putPicture(isbn: string, file: File) {
+    this.http.put(`${environment.apiUri}/Books/${isbn}/picture`, file)
+      .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
   }
-
 }
