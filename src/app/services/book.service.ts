@@ -15,18 +15,31 @@ export class BookService {
     return this.http.get<Book>(`${environment.apiUri}/Books/${isbn}`);
   }
 
+  patchBook(patchBook: Book, isbn?: string) {
+    this.http.patch(`${environment.apiUri}/Books/${isbn ? isbn : ''}`, patchBook)
+      .subscribe(data => { console.log('PATCH request was successful. Patched: ', data); }, error => { console.log('Error', error); });
+  }
+
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${environment.apiUri}/Books`);
   }
 
-  patchBook(patchBook: Book, isbn?: string) {
-    this.http.patch(`${environment.apiUri}/Books/${isbn ? isbn : ''}`, patchBook)
-      .subscribe(data => {console.log('PATCH request was successful. Patched: ', data); }, error => {console.log('Error', error); });
+  postBook(bookObj: Book) {
+    this.http.post(`${environment.apiUri}/Books`, bookObj)
+      .subscribe(data => { console.log('POST request was successful. Posted: ', data); }, error => { console.log('Error', error); });
   }
 
-  createBook(postBook: Book) {
-    this.http.post(`${environment.apiUri}/Books`, postBook)
-      .subscribe(data => {console.log('POST request was successful. Posted: ', data); }, error => {console.log('Error', error); });
+  putBook(bookObj: Book, isbn: string) {
+    this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
+      .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
+  }
+
+  getPicture(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${environment.apiUri}/Books/${isbn}/picture`);
+  }
+
+  postPicture(isbn: string, file: File) {
+    return this.http.post(`${environment.apiUri}/Books/${isbn}/picture`, file);
   }
 
 }
