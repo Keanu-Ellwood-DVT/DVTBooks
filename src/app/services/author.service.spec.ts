@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthorService } from './author.service';
+import { Author } from 'src/models/author';
 
 describe('AuthorService', () => {
   let service: AuthorService;
@@ -107,5 +108,72 @@ describe('AuthorService', () => {
     });
   });
 
+  describe('putBook', () => {
+
+    it('should call put with the correct url', () => {
+
+      const mockAuthor: Author = {
+        href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
+        id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
+        first_name: 'Robin',
+        middle_names: 'Patricia',
+        last_name: 'Williams',
+        name: 'Robin Patricia Williams',
+        about: `Robin Patricia Williams is an American educator who has authored many popular computer-related
+        books, as well as the book Sweet Swan of Avon: Did a Woman Write Shakespeare?.`,
+        version: 'AAAAAAAAB9Q=',
+        books: [
+          {
+            title: "",
+            href: 'http://localhost:4201/Books/$9780133966153',
+            id: '9780133966153',
+            isbN10: '0133966151',
+            isbN13: '9780133966153'
+          }
+        ]
+      };
+
+      service.putAuthor(mockAuthor, 'd32490d9-ff78-4e08-b04c-cdeabe9de34c');
+      const req = httpTestingController.expectOne('http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c');
+
+      httpTestingController.verify();
+
+      expect(httpTestingController).toBeTruthy();
+      expect(req.request.method).toEqual('PUT');
+    });
+
+    it('should call put with the correct url', () => {
+
+      const mockAuthor: Author = {
+        href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
+        id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
+        first_name: 'Robin',
+        middle_names: 'Patricia',
+        last_name: 'Williams',
+        name: 'Robin Patricia Williams',
+        about: `Robin Patricia Williams is an American educator who has authored many popular computer-related
+        books, as well as the book Sweet Swan of Avon: Did a Woman Write Shakespeare?.`,
+        version: 'AAAAAAAAB9Q=',
+        books: [
+          {
+            title: "",
+            href: 'http://localhost:4201/Books/$9780133966153',
+            id: '9780133966153',
+            isbN10: '0133966151',
+            isbN13: '9780133966153'
+          }
+        ]
+      };
+
+      service.putAuthor(mockAuthor);
+      const req = httpTestingController.expectOne('http://localhost:4201/Authors/');
+
+      httpTestingController.verify();
+
+      expect(httpTestingController).toBeTruthy();
+      expect(req.request.method).toEqual('PUT');
+    });
+
+  });
 
 });

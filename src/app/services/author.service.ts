@@ -20,7 +20,7 @@ export class AuthorService {
   }
 
   putAuthor(authorObj: Author, id?: string) {
-    this.http.put(`${environment.apiUri}/Books/${id ? id : ''}`, authorObj)
+    this.http.put(`${environment.apiUri}/Authors/${id ? id : ''}`, authorObj)
       .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
   }
 }
