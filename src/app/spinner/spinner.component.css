@@ -97,6 +97,6 @@
 }
 
 #app-logo {
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: 200px;
 }
