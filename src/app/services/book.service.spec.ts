@@ -176,11 +176,11 @@ describe('BookService', () => {
 
   // describe('postPicture', () => {
 
-  //   it('should call post with the correct url', () => {
+  //   it('should add image to book with given ISBN', () => {
 
-  //     const mockImage = readFileSync('../../assets/images/dvt-primary.png');
-  //     var fileStr = mockImage.toString('base64');
-  //     service.postPicture('9781119038634', fileStr);
+  //     const mockImage = new File(BlobPart[1],"image");
+
+  //     service.postPicture('9781119038634', mockImage);
   //     const req = httpTestingController.expectOne('http://localhost:4201/Books/9781119038634/picture');
 
   //     httpTestingController.verify();
