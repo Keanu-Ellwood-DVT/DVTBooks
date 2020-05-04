@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "int:extract": "ng xi18n --output-path src/locale",
     "docker:compose": "docker-compose -f docker-compose.yml -f docker-compose.override.yml -p dvt-books up",
-    "docker:start": "docker logs c969aa648ac2 -f"
+    "docker:start": "docker logs 0559f2e60f25 -f"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +29,10 @@
     "@angular/router": "~9.0.2",
     "@angular/service-worker": "~9.0.2",
     "@auth0/auth0-spa-js": "^1.7.0",
+    "@mdi/font": "^5.1.45",
+    "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "bootstrap": "^4.4.0",
+    "bootstrap-select": "^1.13.16",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
