@@ -1,4 +1,5 @@
 <ng-container *ngIf="(pageLoading$ | async) === false">
+  <div>Time: {{ time$ | async }}</div>
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
@@ -17,155 +18,15 @@
       </div>
     </div>
 
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="authorTabContent">
       <!-- Book Tab -->
       <div class="tab-pane fade show active" id="add-book" role="tabpanel" aria-labelledby="book-tab">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <h2 class="text-primary">Add Book</h2>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-            <form id="contact-form" class="form" action="#" method="POST" role="form" id="add-book"
-              aria-labelledby="book-tab">
-
-              <div class="form-group">
-                <label class="form-label" for="title">Title <i placement="right" ngbTooltip="Required"
-                    class="text-warning">*</i></label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Title" tabindex="3"
-                  required>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <div class="form-group" style="width: 49%;" *ngIf="authors">
-                  <!-- <label class="form-label" for="author">Author</label>
-                  <select [(ngModel)]="authors" [ngModelOptions]="{standalone: true}" class="selectpicker form-control"
-                    data-live-search="true" id="author" tabindex="4" required>
-                    <option data-tokens="ketchup mustard" *ngFor="let author of authors" [ngValue]="author.name">
-                      {{author.name}}</option>
-                  </select> -->
-                  <label class="form-label" for="author">Author <i placement="right" ngbTooltip="Required"
-                      class="text-warning">*</i></label>
-                  <select class="form-control">
-                    <option *ngFor="let author of authors" value={{author}}>
-                      {{author.name}}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group" style="width: 49%;" *ngIf="tags">
-                  <label class="form-label" for="tags">Tag <i placement="right" ngbTooltip="Required"
-                      class="text-warning">*</i></label>
-                  <select class="form-control">
-                    <option *ngFor="let tag of tags" value={{tag}}>
-                      {{tag.description}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <div class="form-group" style="width: 49%;">
-                  <label class="form-label" for="isbn13">ISBN-13 <i placement="right" ngbTooltip="Required"
-                      class="text-warning">*</i></label>
-                  <input type="email" class="form-control" id="isbn13" name="isbn13" placeholder="ISBN-13" tabindex="2"
-                    required>
-                </div>
-                <div class="form-group" style="width: 49%;">
-                  <label class="form-label" for="isbn10">ISBN-10 <i placement="right"
-                      ngbTooltip="ISBN-10 can be converted to ISBN-13" class="text-secondary">(?)</i></label>
-                  <input type="text" class="form-control" id="isbn10" name="isbn10" placeholder="ISBN-10" tabindex="1">
-                </div>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <div class="form-group" style="width: 49%;">
-                  <label class="form-label" for="dp">Date Published <i placement="right" ngbTooltip="Required"
-                      class="text-warning">*</i></label>
-                  <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                      #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-primary" style="border: none;" (click)="d.toggle()"
-                        type="button"><i class="gg-calendar-dates"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group" style="width: 49%;">
-                  <label class="form-label" for="publisher">Publisher <i placement="right" ngbTooltip="Required"
-                      class="text-warning">*</i></label>
-                  <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher"
-                    required>
-                </div>
-              </div>
-
-
-              <div class="form-group">
-                <label class="form-label" for="about">About</label>
-                <textarea rows="5" cols="50" name="about" class="form-control" id="about" placeholder="About..."
-                  tabindex="4"></textarea>
-              </div>
-
-
-
-              <div class="form-group" style="width: 49%;">
-                <label class="form-label" for="filename">Cover Picture</label>
-                <div class="custom-file">
-                  <input type="file" class="form-control-file custom-file-input" id="customFile" name="filename"
-                    accept="image/bmp,image/gif,image/jpeg,image/png" autocomplete="none" autocorrect="off"
-                    autocapitalize="off" spellcheck="false" />
-                  <label class="custom-file-label" for="customFile">Choose image</label>
-                </div>
-              </div>
-
-              <div class="text-center">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add
-                  Book</button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <app-new-book></app-new-book>
       </div>
+
       <!-- Author Tab-->
       <div class="tab-pane fade show" id="add-author" role="tabpanel" aria-labelledby="author-tab">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <h2 class="text-primary">Add Author</h2>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-            <form id="contact-form" class="form" action="#" method="POST" role="form" id="add-author"
-              aria-labelledby="author-tab">
-              <div class="form-group">
-                <label class="form-label" for="first-name">First Name <i placement="right" ngbTooltip="Required"
-                    class="text-warning">*</i></label>
-                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name"
-                  tabindex="1" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="middle-name">Middle Name(s)</label>
-                <input type="text" class="form-control" id="middle-name" name="middle-name" placeholder="Middle Name"
-                  tabindex="1">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="last-name">Last Name <i placement="right" ngbTooltip="Required"
-                    class="text-warning">*</i></label>
-                <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name"
-                  tabindex="1" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="about">About</label>
-                <textarea rows="5" cols="50" name="about" class="form-control" id="about" placeholder="About..."
-                  tabindex="4"></textarea>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add
-                  Author</button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <app-new-author></app-new-author>
       </div>
     </div>
   </div>
@@ -198,9 +59,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $('.custom-file-input').on('change', function () { const fileName =
-  $(this).val().split('\\').pop();
-  $(this).siblings('.custom-file-label').addClass('selected').html(fileName); });
-</script>
