@@ -5,6 +5,8 @@ import { AuthGuard } from '../auth.guard';
 import { ForbiddenComponent } from '../forbidden/forbidden.component';
 import { AdminComponent } from '../admin/admin.component';
 import { AdminGuard } from '../admin.guard';
+import { BookInfoComponent } from '../book-info/book-info.component';
+import { HomeComponent } from '../home/home.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: AdminComponent
+    component: HomeComponent
   },
   {
     path: 'profile',
@@ -33,14 +35,21 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'books',
-    component: ProfileComponent,
+    path: 'book/:isbn',
+    component: BookInfoComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'author',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canActivate: [AdminGuard],
+        component: AdminComponent
+      }
+    ]
   },
   {
     path: 'forbidden',
