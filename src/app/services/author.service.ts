@@ -18,4 +18,9 @@ export class AuthorService {
   getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${environment.apiUri}/Authors`);
   }
+
+  putAuthor(authorObj: Author, id?: string) {
+    this.http.put(`${environment.apiUri}/Books/${id ? id : ''}`, authorObj)
+      .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
+  }
 }

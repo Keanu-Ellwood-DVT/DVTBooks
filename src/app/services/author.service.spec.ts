@@ -49,6 +49,7 @@ describe('AuthorService', () => {
       });
 
       httpTestingController.verify();
+      expect(httpTestingController).toBeTruthy();
     });
   });
 
@@ -102,6 +103,7 @@ describe('AuthorService', () => {
       ]);
 
       httpTestingController.verify();
+      expect(httpTestingController).toBeTruthy();
     });
   });
 
