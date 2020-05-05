@@ -51,11 +51,12 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authorService.getAuthors().subscribe(x => {
-      this.authors = x,
-        // console.log(x[0].name),
-        this.pageLoading$.next(false);
-    });
+
+    this.authorService.refreshNeeded$
+      .subscribe(() => {
+        this.fillSelect();
+      });
+      this.fillSelect();
 
     this.tagService.getTags().subscribe(x => {
       this.tags = x;
@@ -66,10 +67,10 @@ export class NewBookComponent implements OnInit, OnDestroy {
     if (this.state === 'Update' && this.currentBook) {
       this.newBook = this.currentBook;
       this.model = {
-        year: parseInt(this.newBook.date_published.slice(0,4)),
-        month: parseInt(this.newBook.date_published.slice(5, 7)),
-        day: parseInt(this.newBook.date_published.slice(8, 10))
-      }
+        year: parseInt(this.newBook.date_published.slice(0, 4), 10),
+        month: parseInt(this.newBook.date_published.slice(5, 7), 10),
+        day: parseInt(this.newBook.date_published.slice(8, 10), 10)
+      };
     } else {
       this.newBook = {
         isbn10: null,
@@ -98,14 +99,21 @@ export class NewBookComponent implements OnInit, OnDestroy {
   addBook() {
     this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-
     ${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
-    if(!this.newBook.isbn10 || this.newBook.isbn10.length !> 0){
+    if (!this.newBook.isbn10) {
       this.newBook.isbn10 = `${this.newBook.isbn13.slice(3, 12)}1`;
     }
     console.log(this.newBook);
     this.bookService.putBook(this.newBook, this.newBook.isbn13);
-    if(this.state !== 'Update'){
+    if (this.state !== 'Update') {
       this.bookService.putPicture(this.newBook.isbn13, this.file);
     }
+  }
+
+  fillSelect() {
+    this.authorService.getAuthors().subscribe(x => {
+      this.authors = x,
+      this.pageLoading$.next(false);
+    });
   }
 
   uploadPicture(event) {
