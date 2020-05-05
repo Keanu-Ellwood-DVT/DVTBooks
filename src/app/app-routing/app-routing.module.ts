@@ -13,6 +13,10 @@ const routes: Routes = [
     redirectTo: 'home'
   },
   {
+    path: 'home',
+    component: AdminComponent
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]

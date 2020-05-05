@@ -1,15 +1,15 @@
 import { BookRef } from './book';
 
 export class Author {
-  href: string;
-  id: string;
+  href?: string;
+  id?: string;
   first_name: string;
-  middle_names: string;
+  middle_names?: string;
   last_name: string;
-  name: string;
-  about: string;
-  version: string;
-  books: BookRef[];
+  name?: string;
+  about?: string;
+  version?: string;
+  books?: BookRef[];
 }
 
 
