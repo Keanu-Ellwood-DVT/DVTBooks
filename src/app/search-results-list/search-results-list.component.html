@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="row">
+    <div class="container my-4 col-lg-3">
+      <p class="font-weight-bold">Tags</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div *ngFor="let tag of tags; let i=index">
+            <label>
+              <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event)" />
+              {{tag.description}}
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="col-lg-9">
+      <ng-container *ngIf="books; else elseTemplate">
+        <div class="row my-4">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books | paginate: config">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="../../assets/images/default_list.png" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a [routerLink]="['/book', book.isbn13]">{{book.title}}</a>
+                </h4>
+                <h6>by {{book.author.name}}</h6>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <div class="row my-4">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of authBooks | paginate: config">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="../../assets/images/default_list.png" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a [routerLink]="['/book', book.isbn13]">{{book.title}}</a>
+                </h4>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <pagination-controls (pageChange)="pageChanged($event)" [maxSize]="6" [directionLinks]="true" [autoHide]="true"
+        [responsive]="true" class="d-flex justify-content-center"></pagination-controls>
+    </div>
+  </div>
+
+</div>
