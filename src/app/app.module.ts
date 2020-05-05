@@ -15,10 +15,11 @@ import { HomeComponent } from './home/home.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ResultsComponent } from './results/results.component';
 import { BookInfoComponent } from './book-info/book-info.component';
 import { NewBookComponent } from './admin/new-book/new-book.component';
 import { NewAuthorComponent } from './admin/new-author/new-author.component';
+import { SearchResultsListComponent } from './search-results-list/search-results-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,10 +31,10 @@ import { NewAuthorComponent } from './admin/new-author/new-author.component';
     AdminUpdateComponent,
     HomeComponent,
     SpinnerComponent,
-    ResultsComponent,
     BookInfoComponent,
     NewBookComponent,
-    NewAuthorComponent
+    NewAuthorComponent,
+    SearchResultsListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +42,7 @@ import { NewAuthorComponent } from './admin/new-author/new-author.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgbModule
   ],
