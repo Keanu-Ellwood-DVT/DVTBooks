@@ -23,13 +23,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   book: Book;
   newBook: Book;
   model: NgbDateStruct;
-
   time$: Observable<string>;
-
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
   state = 'Add';
-  
+
   constructor(
     private authorService: AuthorService,
     private bookService: BookService,
@@ -39,12 +37,12 @@ export class AdminComponent implements OnInit, OnDestroy {
       title: new FormControl('', { updateOn: 'change' }),
       tag: new FormControl('', { updateOn: 'change' }),
     });
-   }
+  }
 
   ngOnInit(): void {
     this.authorService.getAuthors().subscribe(x => {
       this.authors = x,
-      this.pageLoading$.next(false);
+        this.pageLoading$.next(false);
     });
 
     this.tagService.getTags().subscribe(x => {

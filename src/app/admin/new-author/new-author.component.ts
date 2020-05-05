@@ -43,13 +43,13 @@ if (this.state === 'Update' && this.currentAuth) {
   }
 
   addAuthor() {
-    if (this.state !== 'Update'){
+    if (this.state !== 'Update') {
       this.authorService.putAuthor(this.newAuthor);
       this.newAuthor.first_name = '';
       this.newAuthor.middle_names = null;
       this.newAuthor.last_name = '';
       this.newAuthor.about = '';
-    }else {
+    } else {
       this.authorService.putAuthor(this.newAuthor, this.newAuthor.id);
     }
 
