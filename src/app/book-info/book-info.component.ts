@@ -18,7 +18,7 @@ export class BookInfoComponent implements OnInit {
   pageLoading$ = new BehaviorSubject<boolean>(true);
   book: Book;
   bookImage: Book;
-  state = "Update";
+  state = 'Update';
   isbn: string;
 
   constructor(
@@ -35,13 +35,12 @@ export class BookInfoComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getBook(this.isbn).subscribe(x => {
       this.book = x,
-        this.pageLoading$.next(false),
-        console.log(this.book);
+      this.pageLoading$.next(false)
     });
 
-    this.bookService.getPicture(this.isbn).subscribe(x => {
-      this.bookImage = x;
-    });
+    // this.bookService.getPicture(this.isbn).subscribe(x => {
+    //   this.bookImage = x,
+    // });
 
   }
 

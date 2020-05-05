@@ -42,12 +42,23 @@
                   </h5>
                 </a>
               </div>
-              <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+              <ng-container *ngIf="book.about; else elseTemplate">
+                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                 data-parent="#accordionEx">
                 <div class="card-body">
                   {{book.about}}
                 </div>
               </div>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                data-parent="#accordionEx">
+                <div class="card-body">
+                 This book has no description.
+                </div>
+              </div>
+              </ng-template>
+
             </div>
             <div class="card">
               <div class="card-header" role="tab" id="headingTwo2">
@@ -79,7 +90,7 @@
                         </tr>
                         <tr>
                           <th scope="row">Published on</th>
-                          <td>{{book.date_published.slice(0, 10)}}</td>
+                          <td>{{book.date_published | date:'longDate'}}</td>
                         </tr>
                         <tr>
                           <th scope="row">ISBN-13</th>
