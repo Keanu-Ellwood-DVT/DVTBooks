@@ -56,7 +56,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.fillSelect();
       });
-      this.fillSelect();
+    this.fillSelect();
 
     this.tagService.getTags().subscribe(x => {
       this.tags = x;

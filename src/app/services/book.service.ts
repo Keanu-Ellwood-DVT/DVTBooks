@@ -12,10 +12,10 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  private _refreshNeeded$ = new Subject<void>();
+  private refreshRequired$ = new Subject<void>();
 
   get refreshNeeded$() {
-    return this._refreshNeeded$;
+    return this.refreshRequired$;
   }
 
   getBook(isbn: string): Observable<Book> {
@@ -28,10 +28,11 @@ export class BookService {
   }
 
   getBooks(query?: string, skip?: number, top?: number): Observable<Book[]> {
-    return this.http.get<Book[]>(`${environment.apiUri}/Books?${query ? 'query=' + query + '&' : ''}${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`)
+    return this.http.get<Book[]>(`${environment.apiUri}/Books?${query ? 'query=' + query + '&' : ''}
+    ${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`)
       .pipe(
         tap(() => {
-          this._refreshNeeded$.next();
+          this.refreshRequired$.next();
         })
       );
   }
@@ -45,7 +46,7 @@ export class BookService {
     this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
       .pipe(
         tap(() => {
-          this._refreshNeeded$.next();
+          this.refreshRequired$.next();
         })
       )
       .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });

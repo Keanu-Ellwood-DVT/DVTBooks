@@ -12,10 +12,10 @@ export class AuthorService {
 
   constructor(private http: HttpClient) { }
 
-  private _refreshNeeded$ = new Subject<void>();
+  private refreshRequired$ = new Subject<void>();
 
   get refreshNeeded$() {
-    return this._refreshNeeded$;
+    return this.refreshRequired$;
   }
 
   getAuthor(id: string): Observable<Author> {
@@ -23,10 +23,11 @@ export class AuthorService {
   }
 
   getAuthors(query?: string, skip?: number, top?: number): Observable<Author[]> {
-    return this.http.get<Author[]>(`${environment.apiUri}/Authors?${query ? 'query=' + query + '&' : ''}${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`)
+    return this.http.get<Author[]>(`${environment.apiUri}/Authors?${query ? 'query=' + query + '&' : ''}
+    ${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`)
     .pipe(
       tap(() => {
-        this._refreshNeeded$.next();
+        this.refreshRequired$.next();
       })
     );
   }
@@ -35,7 +36,7 @@ export class AuthorService {
     this.http.put(`${environment.apiUri}/Authors/${id ? id : ''}`, authorObj)
       .pipe(
         tap(() => {
-          this._refreshNeeded$.next();
+          this.refreshRequired$.next();
         })
       )
       .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });

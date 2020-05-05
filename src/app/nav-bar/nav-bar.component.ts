@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  query: string = '';
+  query = '';
 
-  constructor(public auth: AuthService,
-    private router: Router) { }
+  constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,7 +19,7 @@ export class NavBarComponent implements OnInit {
   navigateToAdmin() {
     const authCheck = document.getElementById('AuthorCheck') as HTMLInputElement;
     const bookCheck = document.getElementById('BookCheck') as HTMLInputElement;
-    //console.log(authCheck.checked + ' ' + bookCheck.checked + ' ' + this.query)
+    // console.log(authCheck.checked + ' ' + bookCheck.checked + ' ' + this.query)
     if (authCheck.checked) {
       if (this.query) {
         this.router.navigate([`/results`, { q: this.query, cat: authCheck.value }]);
@@ -35,9 +34,9 @@ export class NavBarComponent implements OnInit {
       }
     } else {
       if (this.query) {
-        this.router.navigate([`/results`, { q: this.query, cat: "All" }]);
-      }else {
-        this.router.navigate([`/results`, { cat: "All" }]);
+        this.router.navigate([`/results`, { q: this.query, cat: 'All' }]);
+      } else {
+        this.router.navigate([`/results`, { cat: 'All' }]);
       }
     }
   }

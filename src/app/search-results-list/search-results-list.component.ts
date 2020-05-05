@@ -3,10 +3,11 @@ import { AuthorService } from '../services/author.service';
 import { BookService } from '../services/book.service';
 import { TagsService } from '../services/tags.service';
 import { Tag } from 'src/models/tag';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';import { Book, BookRef } from 'src/models/book';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { Book, BookRef } from 'src/models/book';
 import { ActivatedRoute } from '@angular/router';
 import { Author } from 'src/models/author';
-;
+
 
 @Component({
   selector: 'app-search-results-list',
@@ -45,7 +46,7 @@ export class SearchResultsListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentQuery = params.q,
-      this.currentCategory = params.cat
+      this.currentCategory = params.cat;
      });
 
     this.tagService.getTags().subscribe(x => {
@@ -66,7 +67,7 @@ export class SearchResultsListComponent implements OnInit {
     });
   }
 
-  pageChanged(event){
+  pageChanged(event) {
     this.config.currentPage = event;
   }
 
@@ -76,9 +77,9 @@ export class SearchResultsListComponent implements OnInit {
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
-      let i: number = 0;
+      let i = 0;
       checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
+        if (item.value === e.target.value) {
           checkArray.removeAt(i);
           return;
         }
