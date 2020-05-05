@@ -6,7 +6,6 @@ import { AdminComponent } from '../admin/admin.component';
 import { AdminGuard } from '../admin.guard';
 import { BookInfoComponent } from '../book-info/book-info.component';
 import { HomeComponent } from '../home/home.component';
-import { AuthenticationGuard } from '../authentication.guard';
 import { SearchResultsListComponent } from '../search-results-list/search-results-list.component';
 
 const routes: Routes = [
