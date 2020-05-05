@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-    <h2 class="text-primary">{{state}} Author</h2>
+    <h2 class="text-primary" i18n="addAuth @@addAuth">{{state}} Author</h2>
   </div>
 </div>
 <div class="row d-flex justify-content-center">
@@ -8,29 +8,29 @@
     <form id="author-form" class="form" role="form" id="add-author"
       aria-labelledby="author-tab">
       <div class="form-group">
-        <label class="form-label text-primary" for="first-name">First Name <i placement="right" ngbTooltip="Required"
+        <label class="form-label text-primary" for="first-name" i18n="lname @@lname">First Name <i placement="right" ngbTooltip="Required"
             class="text-warning">*</i></label>
         <input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name"
           tabindex="1" required [(ngModel)]="newAuthor.first_name" value="newAuthor.first_name">
       </div>
       <div class="form-group">
-        <label class="form-label text-primary" for="middle-name">Middle Name(s)</label>
+        <label class="form-label text-primary" for="middle-name" i18n="mname @@mname">Middle Name(s)</label>
         <input type="text" class="form-control" id="middle-name" name="middle-name" placeholder="Middle Name"
           tabindex="1" [(ngModel)]="newAuthor.middle_names" value="newAuthor.middle_names">
       </div>
       <div class="form-group">
-        <label class="form-label text-primary" for="last-name">Last Name <i placement="right" ngbTooltip="Required"
+        <label class="form-label text-primary" for="last-name" i18n="lname @@lname">Last Name <i placement="right" ngbTooltip="Required"
             class="text-warning">*</i></label>
         <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name"
           tabindex="1" required [(ngModel)]="newAuthor.last_name" value="newAuthor.last_name">
       </div>
       <div class="form-group">
-        <label class="form-label text-primary" for="about">About</label>
+        <label class="form-label text-primary" for="about" i18n="abt @@abt">About</label>
         <textarea rows="5" cols="50" name="about" class="form-control" id="about" placeholder="About..."
           tabindex="4" [(ngModel)]="newAuthor.about" value="newAuthor.about"></textarea>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-primary" (click)="addAuthor()">{{state}}
+        <button type="submit" class="btn btn-primary" (click)="addAuthor()" i18n="addAuth @@addAuth">{{state}}
           Author</button>
       </div>
     </form>

@@ -6,13 +6,13 @@
         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="book-tab" data-toggle="tab" href="#add-book" role="tab"
-              aria-controls="add-book" aria-selected="true"><span class="mdi mdi-book-open-page-variant"></span> Add
+              aria-controls="add-book" aria-selected="true" i18n="addBook @@addBook"><span class="mdi mdi-book-open-page-variant"></span> Add
               Book
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="author-tab" data-toggle="tab" href="#add-author" role="tab"
-              aria-controls="add-author" aria-selected="false">Add Author <span class="mdi mdi-account-edit"></span></a>
+              aria-controls="add-author" aria-selected="false" i18n="addAuth @@addAuth">Add Author <span class="mdi mdi-account-edit"></span></a>
           </li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm </h5>
+        <h5 class="modal-title" id="exampleModalLabel" i18n="conf @@conf">Confirm </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -53,8 +53,8 @@
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" i18n="close @@close">Close</button>
+        <button type="submit" class="btn btn-primary" i18n="saveSbmt @@saveSbmt">Save changes</button>
       </div>
     </div>
   </div>

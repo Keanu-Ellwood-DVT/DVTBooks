@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="container my-4 col-lg-3">
-      <p class="font-weight-bold">Tags</p>
+      <p class="font-weight-bold" i18n="tags @@tags">Tags</p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div *ngFor="let tag of tags; let i=index">
@@ -29,7 +29,7 @@
                 <h6>by {{book.author.name}}</h6>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <span class="badge badge-warning" *ngFor="let tag of book.tags">{{tag.description}}</span>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
                 </h4>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <span class="badge badge-warning" *ngFor="let tag of book.tags">{{tag.description}}</span>
               </div>
             </div>
           </div>
