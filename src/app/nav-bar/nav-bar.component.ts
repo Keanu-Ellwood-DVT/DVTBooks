@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigateToAdmin() {
+  navigateToResults() {
     const authCheck = document.getElementById('AuthorCheck') as HTMLInputElement;
     const bookCheck = document.getElementById('BookCheck') as HTMLInputElement;
     // console.log(authCheck.checked + ' ' + bookCheck.checked + ' ' + this.query)
