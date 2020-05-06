@@ -60,7 +60,7 @@ describe('AuthorService', () => {
 
       service.getAuthors().subscribe();
 
-      const req = httpTestingController.expectOne('http://localhost:4201/Authors');
+      const req = httpTestingController.expectOne('http://localhost:4201/Authors?');
 
       req.flush([
         {

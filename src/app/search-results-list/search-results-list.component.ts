@@ -19,14 +19,11 @@ export class SearchResultsListComponent implements OnInit {
   tags: Tag[] = [];
   form: FormGroup;
   books: Book[] = [];
-  authBooks: BookRef[] = [];
   authors: Author[] = [];
-  config: any;
-  private currentCategory: string;
   private currentQuery: string;
+  skip = 0;
 
   constructor(
-    private authorService: AuthorService,
     private bookService: BookService,
     private tagService: TagsService,
     private fb: FormBuilder,
@@ -35,19 +32,15 @@ export class SearchResultsListComponent implements OnInit {
     this.form = this.fb.group({
       checkArray: this.fb.array([])
     });
-
-    this.config = {
-      itemsPerPage: 6,
-      currentPage: 1,
-      totalItems: this.books.length
-    };
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentQuery = params.q,
-      this.currentCategory = params.cat;
-     });
+      this.skip = 0,
+      this.books.length = 0,
+      this.searchBooks();
+    });
 
     this.tagService.getTags().subscribe(x => {
       this.tags = x;
@@ -56,24 +49,25 @@ export class SearchResultsListComponent implements OnInit {
     this.bookService.refreshNeeded$
       .subscribe(() => {
         this.searchBooks();
-    });
-
-    this.searchBooks();
+      });
   }
 
   private searchBooks() {
-    this.bookService.getBooks(this.currentQuery).subscribe(x => {
-      this.books = x;
+    this.bookService.getBooks(this.currentQuery, this.skip, 6).subscribe(x => {
+      x.forEach(book => {
+        this.books.push(book);
+      });
     });
   }
 
-  pageChanged(event) {
-    this.config.currentPage = event;
+  viewMore() {
+    this.skip += 6;
+    this.searchBooks();
   }
 
   onCheckboxChange(e) {
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
-
+    let intersection = [];
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
