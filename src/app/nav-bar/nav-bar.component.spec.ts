@@ -7,9 +7,9 @@ describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
 
-  let router = {
-    navigate: jasmine.createSpy('navigate')
-  }
+  const router = {
+    navigate: jasmine.createSpy('navigate');
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

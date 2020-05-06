@@ -67,7 +67,6 @@ export class SearchResultsListComponent implements OnInit {
 
   onCheckboxChange(e) {
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
-    let intersection = [];
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {

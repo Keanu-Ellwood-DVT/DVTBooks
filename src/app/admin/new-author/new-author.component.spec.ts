@@ -8,8 +8,6 @@ describe('NewAuthorComponent', () => {
   let component: NewAuthorComponent;
   let fixture: ComponentFixture<NewAuthorComponent>;
   let httpTestingController: HttpTestingController;
-  let de: DebugElement;
-  let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

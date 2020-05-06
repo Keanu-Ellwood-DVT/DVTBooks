@@ -114,7 +114,8 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   addBook() {
-    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
+    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-
+    ${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
     console.log(this.newBook);
 
     if (this.file) {

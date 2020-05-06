@@ -52,17 +52,17 @@ export class BookService {
         })
       )
       .subscribe(data => { console.log('PUT request was successful. PUT: ', data),
-      this.putPicture(isbn, file) }, error => { console.log('Error', error); });
+      this.putPicture(isbn, file); }, error => { console.log('Error', error); });
   }
 
-  updateBook(bookObj: Book, isbn: string){
+  updateBook(bookObj: Book, isbn: string) {
     this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
     .pipe(
       tap(() => {
         this.refreshRequired$.next();
       })
     )
-    .subscribe(data => { console.log('PUT request was successful. PUT: ', data);}, error => { console.log('Error', error); });
+    .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
   }
 
   getPicture(isbn: string): Observable<Book> {
