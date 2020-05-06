@@ -6,18 +6,21 @@
         <div class="col-lg-6">
           <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
             <div class="carousel-inner text-center text-md-left" role="listbox">
-              <div class="carousel-item active">
-                <img src="../../assets/images/default.png" alt="Book cover not found" class="img-fluid">
-              </div>
+
+              <ng-container *ngIf="book.image; else elseTemplate">
+                <div class="carousel-item active">
+                  <img src='{{book.image}}' alt="Book cover not found" class="img-fluid">
+                </div>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <div class="carousel-item active">
+                  <img src="../../assets/images/default.png" alt="Book cover not found" class="img-fluid">
+                </div>
+              </ng-template>
+
+
+
             </div>
-            <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only" i18n="prev @@prev">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only" i18n="nxt @@nxt">Next</span>
-            </a>
           </div>
         </div>
 

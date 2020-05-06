@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthorService } from '../services/author.service';
 import { BookService } from '../services/book.service';
-import { TagsService } from '../services/tags.service';
 import { Book } from 'src/models/book';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../auth.service';
@@ -22,9 +20,7 @@ export class BookInfoComponent implements OnInit {
   isbn: string;
 
   constructor(
-    private authorService: AuthorService,
     private bookService: BookService,
-    private tagService: TagsService,
     public auth: AuthService,
     private modalService: NgbModal,
     private route: ActivatedRoute
@@ -37,11 +33,6 @@ export class BookInfoComponent implements OnInit {
       this.book = x,
       this.pageLoading$.next(false);
     });
-
-    // this.bookService.getPicture(this.isbn).subscribe(x => {
-    //   this.bookImage = x,
-    // });
-
   }
 
   openModal(content) {
