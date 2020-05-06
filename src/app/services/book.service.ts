@@ -31,11 +31,6 @@ export class BookService {
   getBooks(query?: string, skip?: number, top?: number): Observable<Book[]> {
     return this.http.get<Book[]>
     (`${environment.apiUri}/Books?${query ? 'query=' + query + '&' : ''}${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`);
-    // .pipe(
-    //   tap(() => {
-    //     this.refreshRequired$.next();
-    //   })
-    // );
   }
 
   postBook(bookObj: Book) {
