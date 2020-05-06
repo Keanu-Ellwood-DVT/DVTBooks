@@ -127,8 +127,8 @@ describe('AuthorService', () => {
             title: '',
             href: 'http://localhost:4201/Books/$9780133966153',
             id: '9780133966153',
-            isbN10: '0133966151',
-            isbN13: '9780133966153'
+            isbn10: '0133966151',
+            isbn13: '9780133966153'
           }
         ]
       };
@@ -159,8 +159,8 @@ describe('AuthorService', () => {
             title: '',
             href: 'http://localhost:4201/Books/$9780133966153',
             id: '9780133966153',
-            isbN10: '0133966151',
-            isbN13: '9780133966153'
+            isbn10: '0133966151',
+            isbn13: '9780133966153'
           }
         ]
       };
