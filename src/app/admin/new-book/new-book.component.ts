@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Author, AuthorRef } from 'src/models/author';
+import { Author } from 'src/models/author';
 import { Book } from 'src/models/book';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { Tag } from 'src/models/tag';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorService } from 'src/app/services/author.service';
@@ -24,8 +24,8 @@ export class NewBookComponent implements OnInit, OnDestroy {
 
   pageLoading$ = new BehaviorSubject<boolean>(true);
   form: FormGroup;
-  authors: Author[] = [];
-  tags: Tag[] = [];
+  authors: Author[];
+  tags: Tag[];
 
   selectedAuth: any = {};
   selectedTag: any = {};
@@ -45,10 +45,27 @@ export class NewBookComponent implements OnInit, OnDestroy {
     private tagService: TagsService
   ) {
     this.form = new FormGroup({
-      title: new FormControl('', { updateOn: 'change' }),
-      tag: new FormControl('', { updateOn: 'change' }),
+      title: new FormControl('', { validators: [ Validators.required ]}),
+      author: new FormControl(''),
+      tag: new FormControl(''),
+      isbn13: new FormControl('', { validators: [ Validators.required ]}),
+      isbn10: new FormControl(''),
+      publisher: new FormControl('', { validators: [ Validators.required ]}),
+      dp: new FormControl('', { validators: [ Validators.required ]}),
+      about: new FormControl(''),
+      filename: new FormControl('')
     });
   }
+
+  get title(): AbstractControl { return this.form.get('title'); }
+  get author(): AbstractControl { return this.form.get('author'); }
+  get tag(): AbstractControl { return this.form.get('tags'); }
+  get isbn13(): AbstractControl { return this.form.get('isbn13'); }
+  get isbn10(): AbstractControl { return this.form.get('isbn10'); }
+  get publisher(): AbstractControl { return this.form.get('publisher'); }
+  get dp(): AbstractControl { return this.form.get('dp'); }
+  get about(): AbstractControl { return this.form.get('about'); }
+  get filename(): AbstractControl { return this.form.get('filename'); }
 
   ngOnInit(): void {
 
@@ -97,15 +114,13 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   addBook() {
-    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-
-    ${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
-    if (!this.newBook.isbn10) {
-      this.newBook.isbn10 = `${this.newBook.isbn13.slice(3, 12)}1`;
-    }
+    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
     console.log(this.newBook);
-    this.bookService.putBook(this.newBook, this.newBook.isbn13);
-    if (this.state !== 'Update') {
-      this.bookService.putPicture(this.newBook.isbn13, this.file);
+
+    if (this.file) {
+      this.bookService.putBook(this.newBook, this.newBook.isbn13, this.file);
+    } else {
+      this.bookService.updateBook(this.newBook, this.newBook.isbn13);
     }
   }
 
@@ -118,19 +133,15 @@ export class NewBookComponent implements OnInit, OnDestroy {
 
   uploadPicture(event) {
     if (event.target.files.length > 0) {
-      this.imageName.next(event.target.files[0].name);
       this.file = event.target.files[0];
+      this.imageName.next(event.target.files[0].name);
     } else {
       this.imageName.next('Choose File');
     }
   }
 
-  changeTag(val: Tag) {
-    this.newBook.tags = [{
-      href: val.href,
-      id: val.id,
-      description: val.description
-    }];
+  changeTag(val: Tag[]) {
+    this.newBook.tags = val;
   }
 
   changeAuth(val: Author) {

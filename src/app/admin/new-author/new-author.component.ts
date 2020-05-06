@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthorService } from 'src/app/services/author.service';
 import { Author } from 'src/models/author';
+import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-author',
@@ -14,12 +15,24 @@ export class NewAuthorComponent implements OnInit {
 
   @Input()
   currentAuth?: Author;
-
+  form: FormGroup;
   newAuthor: Author;
 
   constructor(
     private authorService: AuthorService,
-  ) {}
+  ) {
+    this.form = new FormGroup({
+      firstName: new FormControl('', { validators: [ Validators.required ]}),
+      middleName: new FormControl(''),
+      lastName: new FormControl('', { validators: [ Validators.required ]}),
+      about: new FormControl(''),
+    });
+  }
+
+  get firstName(): AbstractControl { return this.form.get('firstName'); }
+  get middleName(): AbstractControl { return this.form.get('middleName'); }
+  get lastName(): AbstractControl { return this.form.get('lastName'); }
+  get about(): AbstractControl { return this.form.get('about'); }
 
   ngOnInit(): void {
 
