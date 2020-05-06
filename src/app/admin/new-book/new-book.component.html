@@ -19,7 +19,7 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <div class="form-group" style="width: 49%;" *ngIf="authors">
+        <div class="form-group wdth-49"  *ngIf="authors">
           <label class="form-label text-primary" for="author" i18n="auth @@pblshr">Author <i placement="right" ngbTooltip="Required"
               class="text-warning">*</i></label>
           <select class="form-control" name="author" [(ngModel)]="selectedAuth" (ngModelChange)="changeAuth($event)"
@@ -30,7 +30,7 @@
           </select>
         </div>
 
-        <div class="form-group" style="width: 49%;" *ngIf="tags">
+        <div class="form-group wdth-49"  *ngIf="tags">
           <label class="form-label text-primary" for="tags" i18n="tag @@tag">Tag <i placement="right" ngbTooltip="Required"
               class="text-warning">*</i></label>
           <select class="form-control" name="tags" [(ngModel)]="selectedTag" (ngModelChange)="changeTag($event)"
@@ -43,7 +43,7 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <div class="form-group" style="width: 49%;">
+        <div class="form-group wdth-49" >
           <label class="form-label text-primary" for="isbn13">ISBN-13 <i placement="right" ngbTooltip="Required"
               class="text-warning">*</i></label>
           <input type="email" class="form-control" id="isbn13" name="isbn13" placeholder="ISBN-13" tabindex="2" required
@@ -54,7 +54,7 @@
               </div>
         </div>
 
-        <div class="form-group" style="width: 49%;">
+        <div class="form-group wdth-49" >
           <label class="form-label text-primary" for="isbn10">ISBN-10 <i placement="right"
               ngbTooltip="ISBN-10 can be converted to ISBN-13" class="text-secondary">(?)</i></label>
           <input type="text" class="form-control" id="isbn10" name="isbn10" placeholder="ISBN-10" tabindex="1"
@@ -63,7 +63,7 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <div class="form-group" style="width: 49%;">
+        <div class="form-group wdth-49" >
           <label class="form-label text-primary" for="publisher" i18n="pblshr @@pblshr">Publisher <i placement="right" ngbTooltip="Required"
               class="text-warning">*</i></label>
           <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Publisher" required
@@ -74,7 +74,7 @@
               </div>
         </div>
 
-        <div class="form-group" style="width: 49%;">
+        <div class="form-group wdth-49" >
           <label class="form-label text-primary" for="dp" i18n="pblshDate @@pblshDate">Publish Date<i placement="right" ngbTooltip="Required"
               class="text-warning">*</i></label>
           <div class="input-group">
@@ -82,7 +82,7 @@
               #d="ngbDatepicker" formControlName="dp" [ngClass]="{
                 'input-invalid':  dp.touched && dp.invalid && dp.errors.required}">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" style="border: none;" (click)="d.toggle()" type="button"><i
+              <button class="btn btn-outline-primary" (click)="d.toggle()" type="button"><i
                   class="gg-calendar-dates"></i></button>
             </div>
           </div>
@@ -105,7 +105,7 @@
           <input type="file" class="form-control-file custom-file-input" id="customFile" name="filename"
             accept="image/bmp,image/gif,image/jpeg,image/png" autocomplete="none" autocorrect="off" autocapitalize="off"
             spellcheck="false" (change)="uploadPicture($event)"/>
-          <label class="custom-file-label" style="overflow: hidden" for="customFile" id="imageName"
+          <label class="custom-file-label overflow-hidden" for="customFile" id="imageName"
             placeholder="Choose File">{{ imageName$ | async }}</label>
         </div>
       </div>
