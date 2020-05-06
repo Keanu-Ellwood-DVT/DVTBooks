@@ -23,13 +23,7 @@ export class AuthorService {
   }
 
   getAuthors(query?: string, skip?: number, top?: number): Observable<Author[]> {
-    return this.http.get<Author[]>(`${environment.apiUri}/Authors?${query ? 'query=' + query + '&' : ''}
-    ${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`)
-    .pipe(
-      tap(() => {
-        this.refreshRequired$.next();
-      })
-    );
+    return this.http.get<Author[]>(`${environment.apiUri}/Authors?${query ? 'query=' + query + '&' : ''}${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`);
   }
 
   putAuthor(authorObj: Author, id?: string) {
