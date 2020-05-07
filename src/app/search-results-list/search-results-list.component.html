@@ -40,7 +40,8 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary d-flex justify-content-center" (click)="viewMore()">View More</button>
+        <button *ngIf="booksDisplay.length % 6 === 0" class="btn btn-primary d-flex justify-content-center"
+          (click)="viewMore()">View More</button>
       </ng-container>
 
       <ng-template #elseTemplate>
