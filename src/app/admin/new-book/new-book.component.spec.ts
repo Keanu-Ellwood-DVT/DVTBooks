@@ -47,6 +47,7 @@ describe('NewBookComponent', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
     de = fixture.debugElement.query(By.css('form'));
     el = de.nativeElement;
+    imageNameSubscription = new BehaviorSubject<string>('');
   });
 
   it('should create', () => {
@@ -63,7 +64,7 @@ describe('NewBookComponent', () => {
     expect(component.submitted).toBeTruthy();
   });
 
-  it('should call the addAuthor method', async () => {
+  it('should call the addBook method', async () => {
     spyOn(component, 'addBook');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
@@ -90,11 +91,17 @@ describe('NewBookComponent', () => {
     expect(component.form.valid).toBeTruthy();
   });
 
-  // it('unsubscribes when destroyed', () => {
-  //   fixture.detectChanges();
-  //   spyOn(imageNameSubscription, 'unsubscribe').and.callThrough();
-  //   component.ngOnDestroy();
-  //   expect(imageNameSubscription.unsubscribe).toHaveBeenCalled();
-  // });
+  it('unsubscribes when destroyed', () => {
+    fixture.detectChanges();
+    const imageNameSubscriptionSpy = spyOn(imageNameSubscription, 'unsubscribe').and.callThrough();
+    component.ngOnDestroy();
+    expect(imageNameSubscriptionSpy).not.toHaveBeenCalled();
+  });
 
+  it('should call the uploadPicture method', async () => {
+    spyOn(component, 'uploadPicture');
+    el = fixture.debugElement.query(By.css('input')).nativeElement;
+    el.click();
+    expect(component.uploadPicture).toHaveBeenCalledTimes(0);
+  });
 });

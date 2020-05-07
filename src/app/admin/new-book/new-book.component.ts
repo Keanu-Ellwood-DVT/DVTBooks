@@ -49,7 +49,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
       title: new FormControl('', { validators: [ Validators.required ]}),
       author: new FormControl(''),
       tag: new FormControl(''),
-      isbn13: new FormControl('', { validators: [ Validators.required ]}),
+      isbn13: new FormControl('', { validators: [ Validators.required, Validators.pattern('[0-9]{3}[-[0-9]{10}|[0-9]{10}]')]}),
       isbn10: new FormControl(''),
       publisher: new FormControl('', { validators: [ Validators.required ]}),
       dp: new FormControl('', { validators: [ Validators.required ]}),
@@ -115,12 +115,8 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   addBook() {
-    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}` +
-    `-${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
-    console.log(this.newBook);
-    console.log(moment('').add(this.model.year, 'year').add(this.model.month, 'month').add(this.model.day, 'day').format());
-    console.log(moment([this.model.year, this.model.month - 1, this.model.day]));
-
+    this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-','');
+    this.newBook.date_published = moment([this.model.year, this.model.month - 1, this.model.day]).format();
     if (this.file) {
       this.bookService.putBook(this.newBook, this.newBook.isbn13, this.file);
     } else {
@@ -150,7 +146,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   changeAuth(val: Author) {
-    this.newBook.author = {
+  this.newBook.author = {
       href: val.href,
       id: val.id,
       name: val.name

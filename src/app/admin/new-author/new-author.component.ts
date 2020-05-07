@@ -15,6 +15,7 @@ export class NewAuthorComponent implements OnInit {
 
   @Input()
   currentAuth?: Author;
+  
   form: FormGroup;
   newAuthor: Author;
 

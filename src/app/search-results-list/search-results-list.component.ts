@@ -19,6 +19,7 @@ export class SearchResultsListComponent implements OnInit {
   tags: Tag[] = [];
   form: FormGroup;
   books: Book[] = [];
+  booksDisplay: Book[] = [];
   authors: Author[] = [];
   private currentQuery: string;
   skip = 0;
@@ -37,9 +38,9 @@ export class SearchResultsListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentQuery = params.q,
-      this.skip = 0,
-      this.books.length = 0,
-      this.searchBooks();
+        this.skip = 0,
+        this.books.length = 0,
+        this.searchBooks();
     });
 
     this.tagService.getTags().subscribe(x => {
@@ -56,7 +57,8 @@ export class SearchResultsListComponent implements OnInit {
     this.bookService.getBooks(this.currentQuery, this.skip, 6).subscribe(x => {
       x.forEach(book => {
         this.books.push(book);
-      });
+      }),
+        this.booksDisplay = this.books;
     });
   }
 
@@ -78,6 +80,22 @@ export class SearchResultsListComponent implements OnInit {
         }
         i++;
       });
+    }
+    if (checkArray.length > 0) {
+      let tempBooks: Book[] = [];
+
+      this.books.forEach(book => {
+        book.tags.forEach(tag => {
+          if (tag.id === e.target.value && !tempBooks.includes(book)) {
+            tempBooks.push(book);
+            console.log(book);
+            return;
+          }
+        });
+        this.booksDisplay = tempBooks;
+      });
+    } else {
+      this.booksDisplay = this.books;
     }
   }
 

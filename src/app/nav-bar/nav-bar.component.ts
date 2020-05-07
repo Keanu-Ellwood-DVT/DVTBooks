@@ -10,10 +10,14 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   query = '';
+  htmlStr: string = '<span class="label-icon">Categories</span> <span class="caret">&nbsp;</span>';
 
   constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+  onCheckboxChange(e) {
+    this.htmlStr = `<span class="label-icon">${e.target.value}</span> <span class="caret">&nbsp;</span>`
   }
 
   navigateToResults() {
@@ -26,11 +30,11 @@ export class NavBarComponent implements OnInit {
       } else {
         this.router.navigate([`/results`, { cat: authCheck.value }]);
       }
-    } else if (bookCheck.checked) {
+    } else if (authCheck.checked) {
       if (this.query) {
-        this.router.navigate([`/results`, { q: this.query, cat: bookCheck.value }]);
+        this.router.navigate([`/results`, { q: this.query, cat: authCheck.value }]);
       } else {
-        this.router.navigate([`/results`, { cat: bookCheck.value }]);
+        this.router.navigate([`/results`, { cat: authCheck.value }]);
       }
     } else {
       if (this.query) {

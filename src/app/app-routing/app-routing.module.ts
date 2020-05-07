@@ -7,6 +7,7 @@ import { AdminGuard } from '../admin.guard';
 import { BookInfoComponent } from '../book-info/book-info.component';
 import { HomeComponent } from '../home/home.component';
 import { SearchResultsListComponent } from '../search-results-list/search-results-list.component';
+import { AuthorInfoComponent } from '../author-info/author-info.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'book/:isbn',
     component: BookInfoComponent
+  },
+  {
+    path: 'author/:id',
+    component: AuthorInfoComponent
   },
   {
     path: '',
