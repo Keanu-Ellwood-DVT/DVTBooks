@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   query = '';
-  htmlStr: string = '<span class="label-icon">Categories</span> <span class="caret">&nbsp;</span>';
+  htmlStr = '<span class="label-icon">Categories</span> <span class="caret">&nbsp;</span>';
 
   constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
   onCheckboxChange(e) {
-    this.htmlStr = `<span class="label-icon">${e.target.value}</span> <span class="caret">&nbsp;</span>`
+    this.htmlStr = `<span class="label-icon">${e.target.value}</span> <span class="caret">&nbsp;</span>`;
   }
 
   navigateToResults() {

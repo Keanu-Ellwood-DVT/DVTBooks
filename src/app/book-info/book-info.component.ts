@@ -36,8 +36,8 @@ export class BookInfoComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getBook(this.isbn).subscribe(x => {
       this.book = x,
-      this.authorService.getAuthor(this.book.author.id).subscribe(x => {
-        this.author = x,
+      this.authorService.getAuthor(this.book.author.id).subscribe(authorData => {
+        this.author = authorData,
         this.authBooks = this.author.books;
       }),
       this.pageLoading$.next(false);

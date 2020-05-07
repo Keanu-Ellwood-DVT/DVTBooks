@@ -47,7 +47,7 @@ describe('BookInfoComponent', () => {
     const modalServiceSpy = spyOn(modalService, 'open').and.callThrough();
     expect(modalServiceSpy).not.toHaveBeenCalled();
 
-    component.openModal(event);
+    component.openModal(name);
 
     expect(modalServiceSpy).toHaveBeenCalledTimes(1);
   });

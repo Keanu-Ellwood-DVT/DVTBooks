@@ -115,7 +115,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   addBook() {
-    this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-','');
+    this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-', '');
     this.newBook.date_published = moment([this.model.year, this.model.month - 1, this.model.day]).format();
     if (this.file) {
       this.bookService.putBook(this.newBook, this.newBook.isbn13, this.file);

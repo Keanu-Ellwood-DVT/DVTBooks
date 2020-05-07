@@ -82,7 +82,7 @@ export class SearchResultsListComponent implements OnInit {
       });
     }
     if (checkArray.length > 0) {
-      let tempBooks: Book[] = [];
+      const tempBooks: Book[] = [];
 
       this.books.forEach(book => {
         book.tags.forEach(tag => {

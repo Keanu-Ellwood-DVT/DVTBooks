@@ -26,7 +26,7 @@ export class AuthorInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: NgbModal
   ) {
-    this.route.params.subscribe(params => this.id = params.id)
+    this.route.params.subscribe(params => this.id = params.id);
   }
 
   ngOnInit(): void {
