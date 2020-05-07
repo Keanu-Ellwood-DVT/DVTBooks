@@ -26,7 +26,7 @@
           </h2>
           <h5
             class="h3-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
-            by <strong [routerLink]="['/author', book.author.id]">{{book.author.name}}</strong></h5>
+            by <a [routerLink]="['/author', book.author.id]"><strong>{{book.author.name}}</strong></a></h5>
           <div *ngIf="book.tags.length > 0">
             <span class="badge badge-warning" *ngFor="let tag of book.tags">{{tag.description}}</span>
           </div>
