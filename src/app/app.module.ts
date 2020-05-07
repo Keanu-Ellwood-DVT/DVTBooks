@@ -21,6 +21,7 @@ import { NewAuthorComponent } from './admin/new-author/new-author.component';
 import { SearchResultsListComponent } from './search-results-list/search-results-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthorInfoComponent } from './author-info/author-info.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { AuthorInfoComponent } from './author-info/author-info.component';
     NewBookComponent,
     NewAuthorComponent,
     SearchResultsListComponent,
-    AuthorInfoComponent
+    AuthorInfoComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,
