@@ -18,6 +18,8 @@ export class NewAuthorComponent implements OnInit {
   form: FormGroup;
   newAuthor: Author;
 
+  submitted = false;
+
   constructor(
     private authorService: AuthorService,
   ) {
@@ -62,10 +64,11 @@ if (this.state === 'Update' && this.currentAuth) {
       this.newAuthor.middle_names = null;
       this.newAuthor.last_name = '';
       this.newAuthor.about = '';
+      this.submitted = true;
     } else {
       this.authorService.putAuthor(this.newAuthor, this.newAuthor.id);
+      this.submitted = true;
     }
-
   }
 
 }

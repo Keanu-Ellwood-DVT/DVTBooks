@@ -8,6 +8,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorService } from 'src/app/services/author.service';
 import { BookService } from 'src/app/services/book.service';
 import { TagsService } from 'src/app/services/tags.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-book',
@@ -35,7 +36,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
   model: NgbDateStruct;
   file: File;
   time$: Observable<string>;
-
+  submitted = false;
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
 
@@ -114,18 +115,20 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   addBook() {
-    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-
-    ${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
+    this.newBook.date_published = `${this.model.year}-${this.model.month < 10 ? '0' + this.model.month : this.model.month}-${this.model.day < 10 ? '0' + this.model.day : this.model.day}T00:00:00+00:00`;
     console.log(this.newBook);
+    console.log(moment('').add(this.model.year, 'year').add(this.model.month, 'month').add(this.model.day, 'day').format());
+    console.log(moment([this.model.year, this.model.month - 1, this.model.day]));
 
     if (this.file) {
       this.bookService.putBook(this.newBook, this.newBook.isbn13, this.file);
     } else {
       this.bookService.updateBook(this.newBook, this.newBook.isbn13);
     }
+    this.submitted = true;
   }
 
-  fillSelect() {
+  private fillSelect() {
     this.authorService.getAuthors().subscribe(x => {
       this.authors = x,
       this.pageLoading$.next(false);

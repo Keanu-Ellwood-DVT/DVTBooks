@@ -3,11 +3,15 @@ import { NewAuthorComponent } from './new-author.component';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebugElement } from '@angular/core';
+import { BrowserModule, By } from '@angular/platform-browser';
 
 describe('NewAuthorComponent', () => {
   let component: NewAuthorComponent;
   let fixture: ComponentFixture<NewAuthorComponent>;
   let httpTestingController: HttpTestingController;
+  let de: DebugElement;
+  let el: HTMLElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,15 +23,42 @@ describe('NewAuthorComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, FormsModule]
+      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, BrowserModule]
     });
     fixture = TestBed.createComponent(NewAuthorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
     httpTestingController = TestBed.inject(HttpTestingController);
+    de = fixture.debugElement.query(By.css('form'));
+    el = de.nativeElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set submitted to true', async() => {
+    component.addAuthor();
+    expect(component.submitted).toBeTruthy();
+  });
+
+  it('should call the addAuthor method', async() => {
+    spyOn(component, 'addAuthor');
+    el = fixture.debugElement.query(By.css('button')).nativeElement;
+    el.click();
+    expect(component.addAuthor).toHaveBeenCalledTimes(0);
+  });
+
+  it('form should be invalid', async() => {
+    component.form.controls['firstName'].setValue('');
+    component.form.controls['lastName'].setValue('');
+    expect(component.form.valid).toBeFalsy();
+  });
+
+  it('form should be valid', async() => {
+    component.form.controls['firstName'].setValue('Peter');
+    component.form.controls['lastName'].setValue('Piper');
+    expect(component.form.valid).toBeTruthy();
   });
 });
