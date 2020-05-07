@@ -11,8 +11,8 @@ describe('NewAuthorComponent', () => {
   let httpTestingController: HttpTestingController;
   let de: DebugElement;
   let el: HTMLElement;
-
-
+  const firstNameKey = 'firstName';
+  const lastNameKey = 'lastName';
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule],
@@ -38,27 +38,27 @@ describe('NewAuthorComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set submitted to true', async() => {
+  it('should set submitted to true', async () => {
     component.addAuthor();
     expect(component.submitted).toBeTruthy();
   });
 
-  it('should call the addAuthor method', async() => {
+  it('should call the addAuthor method', async () => {
     spyOn(component, 'addAuthor');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.addAuthor).toHaveBeenCalledTimes(0);
   });
 
-  it('form should be invalid', async() => {
-    component.form.controls['firstName'].setValue('');
-    component.form.controls['lastName'].setValue('');
+  it('form should be invalid', async () => {
+    component.form.controls[firstNameKey].setValue('');
+    component.form.controls[lastNameKey].setValue('');
     expect(component.form.valid).toBeFalsy();
   });
 
-  it('form should be valid', async() => {
-    component.form.controls['firstName'].setValue('Peter');
-    component.form.controls['lastName'].setValue('Piper');
+  it('form should be valid', async () => {
+    component.form.controls[firstNameKey].setValue('Peter');
+    component.form.controls[lastNameKey].setValue('Piper');
     expect(component.form.valid).toBeTruthy();
   });
 });

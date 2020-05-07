@@ -19,7 +19,12 @@ describe('NewBookComponent', () => {
     year: 2015,
     month: 1,
     day: 11
-  }
+  };
+  const dpKey = 'dp';
+  const publisherKey = 'publisher';
+  const isbn13Key = 'isbn13';
+  const titleKey = 'title';
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -49,7 +54,7 @@ describe('NewBookComponent', () => {
   });
 
   it('should set submitted to true', async () => {
-    component.form.controls['dp'].setValue({
+    component.form.controls[dpKey].setValue({
       year: '2015',
       month: '1',
       day: '11'
@@ -66,10 +71,10 @@ describe('NewBookComponent', () => {
   });
 
   it('form should be invalid', async () => {
-    component.form.controls['title'].setValue('');
-    component.form.controls['isbn13'].setValue('');
-    component.form.controls['publisher'].setValue('');
-    component.form.controls['dp'].setValue({
+    component.form.controls[titleKey].setValue('');
+    component.form.controls[isbn13Key].setValue('');
+    component.form.controls[publisherKey].setValue('');
+    component.form.controls[dpKey].setValue({
       year: '',
       month: '',
       day: ''
@@ -78,10 +83,10 @@ describe('NewBookComponent', () => {
   });
 
   it('form should be valid', async () => {
-    component.form.controls['title'].setValue('Book');
-    component.form.controls['isbn13'].setValue('9781234567891');
-    component.form.controls['publisher'].setValue('Publisher');
-    component.form.controls['dp'].setValue(testModel);
+    component.form.controls[titleKey].setValue('Book');
+    component.form.controls[isbn13Key].setValue('9781234567891');
+    component.form.controls[publisherKey].setValue('Publisher');
+    component.form.controls[dpKey].setValue(testModel);
     expect(component.form.valid).toBeTruthy();
   });
 
