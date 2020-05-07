@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+    <h2 class="text-primary" i18n="addAuth @@addAuth">{{state}} Author</h2>
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+    <form id="author-form" class="form" role="form" id="add-author" aria-labelledby="author-tab" [formGroup]="form" #authorForm="ngForm">
+      <div class="form-group">
+        <label class="form-label text-primary" for="firstName" i18n="lname @@lname">First Name <i placement="right"
+            ngbTooltip="Required" class="text-warning">*</i></label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName" placeholder="First Name" tabindex="1"
+          required [(ngModel)]="newAuthor.first_name" value="newAuthor.first_name" [ngClass]="{
+            'input-invalid':
+            firstName.touched && firstName.invalid && firstName.errors.required
+          }">
+
+          <div *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
+            <span class="text-danger">First name is required.</span>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label text-primary" for="middleName" i18n="mname @@mname">Middle Name(s)</label>
+        <input type="text" class="form-control" id="middleName" formControlName="middleName" name="middleName" placeholder="Middle Name" tabindex="1"
+          [(ngModel)]="newAuthor.middle_names" value="newAuthor.middle_names">
+      </div>
+      <div class="form-group">
+        <label class="form-label text-primary" for="lastName" i18n="lname @@lname">Last Name <i placement="right"
+            ngbTooltip="Required" class="text-warning">*</i></label>
+        <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName" placeholder="Last Name" tabindex="1"
+          required [(ngModel)]="newAuthor.last_name" value="newAuthor.last_name"
+          [ngClass]="{
+            'input-invalid':  lastName.touched && lastName.invalid && lastName.errors.required}">
+
+        <div *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
+          <span class="text-danger">Last name is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label text-primary" for="about" i18n="abt @@abt">About</label>
+        <textarea rows="5" cols="50" name="about" class="form-control" id="about" placeholder="About..." tabindex="4"
+          [(ngModel)]="newAuthor.about" value="newAuthor.about" formControlName="about"></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" (click)="addAuthor()" i18n="addAuth @@addAuth" [disabled]="!authorForm.valid">{{state}}
+          Author</button>
+      </div>
+    </form>
+  </div>
+</div>

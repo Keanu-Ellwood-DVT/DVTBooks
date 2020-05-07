@@ -1,0 +1,10 @@
+.loading-indicator {
+  display: grid;
+  height: 88vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#accordionEx {
+  margin-top: 15px;
+}

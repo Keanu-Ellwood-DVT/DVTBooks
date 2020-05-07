@@ -1,0 +1,5 @@
+.container-fluid > img{
+  border: none;
+  margin: 25px 0;
+  width: 500px;
+}

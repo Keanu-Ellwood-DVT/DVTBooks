@@ -2,13 +2,265 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <target>Sluit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <target>Terug</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <target>Volgende</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <target>Vorige maand</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <target>Volgende maand</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <target>Kies maand</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <target>Kies jaar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <target>««</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <target></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <target></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <target></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <target>Voor</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <target>Vorige</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <target>Volgende</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <target>Laaste</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <target>Ure</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <target>Minute</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <target>Sekondes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.AM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.toast.close-aria" datatype="html">
+        <source>Close</source>
+        <target>Maak toe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/toast/toast.d.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="titleName" datatype="html">
         <source>
     <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
     books
   </source>
   <target>
-    <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
+  <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
     boeke
   </target>
         <context-group purpose="location">
@@ -20,73 +272,350 @@
       </trans-unit>
       <trans-unit id="homeLnk" datatype="html">
         <source>Home<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
-        <target>Ikhaya<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
-        <note priority="1" from="description"> Returns users to home page.</note>
-        <note priority="1" from="meaning">Home lnk </note>
-      </trans-unit>
-      <trans-unit id="adminDrop" datatype="html">
-        <source>Administrator</source>
-        <target>Umphathi</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
-        <note priority="1" from="description"> A dropdown containing CRUD operations for admins</note>
-        <note priority="1" from="meaning">Admin dropdown </note>
-      </trans-unit>
-      <trans-unit id="createLnk" datatype="html">
-        <source>Create</source>
-        <target>Dala</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <note priority="1" from="description"> Navigates the admin to the create form.</note>
-        <note priority="1" from="meaning">Create lnk </note>
-      </trans-unit>
-      <trans-unit id="updateLnk" datatype="html">
-        <source>Update</source>
-        <target>Buyekeza</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-        <note priority="1" from="description"> Navigates the admin to the update form.</note>
-        <note priority="1" from="meaning">Update lnk </note>
-      </trans-unit>
-      <trans-unit id="deleteLnk" datatype="html">
-        <source>Delete</source>
-        <target>Susa</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-        <note priority="1" from="description"> Navigates the admin to the delete form.</note>
-        <note priority="1" from="meaning">Delete lnk </note>
+        <note priority="1" from="description"> Returns users to home page.</note>
+        <note priority="1" from="meaning">Home link </note>
       </trans-unit>
       <trans-unit id="loginBtn" datatype="html">
-        <source>Log In</source>
-        <target>Ngena Ngemvume</target>
+        <source>Log
+          In</source>
+          <target>Sluit Aan</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description"> A button that allows the user to Login if they aren&apos;t already Logged in.</note>
         <note priority="1" from="meaning">Log in btn </note>
       </trans-unit>
       <trans-unit id="logoutBtn" datatype="html">
-        <source>Log Out</source>
-        <target>Phuma</target>
+        <source>Log
+          Out</source>
+          <target>Sluit Af</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <note priority="1" from="description">A button that allows the user to Log out if they are already Logged in.</note>
         <note priority="1" from="meaning">Log out btn </note>
+      </trans-unit>
+      <trans-unit id="addBook" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add
+              Book
+            </source>
+          <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Nuwe Boek</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/admin.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+        <note priority="1" from="description">addBook </note>
+      </trans-unit>
+      <trans-unit id="addAuth" datatype="html">
+        <source>Add Author <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/admin.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">addAuth </note>
+      </trans-unit>
+      <trans-unit id="conf" datatype="html">
+        <source>Confirm </source>
+        <target>Bevestig </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/admin.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <note priority="1" from="description">conf </note>
+      </trans-unit>
+      <trans-unit id="close" datatype="html">
+        <source>Close</source>
+        <target>Maak toe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/admin.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">172</context>
+        </context-group>
+        <note priority="1" from="description">close </note>
+      </trans-unit>
+      <trans-unit id="saveSbmt" datatype="html">
+        <source>Save changes</source>
+        <target>Bevestig</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/admin.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <note priority="1" from="description">saveSbmt </note>
+      </trans-unit>
+      <trans-unit id="wlcDVT" datatype="html">
+        <source>Welcome to DVT Books</source>
+        <target>DVT Books Welkom U</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Welcome </note>
+      </trans-unit>
+      <trans-unit id="inTch" datatype="html">
+        <source>Get in Touch</source>
+        <target>Kontak Ons</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">inTch </note>
+      </trans-unit>
+      <trans-unit id="abt" datatype="html">
+        <source>About Us</source>
+        <target>Oor Ons</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">About </note>
+      </trans-unit>
+      <trans-unit id="workDVT" datatype="html">
+        <source>Work for DVT</source>
+        <target>Werk vir DVT</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">WorkDvt </note>
+      </trans-unit>
+      <trans-unit id="prev" datatype="html">
+        <source>Previous</source>
+        <target>Vorige</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">prev </note>
+      </trans-unit>
+      <trans-unit id="nxt" datatype="html">
+        <source>Next</source>
+        <target>Volgende</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">nxt </note>
+      </trans-unit>
+      <trans-unit id="dtls" datatype="html">
+        <source>
+                    Details
+                    <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+                  </source>
+                  <target>
+                    besonderhede
+                    <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+                  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">dtls </note>
+      </trans-unit>
+      <trans-unit id="ttl" datatype="html">
+        <source>Title</source>
+        <target>Titel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">ttl </note>
+      </trans-unit>
+      <trans-unit id="auth" datatype="html">
+        <source>Author</source>
+        <target>Skrywer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <note priority="1" from="description">auth </note>
+      </trans-unit>
+      <trans-unit id="pblshr" datatype="html">
+        <source>Publisher</source>
+        <target>Uitgewer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <note priority="1" from="description">pblshr </note>
+      </trans-unit>
+      <trans-unit id="pblshdt" datatype="html">
+        <source>Published on</source>
+        <target>Gepubliseer op</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <note priority="1" from="description">pblshdt </note>
+      </trans-unit>
+      <trans-unit id="admn" datatype="html">
+        <source>
+                    Admin
+                    <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+                  </source>
+                  <target>
+                    Admin
+                    <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+                  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+        <note priority="1" from="description">admn </note>
+      </trans-unit>
+      <trans-unit id="updtBk" datatype="html">
+        <source>Update book</source>
+        <target>Dateer boek op</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <note priority="1" from="description">updtBk </note>
+      </trans-unit>
+      <trans-unit id="updtAuth" datatype="html">
+        <source>Update author</source>
+        <target>Dateer skrywer op</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">163</context>
+        </context-group>
+        <note priority="1" from="description">updtAuth </note>
+      </trans-unit>
+      <trans-unit id="rmBk" datatype="html">
+        <source>Remove book</source>
+        <target>Verwyder boek</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">126</context>
+        </context-group>
+        <note priority="1" from="description">rmBk </note>
+      </trans-unit>
+      <trans-unit id="rmAuth" datatype="html">
+        <source>Remove author</source>
+        <target>Verwyder skrywer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+        <note priority="1" from="description">rmAuth </note>
+      </trans-unit>
+      <trans-unit id="tag" datatype="html">
+        <source>Tag <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <target>Tag <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">tag </note>
+      </trans-unit>
+      <trans-unit id="pblshDate" datatype="html">
+        <source>Publish Date<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <target>Publisasie Datum<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">pblshDate </note>
+      </trans-unit>
+      <trans-unit id="cvrPct" datatype="html">
+        <source>Cover Picture</source>
+        <target>Voorbladfoto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+        <note priority="1" from="description">cvrPct </note>
+      </trans-unit>
+      <trans-unit id="lname" datatype="html">
+        <source>First Name <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <target>Eerste Naam <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+       <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">lname </note>
+      </trans-unit>
+      <trans-unit id="mname" datatype="html">
+        <source>Middle Name(s)</source>
+        <target>Middel Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">mname </note>
+      </trans-unit>
+      <trans-unit id="tags" datatype="html">
+        <source>Tags</source>
+        <target>Tags</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/search-results-list/search-results-list.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">tags </note>
       </trans-unit>
     </body>
   </file>

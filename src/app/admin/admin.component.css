@@ -67,3 +67,7 @@ textarea {
 .picture {
   border: none;
 }
+
+#authorTabContent {
+  margin-bottom: 25px;
+}

@@ -9,8 +9,8 @@ describe('BookService', () => {
   let httpTestingController: HttpTestingController;
 
   const mockBook: Book = {
-    isbN10: null,
-    isbN13: '9781119038634',
+    isbn10: null,
+    isbn13: '9781119038634',
     title: 'Web Design with HTML, CSS, JavaScript and jQuery Set',
     about: null,
     abstract: null,
@@ -82,7 +82,7 @@ describe('BookService', () => {
 
       service.getBooks().subscribe();
 
-      const req = httpTestingController.expectOne('http://localhost:4201/Books');
+      const req = httpTestingController.expectOne('http://localhost:4201/Books?');
 
       req.flush([
         {

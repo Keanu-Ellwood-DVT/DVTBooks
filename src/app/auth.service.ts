@@ -47,7 +47,9 @@ export class AuthService {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getUser(options))),
       tap(user => {this.userProfileSubject$.next(user),
-        this.userProfileData = user;
+        this.userProfileData = user,
+        this.isAdmin = ((!!this.userProfileData[environment.NAMESPACE] &&
+          this.userProfileData[environment.NAMESPACE].includes('Admin')) ? true : false);
       })
     );
   }

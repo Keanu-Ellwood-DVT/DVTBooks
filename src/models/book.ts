@@ -2,8 +2,8 @@ import { Tag } from './tag';
 import { AuthorRef } from './author';
 
 export class Book {
-  isbN10?: string;
-  isbN13: string;
+  isbn10?: string;
+  isbn13: string;
   title: string;
   about?: string;
   abstract?: string;
@@ -18,7 +18,7 @@ export class Book {
 export class BookRef {
   href: string;
   id: string;
-  isbN10: string;
-  isbN13: string;
+  isbn10: string;
+  isbn13: string;
   title: string;
 }
