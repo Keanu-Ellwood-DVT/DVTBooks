@@ -23,7 +23,6 @@ export class NavBarComponent implements OnInit {
   navigateToResults() {
     const authCheck = document.getElementById('AuthorCheck') as HTMLInputElement;
     const bookCheck = document.getElementById('BookCheck') as HTMLInputElement;
-    
     if (authCheck.checked) {
       if (this.query) {
         this.router.navigate([`/results`, { q: this.query, cat: authCheck.value }]);
