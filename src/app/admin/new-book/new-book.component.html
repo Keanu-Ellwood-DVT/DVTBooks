@@ -49,7 +49,7 @@
               class="text-warning">*</i></label>
           <input type="email" class="form-control" id="isbn13" name="isbn13" placeholder="ISBN-13" tabindex="2" required
             [(ngModel)]="newBook.isbn13" value="newBook.isbn13" formControlName="isbn13" [ngClass]="{
-              'input-invalid':  isbn13.touched && isbn13.invalid && isbn13.errors.required}">
+              'input-invalid':  isbn13.touched && isbn13.invalid && isbn13.errors.required}" minlength="13" maxlength="14">
           <div *ngIf="isbn13.touched && isbn13.invalid && isbn13.errors.required">
             <span class="text-danger">Please enter a valid isbn13.</span>
           </div>
@@ -59,7 +59,7 @@
           <label class="form-label text-primary" for="isbn10">ISBN-10 <i placement="right"
               ngbTooltip="ISBN-10 can be converted to ISBN-13" class="text-secondary">(?)</i></label>
           <input type="text" class="form-control" id="isbn10" name="isbn10" placeholder="ISBN-10" tabindex="1"
-            [(ngModel)]="newBook.isbn10" value="newBook.isbn10" formControlName="isbn10">
+            [(ngModel)]="newBook.isbn10" value="newBook.isbn10" formControlName="isbn10" maxlength="10">
         </div>
       </div>
 

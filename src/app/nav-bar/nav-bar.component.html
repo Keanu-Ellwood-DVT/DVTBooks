@@ -19,6 +19,11 @@
           Administrator
         </a>
       </li>
+      <li class="nav-item dropdown" *ngIf="auth.loggedIn && auth.isAdmin">
+        <a class="nav-link" routerLink="authors">
+          Authors
+        </a>
+      </li>
     </ul>
 
     <div class="navbar-nav mr-auto">
@@ -29,16 +34,15 @@
               aria-label="Text input with segmented button dropdown">
             <div class="input-group-btn">
               <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                  class="label-icon">Category</span> <span class="caret">&nbsp;</span></button>
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="htmlStr"></button>
               <div class="dropdown-menu dropdown-menu-right">
                 <ul class="category_filters">
                   <li>
-                    <input type="radio" name="radios" id="AuthorCheck" value="Author"><label class="category-label"
+                    <input type="radio" name="radios" id="AuthorCheck" value="Author" (change)="onCheckboxChange($event)"><label class="category-label"
                       for="Author">Author</label>
                   </li>
                   <li>
-                    <input type="radio" name="radios" id="BookCheck" value="Book"><label class="category-label"
+                    <input type="radio" name="radios" id="BookCheck" value="Book" (change)="onCheckboxChange($event)"><label class="category-label"
                       for="Book">Book</label>
                   </li>
                 </ul>

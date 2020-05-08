@@ -20,6 +20,8 @@ import { NewBookComponent } from './admin/new-book/new-book.component';
 import { NewAuthorComponent } from './admin/new-author/new-author.component';
 import { SearchResultsListComponent } from './search-results-list/search-results-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthorInfoComponent } from './author-info/author-info.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BookInfoComponent,
     NewBookComponent,
     NewAuthorComponent,
-    SearchResultsListComponent
+    SearchResultsListComponent,
+    AuthorInfoComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,
