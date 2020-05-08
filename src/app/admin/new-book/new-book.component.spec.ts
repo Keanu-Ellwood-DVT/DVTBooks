@@ -7,6 +7,7 @@ import { NgbModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
+import { Author } from 'src/models/author';
 
 describe('NewBookComponent', () => {
   let component: NewBookComponent;
@@ -24,7 +25,34 @@ describe('NewBookComponent', () => {
   const publisherKey = 'publisher';
   const isbn13Key = 'isbn13';
   const titleKey = 'title';
-
+  const testTag = [
+    {
+      id: 'Redux',
+      href: '/Tags/Redux',
+      description: 'Redux'
+    }
+  ];
+  const testAuth: Author = {
+    href: 'http://localhost:4201/Authors/3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+    id: '3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+    first_name: 'Jon',
+    last_name: 'Duckett',
+    name: 'Jon  Duckett',
+    about: `Jon Duckett has been helping companies create innovative digital solutions for over 15 years,
+  designing and delivering web and mobile projects for small businesses and tech startups through to global
+  brands like Diesel, Philips, Nike, Wrangler, and Xerox.During this time, he has has written and co-authored
+  over a dozen books on web design and programming.`,
+    version: 'AAAAAAAAB9M=',
+    books: [
+      {
+        href: 'http://localhost:4201/Books/9781119038634',
+        id: '9781119038634',
+        isbn13: '9781119038634',
+        title: 'Agile Principles, Patterns, and Practices in C#: AGILE PRIN PATTS PRACTS C#',
+        isbn10: null
+      }
+    ]
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -104,4 +132,19 @@ describe('NewBookComponent', () => {
     el.click();
     expect(component.uploadPicture).toHaveBeenCalledTimes(0);
   });
+
+  it('changeTag should return a tag', async () => {
+    component.changeTag(testTag);
+
+    expect(component.newBook.tags).toEqual(testTag);
+  });
+
+  it('changeAuth should set newBook author', async () => {
+    component.changeAuth(testAuth);
+
+    expect(component.newBook.author.href).toEqual(testAuth.href);
+    expect(component.newBook.author.id).toEqual(testAuth.id);
+    expect(component.newBook.author.name).toEqual(testAuth.name);
+  });
+
 });
