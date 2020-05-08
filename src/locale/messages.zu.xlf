@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="ngb.alert.close" datatype="html">
         <source>Close</source>
-        <target>Sluit</target>
+        <target>Vala</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
           <context context-type="linenumber">3</context>
@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="ngb.carousel.previous" datatype="html">
         <source>Previous</source>
-        <target>Terug</target>
+        <target>Kwedlule</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
           <context context-type="linenumber">13</context>
@@ -20,7 +20,7 @@
       </trans-unit>
       <trans-unit id="ngb.carousel.next" datatype="html">
         <source>Next</source>
-        <target>Volgende</target>
+        <target>Olandelayo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
           <context context-type="linenumber">17</context>
@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="ngb.datepicker.previous-month" datatype="html">
         <source>Previous month</source>
-        <target>Vorige maand</target>
+        <target>Inyanga edlule</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
           <context context-type="linenumber">4</context>
@@ -40,7 +40,7 @@
       </trans-unit>
       <trans-unit id="ngb.datepicker.next-month" datatype="html">
         <source>Next month</source>
-        <target>Volgende maand</target>
+        <target>Ngenyanga ezayo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
           <context context-type="linenumber">26</context>
@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="ngb.datepicker.select-month" datatype="html">
         <source>Select month</source>
-        <target>Kies maand</target>
+        <target>Khetha inyanga</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
           <context context-type="linenumber">5</context>
@@ -64,7 +64,7 @@
       </trans-unit>
       <trans-unit id="ngb.datepicker.select-year" datatype="html">
         <source>Select year</source>
-        <target>Kies jaar</target>
+        <target>Khetha unyaka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
           <context context-type="linenumber">13</context>
@@ -108,7 +108,7 @@
       </trans-unit>
       <trans-unit id="ngb.pagination.first-aria" datatype="html">
         <source>First</source>
-        <target>Voor</target>
+        <target>Okokuqala</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
           <context context-type="linenumber">14</context>
@@ -116,7 +116,7 @@
       </trans-unit>
       <trans-unit id="ngb.pagination.previous-aria" datatype="html">
         <source>Previous</source>
-        <target>Vorige</target>
+        <target>Kwedlule</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
           <context context-type="linenumber">24</context>
@@ -124,7 +124,7 @@
       </trans-unit>
       <trans-unit id="ngb.pagination.next-aria" datatype="html">
         <source>Next</source>
-        <target>Volgende</target>
+        <target>Olandelayo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
           <context context-type="linenumber">44</context>
@@ -132,7 +132,7 @@
       </trans-unit>
       <trans-unit id="ngb.pagination.last-aria" datatype="html">
         <source>Last</source>
-        <target>Laaste</target>
+        <target>Okokugcina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
           <context context-type="linenumber">53</context>
@@ -161,7 +161,7 @@
       </trans-unit>
       <trans-unit id="ngb.timepicker.hours" datatype="html">
         <source>Hours</source>
-        <target>Ure</target>
+        <target>Amahora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">15</context>
@@ -190,7 +190,7 @@
       </trans-unit>
       <trans-unit id="ngb.timepicker.minutes" datatype="html">
         <source>Minutes</source>
-        <target>Minute</target>
+        <target>Amaminithi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">37</context>
@@ -219,7 +219,7 @@
       </trans-unit>
       <trans-unit id="ngb.timepicker.seconds" datatype="html">
         <source>Seconds</source>
-        <target>Sekondes</target>
+        <target>Imizuzwana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">59</context>
@@ -248,7 +248,7 @@
       </trans-unit>
       <trans-unit id="ngb.toast.close-aria" datatype="html">
         <source>Close</source>
-        <target>Maak toe</target>
+        <target>Vala</target>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/toast/toast.d.ts</context>
           <context context-type="linenumber">8</context>
@@ -261,7 +261,7 @@
   </source>
   <target>
   <x id="TAG_IMG" ctype="image" equiv-text="&lt;img/&gt;"/>
-    boeke
+    izincwadi
   </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
@@ -286,7 +286,7 @@
       <trans-unit id="loginBtn" datatype="html">
         <source>Log
           In</source>
-          <target>Sluit Aan</target>
+          <target>Ngena ngemvume</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">58</context>
@@ -297,7 +297,7 @@
       <trans-unit id="logoutBtn" datatype="html">
         <source>Log
           Out</source>
-          <target>Sluit Af</target>
+          <target>Phuma</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">61</context>
@@ -309,7 +309,7 @@
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Add
               Book
             </source>
-          <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Nuwe Boek</target>
+          <target><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Faka Incwadi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/admin.component.html</context>
           <context context-type="linenumber">9</context>
@@ -342,7 +342,7 @@
       </trans-unit>
       <trans-unit id="conf" datatype="html">
         <source>Confirm </source>
-        <target>Bevestig </target>
+        <target>Qinisekisa </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/admin.component.html</context>
           <context context-type="linenumber">47</context>
@@ -351,7 +351,7 @@
       </trans-unit>
       <trans-unit id="close" datatype="html">
         <source>Close</source>
-        <target>Maak toe</target>
+        <target>Vala</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/admin.component.html</context>
           <context context-type="linenumber">56</context>
@@ -368,7 +368,7 @@
       </trans-unit>
       <trans-unit id="saveSbmt" datatype="html">
         <source>Save changes</source>
-        <target>Bevestig</target>
+        <target>Gcina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/admin.component.html</context>
           <context context-type="linenumber">57</context>
@@ -377,7 +377,7 @@
       </trans-unit>
       <trans-unit id="wlcDVT" datatype="html">
         <source>Welcome to DVT Books</source>
-        <target>DVT Books Welkom U</target>
+        <target>Wamukelekile DVT Books</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">3</context>
@@ -386,7 +386,7 @@
       </trans-unit>
       <trans-unit id="inTch" datatype="html">
         <source>Get in Touch</source>
-        <target>Kontak Ons</target>
+        <target>Thintana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">20</context>
@@ -395,7 +395,7 @@
       </trans-unit>
       <trans-unit id="abt" datatype="html">
         <source>About Us</source>
-        <target>Oor Ons</target>
+        <target>Mayelana NATHI</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">30</context>
@@ -412,7 +412,7 @@
       </trans-unit>
       <trans-unit id="workDVT" datatype="html">
         <source>Work for DVT</source>
-        <target>Werk vir DVT</target>
+        <target>Sebenzela DVT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">39</context>
@@ -421,7 +421,7 @@
       </trans-unit>
       <trans-unit id="prev" datatype="html">
         <source>Previous</source>
-        <target>Vorige</target>
+        <target>Kwedlule</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">15</context>
@@ -430,7 +430,7 @@
       </trans-unit>
       <trans-unit id="nxt" datatype="html">
         <source>Next</source>
-        <target>Volgende</target>
+        <target>Olandelayo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">19</context>
@@ -443,7 +443,7 @@
                     <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
                   </source>
                   <target>
-                    besonderhede
+                    Imininingwane
                     <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
                   </target>
         <context-group purpose="location">
@@ -454,7 +454,7 @@
       </trans-unit>
       <trans-unit id="ttl" datatype="html">
         <source>Title</source>
-        <target>Titel</target>
+        <target>Isihloko</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">80</context>
@@ -467,7 +467,7 @@
       </trans-unit>
       <trans-unit id="auth" datatype="html">
         <source>Author</source>
-        <target>Skrywer</target>
+        <target>Umbhali</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">84</context>
@@ -476,7 +476,7 @@
       </trans-unit>
       <trans-unit id="pblshr" datatype="html">
         <source>Publisher</source>
-        <target>Uitgewer</target>
+        <target>Umshicileli</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">88</context>
@@ -493,7 +493,7 @@
       </trans-unit>
       <trans-unit id="pblshdt" datatype="html">
         <source>Published on</source>
-        <target>Gepubliseer op</target>
+        <target>Ishicilelwe ku</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">92</context>
@@ -506,7 +506,7 @@
                     <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
                   </source>
                   <target>
-                    Admin
+                    Ukuphatha
                     <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
                   </target>
         <context-group purpose="location">
@@ -517,7 +517,7 @@
       </trans-unit>
       <trans-unit id="updtBk" datatype="html">
         <source>Update book</source>
-        <target>Dateer boek op</target>
+        <target>Vuselela incwadi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">123</context>
@@ -530,7 +530,7 @@
       </trans-unit>
       <trans-unit id="updtAuth" datatype="html">
         <source>Update author</source>
-        <target>Dateer skrywer op</target>
+        <target>Vuselela umbhali</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">124</context>
@@ -543,7 +543,7 @@
       </trans-unit>
       <trans-unit id="rmBk" datatype="html">
         <source>Remove book</source>
-        <target>Verwyder boek</target>
+        <target>Susa incwadi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">126</context>
@@ -552,7 +552,7 @@
       </trans-unit>
       <trans-unit id="rmAuth" datatype="html">
         <source>Remove author</source>
-        <target>Verwyder skrywer</target>
+        <target>Susa umbhali</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/book-info/book-info.component.html</context>
           <context context-type="linenumber">127</context>
@@ -570,7 +570,7 @@
       </trans-unit>
       <trans-unit id="pblshDate" datatype="html">
         <source>Publish Date<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
-        <target>Publisasie Datum<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+        <target>Ukushicilela Usuku<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
           <context context-type="linenumber">67</context>
@@ -579,7 +579,7 @@
       </trans-unit>
       <trans-unit id="cvrPct" datatype="html">
         <source>Cover Picture</source>
-        <target>Voorbladfoto</target>
+        <target>Ikhava</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/new-book/new-book.component.html</context>
           <context context-type="linenumber">87</context>
@@ -588,7 +588,7 @@
       </trans-unit>
       <trans-unit id="lname" datatype="html">
         <source>First Name <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
-        <target>Eerste Naam <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+        <target>Igama <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>*<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
        <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
           <context context-type="linenumber">11</context>
@@ -601,7 +601,7 @@
       </trans-unit>
       <trans-unit id="mname" datatype="html">
         <source>Middle Name(s)</source>
-        <target>Middel Name</target>
+        <target>Amagama aphakathi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/new-author/new-author.component.html</context>
           <context context-type="linenumber">17</context>
