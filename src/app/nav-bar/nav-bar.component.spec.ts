@@ -16,18 +16,16 @@ describe('NavBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavBarComponent ],
+      declarations: [NavBarComponent],
       providers: [{ provide: Router, useValue: router }],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
-    bookCheck = fixture.debugElement.query(By.css('#BookCheck')).nativeElement;
-    authorCheck = fixture.debugElement.query(By.css('#AuthorCheck')).nativeElement;
     fixture.detectChanges();
   });
 
@@ -52,6 +50,7 @@ describe('NavBarComponent', () => {
     });
 
     it('should route to /results with no query and cat = Author', () => {
+      authorCheck = fixture.debugElement.query(By.css('#AuthorCheck')).nativeElement;
       authorCheck.checked = true;
       component.query = '';
       component.navigateToResults();
@@ -59,6 +58,7 @@ describe('NavBarComponent', () => {
     });
 
     it('should route to /results with a query = Jon and cat = Author', () => {
+      authorCheck = fixture.debugElement.query(By.css('#AuthorCheck')).nativeElement;
       authorCheck.checked = true;
       component.query = 'Jon';
       component.navigateToResults();
@@ -66,6 +66,7 @@ describe('NavBarComponent', () => {
     });
 
     it('should route to /results with no query and cat = Book', () => {
+      bookCheck = fixture.debugElement.query(By.css('#BookCheck')).nativeElement;
       bookCheck.checked = true;
       component.query = '';
       component.navigateToResults();
@@ -73,6 +74,7 @@ describe('NavBarComponent', () => {
     });
 
     it('should route to /results with query = Design and cat = Book', () => {
+      bookCheck = fixture.debugElement.query(By.css('#BookCheck')).nativeElement;
       bookCheck.checked = true;
       component.query = 'Design';
       component.navigateToResults();
@@ -81,6 +83,7 @@ describe('NavBarComponent', () => {
   });
 
   it('should call onCheckboxChange(e) and htmlStr should update', () => {
+    bookCheck = fixture.debugElement.query(By.css('#BookCheck')).nativeElement;
     const result = `<span class="label-icon">Book</span> <span class="caret">&nbsp;</span>`;
     bookCheck.click();
     expect(component.htmlStr).toEqual(result);

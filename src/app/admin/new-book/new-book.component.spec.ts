@@ -1,3 +1,5 @@
+import { Book } from './../../../models/book';
+import { BookService } from 'src/app/services/book.service';
 import { Tag } from './../../../models/tag';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewBookComponent } from './new-book.component';
@@ -17,23 +19,18 @@ describe('NewBookComponent', () => {
   let httpTestingController: HttpTestingController;
   let de: DebugElement;
   let el: HTMLElement;
-  const testModel: NgbDateStruct = {
-    year: 2015,
-    month: 1,
-    day: 11
-  };
   const dpKey = 'dp';
   const publisherKey = 'publisher';
   const isbn13Key = 'isbn13';
   const titleKey = 'title';
-  const testTag = [
+  const mockTag = [
     {
       id: 'Redux',
       href: '/Tags/Redux',
       description: 'Redux'
     }
   ];
-  const testAuth: Author = {
+  const mockAuth: Author = {
     href: 'http://localhost:4201/Authors/3cc636ea-1e66-4064-bf03-4f4f70982d1a',
     id: '3cc636ea-1e66-4064-bf03-4f4f70982d1a',
     first_name: 'Jon',
@@ -54,12 +51,45 @@ describe('NewBookComponent', () => {
       }
     ]
   };
+  const mockBook: Book = {
+    isbn10: null,
+    isbn13: '9781119038634',
+    title: 'Web Design with HTML, CSS, JavaScript and jQuery Set',
+    about: null,
+    abstract: null,
+    author: {
+      href: 'http://localhost:4201/Authors/3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+      id: '3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+      name: 'Jon  Duckett'
+    },
+    publisher: 'Wiley',
+    date_published: '2015-01-11',
+    image: null,
+    tags: [
+      {
+        id: 'HTML',
+        href: 'http://localhost:4201/Tags/HTML',
+        description: 'HTML'
+      }
+    ],
+    version: null
+  };
+  const mockModel: NgbDateStruct = {
+    year: 2015,
+    month: 1,
+    day: 11
+  };
+  const spyBookService = {
+    putBook: jasmine.createSpy('putBook'),
+    updateBook: jasmine.createSpy('updateBook')
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewBookComponent],
       imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers: [{ provide: BookService, useValue: spyBookService }],
     })
       .compileComponents();
 
@@ -84,14 +114,17 @@ describe('NewBookComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set submitted to true', async () => {
-    component.form.controls[dpKey].setValue({
-      year: '2015',
-      month: '1',
-      day: '11'
-    });
-    component.addBook();
-    expect(component.submitted).toBeTruthy();
+  it('should set newBook and model', () => {
+    component.state = 'Update';
+    component.currentBook = mockBook;
+    let spy = spyOn(component, 'ngOnInit').and.callThrough();
+    component.ngOnInit();
+    component.newBook = component.currentBook;
+
+    expect(component.currentBook).toEqual(mockBook);
+    expect(component.model).toEqual(mockModel);
+    expect(component.state).toBe('Update');
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should call the addBook method', async () => {
@@ -99,6 +132,29 @@ describe('NewBookComponent', () => {
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.addBook).toHaveBeenCalledTimes(0);
+  });
+
+  it('should call putBook when a file is provided', async () => {
+    component.form.controls[dpKey].setValue({
+      year: '2015',
+      month: '1',
+      day: '11'
+    });
+    component.file = {} as File;
+    component.addBook();
+    expect(component.submitted).toBeTruthy();
+    expect(spyBookService.putBook).toHaveBeenCalled();
+  });
+
+  it('should call updateBook when no file is provided', async () => {
+    component.form.controls[dpKey].setValue({
+      year: '2015',
+      month: '1',
+      day: '11'
+    });
+    component.addBook();
+    expect(component.submitted).toBeTruthy();
+    expect(spyBookService.updateBook).toHaveBeenCalled();
   });
 
   it('form should be invalid', async () => {
@@ -117,7 +173,7 @@ describe('NewBookComponent', () => {
     component.form.controls[titleKey].setValue('Book');
     component.form.controls[isbn13Key].setValue('9781234567891');
     component.form.controls[publisherKey].setValue('Publisher');
-    component.form.controls[dpKey].setValue(testModel);
+    component.form.controls[dpKey].setValue(mockModel);
     expect(component.form.valid).toBeTruthy();
   });
 
@@ -129,24 +185,24 @@ describe('NewBookComponent', () => {
   });
 
   it('should call the uploadPicture method', async () => {
-    spyOn(component, 'uploadPicture');
-    el = fixture.debugElement.query(By.css('input')).nativeElement;
+    let spy = spyOn(component, 'uploadPicture').and.callThrough();
+    el = fixture.debugElement.query(By.css('#customFile')).nativeElement;
     el.click();
-    expect(component.uploadPicture).toHaveBeenCalledTimes(0);
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it('changeTag should return a tag', async () => {
-    component.changeTag(testTag);
+    component.changeTag(mockTag);
 
-    expect(component.newBook.tags).toEqual(testTag);
+    expect(component.newBook.tags).toEqual(mockTag);
   });
 
   it('changeAuth should set newBook author', async () => {
-    component.changeAuth(testAuth);
+    component.changeAuth(mockAuth);
 
-    expect(component.newBook.author.href).toEqual(testAuth.href);
-    expect(component.newBook.author.id).toEqual(testAuth.id);
-    expect(component.newBook.author.name).toEqual(testAuth.name);
+    expect(component.newBook.author.href).toEqual(mockAuth.href);
+    expect(component.newBook.author.id).toEqual(mockAuth.id);
+    expect(component.newBook.author.name).toEqual(mockAuth.name);
   });
 
   it('title property getter should return value set on form', () => {
@@ -228,5 +284,7 @@ describe('NewBookComponent', () => {
     expect(component.filename.value).toBe('Harry is a writer');
     expect(spy).toHaveBeenCalled();
   });
+
+
 
 });

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Tag } from 'src/models/tag';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('SearchResultsListComponent', () => {
   let component: SearchResultsListComponent;
@@ -58,7 +59,7 @@ describe('SearchResultsListComponent', () => {
   it('should set tags', () => {
     fixture.detectChanges();
 
-    expect(component.tags).toEqual([{} as Tag, ]);
+    expect(component.tags).toEqual([{} as Tag,]);
   });
 
   it('should invoke searchBooks()', async () => {
@@ -72,14 +73,50 @@ describe('SearchResultsListComponent', () => {
 
     // }
     // )
-    expect(component.booksDisplay).toEqual([mockBook, ]);
+    expect(component.booksDisplay).toEqual([mockBook,]);
+  });
+
+  describe('onCheckboxChange', () => {
+    it('should be invoked when checkbox clicked', async () => {
+      const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
+      tagCheck.disabled = false;
+      let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
+      tagCheck.click();
+      expect(spy).toHaveBeenCalled();
+    });
+    it('should be invoked when checkbox clicked', async () => {
+      const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
+      tagCheck.disabled = false;
+      tagCheck.checked = true;
+      let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
+      tagCheck.click();
+      expect(spy).toHaveBeenCalled();
+    });
+    // it('should remove tag from array when unchecked', async () => {
+    //   const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
+    //   tagCheck.disabled = false;
+    //   tagCheck.checked = true;
+
+    //   let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
+    //   tagCheck.click();
+    //   console.log(component.checkArray.controls.values);
+    //   expect(component.checkArray[0]).toEqual('Tag');
+    //   expect(tagCheck.checked).toBeFalse();
+    //   expect(spy).toHaveBeenCalled();
+    // });
   });
 
 });
 
+const mockTag: Tag = {
+  id: 'HTML',
+  href: '/Tags/HTML',
+  description: 'HTML'
+};
+
 class MockTagsService {
   getTags(): Observable<Tag[]> {
-    return of([{} as Tag, ]);
+    return of([{} as Tag,]);
   }
 }
 
@@ -115,6 +152,6 @@ class MockBookService {
   }
 
   getBooks(): Observable<Book[]> {
-    return of([mockBook, ]);
+    return of([mockBook,]);
   }
 }

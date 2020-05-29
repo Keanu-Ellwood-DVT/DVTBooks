@@ -23,6 +23,7 @@ export class SearchResultsListComponent implements OnInit {
   authors: Author[] = [];
   private currentQuery: string;
   skip = 0;
+  checkArray: FormArray;
 
   constructor(
     private bookService: BookService,
@@ -68,20 +69,20 @@ export class SearchResultsListComponent implements OnInit {
   }
 
   onCheckboxChange(e) {
-    const checkArray: FormArray = this.form.get('checkArray') as FormArray;
+    this.checkArray = this.form.get('checkArray') as FormArray;
     if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
+      this.checkArray.push(new FormControl(e.target.value));
     } else {
       let i = 0;
-      checkArray.controls.forEach((item: FormControl) => {
+      this.checkArray.controls.forEach((item: FormControl) => {
         if (item.value === e.target.value) {
-          checkArray.removeAt(i);
+          this.checkArray.removeAt(i);
           return;
         }
         i++;
       });
     }
-    if (checkArray.length > 0) {
+    if (this.checkArray.length > 0) {
       const tempBooks: Book[] = [];
 
       this.books.forEach(book => {

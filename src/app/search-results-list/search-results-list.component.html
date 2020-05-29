@@ -7,10 +7,14 @@
         <li class="list-group-item">
           <div *ngFor="let tag of tags; let i=index">
             <label>
-              <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event)" />
+              <input type="checkbox" [value]="tag.id" [id]="tag.id" (change)="onCheckboxChange($event)" />
               {{tag.description}}
             </label>
           </div>
+          <label hidden>
+            <input type="checkbox" value="Tag" id="Tag" (change)="onCheckboxChange($event)" hidden disabled/>
+            Tag
+          </label>
         </li>
       </ul>
     </div>
