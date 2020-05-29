@@ -117,7 +117,7 @@ describe('NewBookComponent', () => {
   it('should set newBook and model', () => {
     component.state = 'Update';
     component.currentBook = mockBook;
-    let spy = spyOn(component, 'ngOnInit').and.callThrough();
+    const spy = spyOn(component, 'ngOnInit').and.callThrough();
     component.ngOnInit();
     component.newBook = component.currentBook;
 
@@ -185,7 +185,7 @@ describe('NewBookComponent', () => {
   });
 
   it('should call the uploadPicture method', async () => {
-    let spy = spyOn(component, 'uploadPicture').and.callThrough();
+    const spy = spyOn(component, 'uploadPicture').and.callThrough();
     el = fixture.debugElement.query(By.css('#customFile')).nativeElement;
     el.click();
     expect(spy).toHaveBeenCalledTimes(0);

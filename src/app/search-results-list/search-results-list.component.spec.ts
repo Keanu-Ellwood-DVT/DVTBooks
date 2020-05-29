@@ -59,7 +59,7 @@ describe('SearchResultsListComponent', () => {
   it('should set tags', () => {
     fixture.detectChanges();
 
-    expect(component.tags).toEqual([{} as Tag,]);
+    expect(component.tags).toEqual([{} as Tag, ]);
   });
 
   it('should invoke searchBooks()', async () => {
@@ -73,14 +73,14 @@ describe('SearchResultsListComponent', () => {
 
     // }
     // )
-    expect(component.booksDisplay).toEqual([mockBook,]);
+    expect(component.booksDisplay).toEqual([mockBook, ]);
   });
 
   describe('onCheckboxChange', () => {
     it('should be invoked when checkbox clicked', async () => {
       const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
       tagCheck.disabled = false;
-      let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
+      const spy = spyOn(component, 'onCheckboxChange').and.callThrough();
       tagCheck.click();
       expect(spy).toHaveBeenCalled();
     });
@@ -88,7 +88,7 @@ describe('SearchResultsListComponent', () => {
       const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
       tagCheck.disabled = false;
       tagCheck.checked = true;
-      let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
+      const spy = spyOn(component, 'onCheckboxChange').and.callThrough();
       tagCheck.click();
       expect(spy).toHaveBeenCalled();
     });
@@ -116,7 +116,7 @@ const mockTag: Tag = {
 
 class MockTagsService {
   getTags(): Observable<Tag[]> {
-    return of([{} as Tag,]);
+    return of([{} as Tag, ]);
   }
 }
 
@@ -152,6 +152,6 @@ class MockBookService {
   }
 
   getBooks(): Observable<Book[]> {
-    return of([mockBook,]);
+    return of([mockBook, ]);
   }
 }

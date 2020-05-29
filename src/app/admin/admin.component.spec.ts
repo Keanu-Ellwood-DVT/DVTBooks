@@ -17,7 +17,7 @@ describe('AdminComponent', () => {
   let httpTestingController: HttpTestingController;
   let spyAuthorService: AuthorService;
   let spyTagsService: TagsService;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule],
