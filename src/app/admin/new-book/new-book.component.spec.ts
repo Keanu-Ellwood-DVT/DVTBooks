@@ -170,15 +170,14 @@ describe('NewBookComponent', () => {
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
 
     const spy = spyOnProperty(component, 'tag').and.callThrough();
-    
     expect(component.tag.value).toEqual([{
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
     expect(spy).toHaveBeenCalled();
   });
   it('isbn13 property getter should return value set on form', () => {
