@@ -79,8 +79,8 @@ describe('NewAuthorComponent', () => {
   it('should call putAuthor and set submitted to true', () => {
     component.state = 'Update';
     component.newAuthor = mockAuthor;
-    let spy = spyOn(spyAuthorService, 'putAuthor').and.callFake(() => {});
-    
+    const spy = spyOn(spyAuthorService, 'putAuthor').and.callFake(() => {});
+
     component.addAuthor();
 
     expect(component.submitted).toBeTrue();
