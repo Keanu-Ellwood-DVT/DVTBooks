@@ -1,9 +1,12 @@
+import { Author } from './../../../models/author';
+import { AuthorService } from 'src/app/services/author.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewAuthorComponent } from './new-author.component';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 describe('NewAuthorComponent', () => {
   let component: NewAuthorComponent;
@@ -15,6 +18,28 @@ describe('NewAuthorComponent', () => {
   const lastNameKey = 'lastName';
   const middleNameKey = 'middleName';
   const aboutKey = 'about';
+  let spyAuthorService: AuthorService;
+  const mockAuthor: Author = {
+    href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
+    id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
+    first_name: 'Robin',
+    middle_names: 'Patricia',
+    last_name: 'Williams',
+    name: 'Robin Patricia Williams',
+    about: `Robin Patricia Williams is an American educator who has authored many popular computer-related
+    books, as well as the book Sweet Swan of Avon: Did a Woman Write Shakespeare?.`,
+    version: 'AAAAAAAAB9Q=',
+    books: [
+      {
+        title: '',
+        href: 'http://localhost:4201/Books/$9780133966153',
+        id: '9780133966153',
+        isbn10: '0133966151',
+        isbn13: '9780133966153'
+      }
+    ]
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule],
@@ -31,7 +56,7 @@ describe('NewAuthorComponent', () => {
     fixture = TestBed.createComponent(NewAuthorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
+    spyAuthorService = TestBed.inject(AuthorService);
     httpTestingController = TestBed.inject(HttpTestingController);
     de = fixture.debugElement.query(By.css('form'));
     el = de.nativeElement;
@@ -41,9 +66,30 @@ describe('NewAuthorComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should call getAuthor and set newAuthor to return value', () => {
+    component.state = 'Update';
+    component.currentAuth = mockAuthor;
+    spyOn(spyAuthorService, 'getAuthor').and.returnValue(of(mockAuthor));
+    component.ngOnInit();
+    component.newAuthor = component.currentAuth;
+    expect(component.newAuthor).toEqual(mockAuthor);
+    expect(component).toBeTruthy();
+  });
+
+  it('should call putAuthor and set submitted to true', () => {
+    component.state = 'Update';
+    component.newAuthor = mockAuthor;
+    let spy = spyOn(spyAuthorService, 'putAuthor').and.callFake(() => {});
+    
+    component.addAuthor();
+
+    expect(component.submitted).toBeTrue();
+    expect(spy).toHaveBeenCalled();
+  });
+
   it('should set submitted to true', async () => {
     component.addAuthor();
-    expect(component.submitted).toBeTruthy();
+    expect(component.submitted).toBeTrue();
   });
 
   it('should call the addAuthor method', async () => {
@@ -110,4 +156,5 @@ describe('NewAuthorComponent', () => {
     expect(component.about.value).toBe('Harry is a writer');
     expect(spy).toHaveBeenCalled();
   });
+
 });

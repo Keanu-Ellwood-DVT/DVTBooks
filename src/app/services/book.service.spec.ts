@@ -147,18 +147,26 @@ describe('BookService', () => {
     });
   });
 
-  describe('putBook', () => {
+  it('putBook should call put with the correct url', () => {
 
-    it('should call put with the correct url', () => {
+    service.putBook(mockBook, '0201633612');
+    const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
 
-      service.putBook(mockBook, '0201633612');
-      const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
+    httpTestingController.verify();
 
-      httpTestingController.verify();
+    expect(httpTestingController).toBeTruthy();
+    expect(req.request.method).toEqual('PUT');
+  });
 
-      expect(httpTestingController).toBeTruthy();
-      expect(req.request.method).toEqual('PUT');
-    });
+  it('updateBook should call put with the correct url', () => {
+
+    service.updateBook(mockBook, '0201633612');
+    const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
+
+    httpTestingController.verify();
+
+    expect(httpTestingController).toBeTruthy();
+    expect(req.request.method).toEqual('PUT');
   });
 
   it('refreshNeeded$ property getter should return value set by refreshRequired', () => {
