@@ -1,3 +1,4 @@
+import { Tag } from './../../../models/tag';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewBookComponent } from './new-book.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -146,6 +147,87 @@ describe('NewBookComponent', () => {
     expect(component.newBook.author.href).toEqual(testAuth.href);
     expect(component.newBook.author.id).toEqual(testAuth.id);
     expect(component.newBook.author.name).toEqual(testAuth.name);
+  });
+
+  it('title property getter should return value set on form', () => {
+    component.form.controls.title.setValue('Harry');
+
+    const spy = spyOnProperty(component, 'title').and.callThrough();
+
+    expect(component.title.value).toBe('Harry');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('author property getter should return value set on form', () => {
+    component.form.controls.author.setValue('James');
+
+    const spy = spyOnProperty(component, 'author').and.callThrough();
+
+    expect(component.author.value).toBe('James');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('tag property getter should return value set on form', () => {
+    component.form.controls.tag.setValue([{
+      id: 'HTML',
+      href: '/Tags/HTML',
+      description: 'HTML',
+    },]);
+
+    const spy = spyOnProperty(component, 'tag').and.callThrough();
+    
+    expect(component.tag.value).toEqual([{
+      id: 'HTML',
+      href: '/Tags/HTML',
+      description: 'HTML',
+    },]);
+    expect(spy).toHaveBeenCalled();
+  });
+  it('isbn13 property getter should return value set on form', () => {
+    component.form.controls.isbn13.setValue('Harry is a writer');
+
+    const spy = spyOnProperty(component, 'isbn13').and.callThrough();
+
+    expect(component.isbn13.value).toBe('Harry is a writer');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('isbn10 property getter should return value set on form', () => {
+    component.form.controls.isbn10.setValue('Harry');
+
+    const spy = spyOnProperty(component, 'isbn10').and.callThrough();
+
+    expect(component.isbn10.value).toBe('Harry');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('publisher property getter should return value set on form', () => {
+    component.form.controls.publisher.setValue('James');
+
+    const spy = spyOnProperty(component, 'publisher').and.callThrough();
+
+    expect(component.publisher.value).toBe('James');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('dp property getter should return value set on form', () => {
+    component.form.controls.dp.setValue('Henry');
+
+    const spy = spyOnProperty(component, 'dp').and.callThrough();
+
+    expect(component.dp.value).toBe('Henry');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('about property getter should return value set on form', () => {
+    component.form.controls.about.setValue('Harry is a writer');
+
+    const spy = spyOnProperty(component, 'about').and.callThrough();
+
+    expect(component.about.value).toBe('Harry is a writer');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('filename property getter should return value set on form', () => {
+    component.form.controls.filename.setValue('Harry is a writer');
+
+    const spy = spyOnProperty(component, 'filename').and.callThrough();
+
+    expect(component.filename.value).toBe('Harry is a writer');
+    expect(spy).toHaveBeenCalled();
   });
 
 });

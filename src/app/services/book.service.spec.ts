@@ -161,13 +161,13 @@ describe('BookService', () => {
     });
   });
 
-  it('should call get with the correct url', () => {
+  it('refreshNeeded$ property getter should return value set by refreshRequired', () => {
     const result = new Subject<void>();
 
-    const spy = spyOnProperty(service, 'refreshNeeded$', 'get').and.returnValue(result);
-    spy();
-    expect(spy).toHaveBeenCalled();
+    const spy = spyOnProperty(service, 'refreshNeeded$').and.callThrough();
+
     expect(service.refreshNeeded$).toEqual(result);
+    expect(spy).toHaveBeenCalled();
   });
 
 });

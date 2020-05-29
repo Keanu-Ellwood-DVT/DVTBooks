@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthorService } from './author.service';
@@ -206,6 +207,15 @@ describe('AuthorService', () => {
       expect(req.request.method).toEqual('PUT');
     });
 
+  });
+
+  it('refreshNeeded$ property getter should return value set by refreshRequired', () => {
+    const result = new Subject<void>();
+
+    const spy = spyOnProperty(service, 'refreshNeeded$').and.callThrough();
+
+    expect(service.refreshNeeded$).toEqual(result);
+    expect(spy).toHaveBeenCalled();
   });
 
 });

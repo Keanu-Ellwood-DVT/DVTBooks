@@ -60,7 +60,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
 
   get title(): AbstractControl { return this.form.get('title'); }
   get author(): AbstractControl { return this.form.get('author'); }
-  get tag(): AbstractControl { return this.form.get('tags'); }
+  get tag(): AbstractControl { return this.form.get('tag'); }
   get isbn13(): AbstractControl { return this.form.get('isbn13'); }
   get isbn10(): AbstractControl { return this.form.get('isbn10'); }
   get publisher(): AbstractControl { return this.form.get('publisher'); }

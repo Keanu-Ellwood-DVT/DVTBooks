@@ -18,10 +18,10 @@ describe('NewAuthorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule],
-      declarations: [ NewAuthorComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      declarations: [NewAuthorComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -53,19 +53,61 @@ describe('NewAuthorComponent', () => {
     expect(component.addAuthor).toHaveBeenCalledTimes(0);
   });
 
-  it('form should be invalid', async () => {
+  it('form should be valid if required values are set', async () => {
+    component.form.controls[firstNameKey].setValue('Peter');
+    component.form.controls[lastNameKey].setValue('Piper');
+    expect(component.form.valid).toBeTruthy();
+  });
+
+  it('form should be invalid if required values are not set', async () => {
     component.form.controls[firstNameKey].setValue('');
     component.form.controls[lastNameKey].setValue('');
-    component.form.controls[middleNameKey].setValue('');
-    component.form.controls[aboutKey].setValue('');
     expect(component.form.valid).toBeFalsy();
   });
 
-  it('form should be valid', async () => {
-    component.form.controls[firstNameKey].setValue('Peter');
-    component.form.controls[lastNameKey].setValue('Piper');
-    component.form.controls[middleNameKey].setValue('Pan');
-    component.form.controls[aboutKey].setValue('Person');
-    expect(component.form.valid).toBeTruthy();
+  it('form should return correct values', async () => {
+
+    component.form.controls.firstName.setValue('Harry');
+    component.form.controls.middleName.setValue('Henry');
+    component.form.controls.lastName.setValue('Henrison');
+    component.form.controls.about.setValue('A human');
+    fixture.detectChanges();
+    expect(component.form.controls.firstName.value).toEqual('Harry');
+    expect(component.form.controls.middleName.value).toEqual('Henry');
+    expect(component.form.controls.lastName.value).toEqual('Henrison');
+    expect(component.form.controls.about.value).toEqual('A human');
+  });
+
+  it('firstName property getter should return value set on form', () => {
+    component.form.controls.firstName.setValue('Harry');
+
+    const spy = spyOnProperty(component, 'firstName').and.callThrough();
+
+    expect(component.firstName.value).toBe('Harry');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('middleName property getter should return value set on form', () => {
+    component.form.controls.middleName.setValue('James');
+
+    const spy = spyOnProperty(component, 'middleName').and.callThrough();
+
+    expect(component.middleName.value).toBe('James');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('lastName property getter should return value set on form', () => {
+    component.form.controls.lastName.setValue('Henry');
+
+    const spy = spyOnProperty(component, 'lastName').and.callThrough();
+
+    expect(component.lastName.value).toBe('Henry');
+    expect(spy).toHaveBeenCalled();
+  });
+  it('about property getter should return value set on form', () => {
+    component.form.controls.about.setValue('Harry is a writer');
+
+    const spy = spyOnProperty(component, 'about').and.callThrough();
+
+    expect(component.about.value).toBe('Harry is a writer');
+    expect(spy).toHaveBeenCalled();
   });
 });

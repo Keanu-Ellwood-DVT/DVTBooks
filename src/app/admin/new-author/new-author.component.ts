@@ -24,9 +24,9 @@ export class NewAuthorComponent implements OnInit {
     private authorService: AuthorService,
   ) {
     this.form = new FormGroup({
-      firstName: new FormControl('', { validators: [ Validators.required ]}),
+      firstName: new FormControl('', { validators: [Validators.required] }),
       middleName: new FormControl(''),
-      lastName: new FormControl('', { validators: [ Validators.required ]}),
+      lastName: new FormControl('', { validators: [Validators.required] }),
       about: new FormControl(''),
     });
   }
@@ -38,12 +38,12 @@ export class NewAuthorComponent implements OnInit {
 
   ngOnInit(): void {
 
-if (this.state === 'Update' && this.currentAuth) {
+    if (this.state === 'Update' && this.currentAuth) {
       this.authorService.getAuthor(this.currentAuth.id).subscribe(x => {
         this.newAuthor = x;
       });
     } else {
-      this.newAuthor  = {
+      this.newAuthor = {
         href: null,
         id: null,
         first_name: '',

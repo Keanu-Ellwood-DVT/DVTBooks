@@ -9,7 +9,7 @@
       <div class="form-group">
         <label class="form-label text-primary" for="firstName" i18n="lname @@lname">First Name <i placement="right"
             ngbTooltip="Required" class="text-warning">*</i></label>
-        <input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName" placeholder="First Name" tabindex="1"
+        <input type="text" class="form-control" id="firstName" [formGroup]="form" formControlName="firstName" name="firstName" placeholder="First Name" tabindex="1"
           required [(ngModel)]="newAuthor.first_name" value="newAuthor.first_name" [ngClass]="{
             'input-invalid':
             firstName.touched && firstName.invalid && firstName.errors.required
@@ -21,13 +21,13 @@
       </div>
       <div class="form-group">
         <label class="form-label text-primary" for="middleName" i18n="mname @@mname">Middle Name(s)</label>
-        <input type="text" class="form-control" id="middleName" formControlName="middleName" name="middleName" placeholder="Middle Name" tabindex="1"
+        <input type="text" class="form-control" id="middleName" [formGroup]="form" formControlName="middleName" name="middleName" placeholder="Middle Name" tabindex="1"
           [(ngModel)]="newAuthor.middle_names" value="newAuthor.middle_names">
       </div>
       <div class="form-group">
         <label class="form-label text-primary" for="lastName" i18n="lname @@lname">Last Name <i placement="right"
             ngbTooltip="Required" class="text-warning">*</i></label>
-        <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName" placeholder="Last Name" tabindex="1"
+        <input type="text" class="form-control" [formGroup]="form" formControlName="lastName" id="lastName" name="lastName" placeholder="Last Name" tabindex="1"
           required [(ngModel)]="newAuthor.last_name" value="newAuthor.last_name"
           [ngClass]="{
             'input-invalid':  lastName.touched && lastName.invalid && lastName.errors.required}">
