@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { BookService } from './book.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -119,30 +120,30 @@ describe('BookService', () => {
       httpTestingController.verify();
       expect(httpTestingController).toBeTruthy();
     });
-  });
 
-  describe('patchBook', () => {
+    it('should call get with the correct url', () => {
 
-    it('should call patch with the correct url', () => {
+      service.getBooks('Design', 1, 1).subscribe();
 
-      service.patchBook(mockBook);
-      const req = httpTestingController.expectOne('http://localhost:4201/Books/');
+      const req = httpTestingController.expectOne('http://localhost:4201/Books?query=Design&skip=1&top=1');
+
+      req.flush([
+        {
+          isbn10: '0133966151',
+          isbn13: '9780133966153',
+          title: `The Non-Designer's Design Book (4th Edition)`,
+          author: {
+            href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
+            id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
+            name: 'Robin Patricia Williams'
+          },
+          publisher: 'Peachpit Press',
+          tags: []
+        }
+      ]);
 
       httpTestingController.verify();
-
       expect(httpTestingController).toBeTruthy();
-      expect(req.request.method).toEqual('PATCH');
-    });
-
-    it('should call patch with the correct url', () => {
-
-      service.patchBook(mockBook, '0201633612');
-      const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
-
-      httpTestingController.verify();
-
-      expect(httpTestingController).toBeTruthy();
-      expect(req.request.method).toEqual('PATCH');
     });
   });
 
@@ -160,34 +161,13 @@ describe('BookService', () => {
     });
   });
 
-  describe('postBook', () => {
+  it('should call get with the correct url', () => {
+    const result = new Subject<void>();
 
-    it('should call post with the correct url', () => {
-
-      service.postBook(mockBook);
-      const req = httpTestingController.expectOne('http://localhost:4201/Books');
-
-      httpTestingController.verify();
-
-      expect(httpTestingController).toBeTruthy();
-      expect(req.request.method).toEqual('POST');
-    });
+    const spy = spyOnProperty(service, 'refreshNeeded$', 'get').and.returnValue(result);
+    spy();
+    expect(spy).toHaveBeenCalled();
+    expect(service.refreshNeeded$).toEqual(result);
   });
-
-  // describe('postPicture', () => {
-
-  //   it('should add image to book with given ISBN', () => {
-
-  //     const mockImage = new File(BlobPart[1],"image");
-
-  //     service.postPicture('9781119038634', mockImage);
-  //     const req = httpTestingController.expectOne('http://localhost:4201/Books/9781119038634/picture');
-
-  //     httpTestingController.verify();
-
-  //     expect(httpTestingController).toBeTruthy();
-  //     expect(req.request.method).toEqual('POST');
-  //   });
-  // });
 
 });

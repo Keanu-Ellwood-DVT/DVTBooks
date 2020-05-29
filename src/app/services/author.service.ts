@@ -34,6 +34,6 @@ export class AuthorService {
           this.refreshRequired$.next();
         })
       )
-      .subscribe(data => { console.log('PUT request was successful. PUT: ', data); }, error => { console.log('Error', error); });
+      .subscribe();
   }
 }

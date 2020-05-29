@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NgbModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject } from 'rxjs';
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { Author } from 'src/models/author';
 
@@ -57,7 +57,8 @@ describe('NewBookComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewBookComponent],
-      imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule]
+      imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
       .compileComponents();
 

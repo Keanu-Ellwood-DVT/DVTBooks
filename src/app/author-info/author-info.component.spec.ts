@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthorService } from '../services/author.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AuthorInfoComponent', () => {
   let component: AuthorInfoComponent;
@@ -18,7 +19,8 @@ describe('AuthorInfoComponent', () => {
     TestBed.configureTestingModule({
 
       imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule],
-      declarations: [ AuthorInfoComponent ]
+      declarations: [ AuthorInfoComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
   }));

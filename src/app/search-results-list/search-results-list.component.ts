@@ -53,7 +53,7 @@ export class SearchResultsListComponent implements OnInit {
       });
   }
 
-  private searchBooks() {
+  searchBooks() {
     this.bookService.getBooks(this.currentQuery, this.skip, 6).subscribe(x => {
       x.forEach(book => {
         this.books.push(book);

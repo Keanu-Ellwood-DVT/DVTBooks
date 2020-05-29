@@ -106,6 +106,38 @@ describe('AuthorService', () => {
       httpTestingController.verify();
       expect(httpTestingController).toBeTruthy();
     });
+
+    it('should call get with the correct url', () => {
+
+      service.getAuthors('Jon', 1, 1).subscribe();
+
+      const req = httpTestingController.expectOne('http://localhost:4201/Authors?query=Jon&skip=1&top=1');
+
+      req.flush([
+        {
+          href: 'http://localhost:4201/Authors/3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+          id: '3cc636ea-1e66-4064-bf03-4f4f70982d1a',
+          first_name: 'Jon',
+          last_name: 'Duckett',
+          name: 'Jon  Duckett',
+          about: `Jon Duckett has been helping companies create innovative digital solutions for over 15 years,
+        designing and delivering web and mobile projects for small businesses and tech startups through to global
+        brands like Diesel, Philips, Nike, Wrangler, and Xerox.During this time, he has has written and co-authored
+        over a dozen books on web design and programming.`,
+        version: 'AAAAAAAAB9M=',
+          books: [
+            {
+              href: 'http://localhost:4201/Books/$9781119038634',
+              id: '9781119038634',
+              isbn13: '9781119038634'
+            }
+          ]
+        },
+      ]);
+
+      httpTestingController.verify();
+      expect(httpTestingController).toBeTruthy();
+    });
   });
 
   describe('putBook', () => {

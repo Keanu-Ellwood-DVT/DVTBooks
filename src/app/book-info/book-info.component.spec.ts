@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { BookService } from '../services/book.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('BookInfoComponent', () => {
   let component: BookInfoComponent;
@@ -17,7 +18,8 @@ describe('BookInfoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([]), NgbModule, BrowserModule],
-      declarations: [ BookInfoComponent ]
+      declarations: [ BookInfoComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
   }));

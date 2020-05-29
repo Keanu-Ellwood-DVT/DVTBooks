@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewAuthorComponent } from './new-author.component';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
 
 describe('NewAuthorComponent', () => {
@@ -13,10 +13,13 @@ describe('NewAuthorComponent', () => {
   let el: HTMLElement;
   const firstNameKey = 'firstName';
   const lastNameKey = 'lastName';
+  const middleNameKey = 'middleName';
+  const aboutKey = 'about';
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule],
-      declarations: [ NewAuthorComponent ]
+      declarations: [ NewAuthorComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
   }));
@@ -53,12 +56,16 @@ describe('NewAuthorComponent', () => {
   it('form should be invalid', async () => {
     component.form.controls[firstNameKey].setValue('');
     component.form.controls[lastNameKey].setValue('');
+    component.form.controls[middleNameKey].setValue('');
+    component.form.controls[aboutKey].setValue('');
     expect(component.form.valid).toBeFalsy();
   });
 
   it('form should be valid', async () => {
     component.form.controls[firstNameKey].setValue('Peter');
     component.form.controls[lastNameKey].setValue('Piper');
+    component.form.controls[middleNameKey].setValue('Pan');
+    component.form.controls[aboutKey].setValue('Person');
     expect(component.form.valid).toBeTruthy();
   });
 });

@@ -24,19 +24,19 @@ export class NavBarComponent implements OnInit {
     const authCheck = document.getElementById('AuthorCheck') as HTMLInputElement;
     const bookCheck = document.getElementById('BookCheck') as HTMLInputElement;
     if (authCheck.checked) {
-      if (this.query) {
+      if (!!this.query) {
         this.router.navigate([`/results`, { q: this.query, cat: authCheck.value }]);
       } else {
         this.router.navigate([`/results`, { cat: authCheck.value }]);
       }
-    } else if (authCheck.checked) {
-      if (this.query) {
-        this.router.navigate([`/results`, { q: this.query, cat: authCheck.value }]);
+    } else if (bookCheck.checked) {
+      if (!!this.query) {
+        this.router.navigate([`/results`, { q: this.query, cat: bookCheck.value }]);
       } else {
-        this.router.navigate([`/results`, { cat: authCheck.value }]);
+        this.router.navigate([`/results`, { cat: bookCheck.value }]);
       }
     } else {
-      if (this.query) {
+      if (!!this.query) {
         this.router.navigate([`/results`, { q: this.query, cat: 'All' }]);
       } else {
         this.router.navigate([`/results`, { cat: 'All' }]);

@@ -23,7 +23,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   book: Book;
   newBook: Book;
   model: NgbDateStruct;
-  time$: Observable<string>;
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
   state = 'Add';
@@ -47,10 +46,6 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.tagService.getTags().subscribe(x => {
       this.tags = x;
-    });
-
-    this.time$ = new Observable<string>((observer: Observer<string>) => {
-      setInterval(() => observer.next(new Date().toString()), 1000);
     });
 
     this.imageName$.subscribe();
