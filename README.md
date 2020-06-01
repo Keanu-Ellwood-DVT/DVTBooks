@@ -29,9 +29,9 @@ For consistency with other DVT applications, the web application needs to follow
 7. The project should have a code coverage of at least 80% on functions, statements, branches and lines.
 
 ### User Roles
-    * Administrators can create, read, search and update books
-    * Users can read and search for books
-
+    * All Users can search for books and view them.
+    * Administrators can create, read, search and update books and authors.
+    
 ### Requirements
 * Docker Images to run the application
     * str1zzwald/dvt-books-api:1.0.3
