@@ -1,4 +1,8 @@
 # DVTBooks
+[![CircleCI](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master.svg?style=shield&circle-token=ce74c2d56052e4b14f8a75512ff2d7e0bf527895)](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master)
+[![codecov](https://codecov.io/gh/Keanu-Ellwood-DVT/DVTBooks/branch/develop/graph/badge.svg)](https://codecov.io/gh/Keanu-Ellwood-DVT/DVTBooks)
+![Open Issues](https://img.shields.io/github/issues-raw/Keanu-Ellwood-DVT/DVTBooks)
+![GitHub last commit](https://img.shields.io/github/last-commit/Keanu-Ellwood-DVT/DVTBooks)
 
 DVT is in the process of building a central repository for its developers to find software development books. The application has been named DVTBooks. A group of backend developers have created the APIs and databases to create, read, update and delete books.
 
@@ -11,16 +15,6 @@ The application will allow users with the Administrator role to create, read,sea
 Some users maybe using a mobile phone, tablet or desktop computer and some users may even prefer another language, such as isiZulu or Afrikaans it is important that you take these factors into consideration while building your application.
 
 For consistency with other DVT applications, the web application needs to follow the company’s corporate guideline. This guideline will be provided to you.
-
-
-# Status Badges
-
-- Master: [![CircleCI](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master.svg?style=shield&circle-token=ce74c2d56052e4b14f8a75512ff2d7e0bf527895)](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/master)
-- Develop: [![CircleCI](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/develop.svg?style=shield&circle-token=ce74c2d56052e4b14f8a75512ff2d7e0bf527895)](https://circleci.com/gh/Keanu-Ellwood-DVT/DVTBooks/tree/develop)
-- Code Coverage: 
-[![codecov](https://codecov.io/gh/Keanu-Ellwood-DVT/DVTBooks/branch/develop/graph/badge.svg)](https://codecov.io/gh/Keanu-Ellwood-DVT/DVTBooks)
-- Open Issues: ![issues](https://img.shields.io/github/issues-raw/Keanu-Ellwood-DVT/DVTBooks)
-- Last Commit: ![GitHub last commit](https://img.shields.io/github/last-commit/Keanu-Ellwood-DVT/DVTBooks)
 
 
 ## Project Requirements and Extensions
