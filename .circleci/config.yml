@@ -21,6 +21,9 @@ jobs:
       - run:
           name: Build
           command: ./node_modules/@angular/cli/bin/ng build --prod
+      - run:
+          name: Codecov.io badge
+          command: bash <(curl -s https://codecov.io/bash) 
 workflows:
   version: 2
   build_test:
