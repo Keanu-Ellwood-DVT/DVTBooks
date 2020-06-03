@@ -6,7 +6,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NgbModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { Author } from 'src/app/shared/models/author';
@@ -19,6 +19,7 @@ describe('NewBookComponent', () => {
   let httpTestingController: HttpTestingController;
   let de: DebugElement;
   let el: HTMLElement;
+  let spyBookService: BookService;
   const dpKey = 'dp';
   const publisherKey = 'publisher';
   const isbn13Key = 'isbn13';
@@ -79,17 +80,12 @@ describe('NewBookComponent', () => {
     month: 1,
     day: 11
   };
-  const spyBookService = {
-    putBook: jasmine.createSpy('putBook'),
-    updateBook: jasmine.createSpy('updateBook')
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewBookComponent],
       imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      providers: [{ provide: BookService, useValue: spyBookService }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
 
@@ -105,6 +101,7 @@ describe('NewBookComponent', () => {
     fixture.detectChanges();
 
     httpTestingController = TestBed.inject(HttpTestingController);
+    spyBookService = TestBed.inject(BookService);
     de = fixture.debugElement.query(By.css('form'));
     el = de.nativeElement;
     imageNameSubscription = new BehaviorSubject<string>('');
@@ -137,26 +134,30 @@ describe('NewBookComponent', () => {
   });
 
   it('should call putBook when a file is provided', async () => {
+    let spy = spyOn(spyBookService, 'putBook').and.returnValue(of());
     component.form.controls[dpKey].setValue({
       year: '2015',
       month: '1',
       day: '11'
     });
     component.file = {} as File;
+
     component.addBook();
-    expect(component.submitted).toBeTruthy();
-    expect(spyBookService.putBook).toHaveBeenCalled();
+
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should call updateBook when no file is provided', async () => {
+    let spy = spyOn(spyBookService, 'updateBook').and.returnValue(of());
     component.form.controls[dpKey].setValue({
       year: '2015',
       month: '1',
       day: '11'
     });
+
     component.addBook();
-    expect(component.submitted).toBeTruthy();
-    expect(spyBookService.updateBook).toHaveBeenCalled();
+
+    expect(spy).toHaveBeenCalled();
   });
 
   it('form should be invalid', async () => {
@@ -230,14 +231,14 @@ describe('NewBookComponent', () => {
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    }, ]);
+    },]);
 
     const spy = spyOnProperty(component, 'tag').and.callThrough();
     expect(component.tag.value).toEqual([{
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    }, ]);
+    },]);
     expect(spy).toHaveBeenCalled();
   });
   it('isbn13 property getter should return value set on form', () => {
