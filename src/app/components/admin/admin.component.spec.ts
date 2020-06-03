@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -30,4 +31,14 @@ describe('AdminComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render app spinner when pageLoading$=true', fakeAsync(() => {
+    component.pageLoading$.next(true);
+
+    fixture.detectChanges();
+
+    const appSpinner = fixture.debugElement.queryAll(By.css('app-spinner'));
+
+    expect(appSpinner.length).toBe(1);
+  }));
 });

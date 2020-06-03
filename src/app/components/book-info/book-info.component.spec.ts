@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { BookService } from '../../shared/services/book.service';
@@ -107,4 +107,14 @@ describe('BookInfoComponent', () => {
 
     expect(spyModalServiceSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('should render app spinner when pageLoading$=true', fakeAsync(() => {
+    component.pageLoading$.next(true);
+
+    fixture.detectChanges();
+
+    const appSpinner = fixture.debugElement.queryAll(By.css('app-spinner'));
+
+    expect(appSpinner.length).toBe(1);
+  }));
 });
