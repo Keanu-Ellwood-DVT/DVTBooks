@@ -198,7 +198,7 @@ describe('AuthorService', () => {
         ]
       };
 
-      service.putAuthor(mockAuthor).subscribe();;
+      service.putAuthor(mockAuthor).subscribe();
       const req = httpTestingController.expectOne('http://localhost:4201/Authors/');
 
       httpTestingController.verify();

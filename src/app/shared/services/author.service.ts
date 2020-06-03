@@ -33,6 +33,6 @@ export class AuthorService {
         tap(() => {
           this.refreshRequired$.next();
         })
-      )
+      );
   }
 }

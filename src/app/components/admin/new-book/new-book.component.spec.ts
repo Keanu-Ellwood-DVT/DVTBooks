@@ -134,7 +134,7 @@ describe('NewBookComponent', () => {
   });
 
   it('should call putBook when a file is provided', async () => {
-    let spy = spyOn(spyBookService, 'putBook').and.returnValue(of());
+    const spy = spyOn(spyBookService, 'putBook').and.returnValue(of());
     component.form.controls[dpKey].setValue({
       year: '2015',
       month: '1',
@@ -148,7 +148,7 @@ describe('NewBookComponent', () => {
   });
 
   it('should call updateBook when no file is provided', async () => {
-    let spy = spyOn(spyBookService, 'updateBook').and.returnValue(of());
+    const spy = spyOn(spyBookService, 'updateBook').and.returnValue(of());
     component.form.controls[dpKey].setValue({
       year: '2015',
       month: '1',
@@ -231,14 +231,14 @@ describe('NewBookComponent', () => {
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
 
     const spy = spyOnProperty(component, 'tag').and.callThrough();
     expect(component.tag.value).toEqual([{
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
     expect(spy).toHaveBeenCalled();
   });
   it('isbn13 property getter should return value set on form', () => {

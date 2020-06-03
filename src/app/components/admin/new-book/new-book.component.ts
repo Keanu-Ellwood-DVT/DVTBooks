@@ -120,7 +120,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
       this.bookService.putBook(this.newBook, this.newBook.isbn13)
         .subscribe(() => {
           this.bookService.putPicture(this.newBook.isbn13, this.file).subscribe();
-        });;
+        });
     } else {
       this.bookService.updateBook(this.newBook, this.newBook.isbn13).subscribe();
     }

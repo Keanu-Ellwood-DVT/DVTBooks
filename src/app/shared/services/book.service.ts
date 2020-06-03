@@ -34,7 +34,7 @@ export class BookService {
         tap(() => {
           this.refreshRequired$.next();
         })
-      )
+      );
   }
 
   updateBook(bookObj: Book, isbn: string) {
@@ -43,7 +43,7 @@ export class BookService {
         tap(() => {
           this.refreshRequired$.next();
         })
-      )
+      );
   }
 
   putPicture(isbn: string, file: File) {
