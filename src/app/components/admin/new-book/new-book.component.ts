@@ -53,6 +53,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
       publisher: new FormControl('', { validators: [Validators.required] }),
       dp: new FormControl('', { validators: [Validators.required] }),
       about: new FormControl(''),
+      abstract: new FormControl(''),
       filename: new FormControl('')
     });
   }
@@ -65,6 +66,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
   get publisher(): AbstractControl { return this.form.get('publisher'); }
   get dp(): AbstractControl { return this.form.get('dp'); }
   get about(): AbstractControl { return this.form.get('about'); }
+  get abstract(): AbstractControl { return this.form.get('abstract'); }
   get filename(): AbstractControl { return this.form.get('filename'); }
 
   ngOnInit(): void {

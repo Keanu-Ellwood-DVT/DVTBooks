@@ -100,6 +100,13 @@
           [(ngModel)]="newBook.about" formControlName="about"></textarea>
       </div>
 
+      <div class="form-group">
+        <label class="form-label text-primary" for="abstract" i18n="abt @@abt">About <i placement="right"
+          ngbTooltip="A brief summary of the book" class="text-warning">(?)</i></label>
+        <textarea rows="5" cols="50" name="abstract" class="form-control" id="abstract" placeholder="Abstract..." tabindex="4"
+          [(ngModel)]="newBook.abstract" formControlName="abstract"></textarea>
+      </div>
+
       <div class="form-group" *ngIf="state != 'Update'">
         <label class="form-label text-primary" for="filename" i18n="cvrPct @@cvrPct">Cover Picture</label>
         <div class="custom-file">
