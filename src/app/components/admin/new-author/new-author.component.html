@@ -42,7 +42,7 @@
           [(ngModel)]="newAuthor.about" value="newAuthor.about" formControlName="about"></textarea>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-primary" (click)="addAuthor()" i18n="addAuth @@addAuth" [disabled]="!authorForm.valid">{{state}}
+        <button type="submit" class="btn btn-primary" (click)="addAuthor()" id="addAuthorBtn" i18n="addAuth @@addAuth" [disabled]="!authorForm.valid">{{state}}
           Author</button>
       </div>
     </form>

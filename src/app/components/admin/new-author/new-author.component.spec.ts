@@ -1,5 +1,5 @@
 import { Author } from '../../../shared/models/author';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { NewAuthorComponent } from './new-author.component';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -68,27 +68,31 @@ describe('NewAuthorComponent', () => {
     component.state = 'Update';
     component.currentAuth = mockAuthor;
     spyOn(spyAuthorService, 'getAuthor').and.returnValue(of(mockAuthor));
+
     component.ngOnInit();
-    component.newAuthor = component.currentAuth;
+
     expect(component.newAuthor).toEqual(mockAuthor);
     expect(component).toBeTruthy();
   });
 
   it('should call putAuthor', () => {
     component.state = 'Update';
-    component.newAuthor = mockAuthor;
-    const spy = spyOn(spyAuthorService, 'putAuthor').and.callFake(() => {});
+    const spy = spyOn(spyAuthorService, 'putAuthor');
+    const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
 
-    component.addAuthor();
+    input.triggerEventHandler('click', null);
+
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should call the addAuthor method', async () => {
-    spyOn(component, 'addAuthor');
-    el = fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click();
-    expect(component.addAuthor).toHaveBeenCalledTimes(0);
-  });
+  it('should call the addAuthor method', fakeAsync(() => {
+    const onClickSpy = spyOn(component, 'addAuthor');
+    const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
+
+    input.triggerEventHandler('click', null);
+
+    expect(onClickSpy).toHaveBeenCalled();
+  }));
 
   it('form should be valid if required values are set', async () => {
     component.form.controls[firstNameKey].setValue('Peter');
