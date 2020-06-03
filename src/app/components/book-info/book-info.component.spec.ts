@@ -81,6 +81,12 @@ describe('BookInfoComponent', () => {
   });
 
   it('should create', () => {
+    spyOn(spyBookService, 'getBook').and.returnValue(of(mockBook));
+    spyOn(spyAuthorService, 'getAuthor').and.returnValue(of(mockAuthor));
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(component.book).toEqual(mockBook);
+    expect(component.author).toEqual(mockAuthor);
     expect(component).toBeTruthy();
   });
 
@@ -101,13 +107,4 @@ describe('BookInfoComponent', () => {
 
     expect(spyModalServiceSpy).toHaveBeenCalledTimes(1);
   });
-
-  it('should create', fakeAsync(() => {
-    spyOn(spyBookService, 'getBook').and.returnValue(of(mockBook));
-    spyOn(spyAuthorService, 'getAuthor').and.returnValue(of(mockAuthor));
-    component.ngOnInit();
-    fixture.detectChanges();
-    expect(component.book).toEqual(mockBook);
-    expect(component.author).toEqual(mockAuthor);
-  }));
 });
