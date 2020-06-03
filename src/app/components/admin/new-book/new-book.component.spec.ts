@@ -198,11 +198,11 @@ describe('NewBookComponent', () => {
       component.imageName$.subscribe(() => {
         fixture.detectChanges();
         expect(label.textContent.trim()).toBe('Choose File');
-      })
+      });
     });
 
     it('should set the text content of the imageName label to "Uploaded File" if an image was uploaded', fakeAsync(() => {
-      const event = { target: { files: [{ name: 'Uploaded File' },] } };
+      const event = { target: { files: [{ name: 'Uploaded File' }, ] } };
       const label = fixture.debugElement.nativeElement.querySelector('#imageName');
 
       component.uploadPicture(event);
@@ -210,7 +210,7 @@ describe('NewBookComponent', () => {
       component.imageName$.subscribe(() => {
         fixture.detectChanges();
         expect(label.textContent.trim()).toBe('Uploaded File');
-      })
+      });
     }));
   });
 
@@ -249,14 +249,14 @@ describe('NewBookComponent', () => {
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
 
     const spy = spyOnProperty(component, 'tag').and.callThrough();
     expect(component.tag.value).toEqual([{
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    },]);
+    }, ]);
     expect(spy).toHaveBeenCalled();
   });
   it('isbn13 property getter should return value set on form', () => {
