@@ -29,19 +29,21 @@ export class BookInfoComponent implements OnInit {
     public auth: AuthService,
     private modalService: NgbModal,
     private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe(params => this.isbn = params.isbn );
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.bookService.getBook(this.isbn).subscribe(x => {
-      this.book = x,
-      this.authorService.getAuthor(this.book.author.id).subscribe(authorData => {
-        this.author = authorData,
-        this.authBooks = this.author.books;
-      }),
-      this.pageLoading$.next(false);
-    });
+    this.route.params.subscribe(params => {
+      this.isbn = params.isbn;
+      this.bookService.getBook(this.isbn).subscribe(x => {
+        this.book = x,
+          this.authorService.getAuthor(this.book.author.id).subscribe(authorData => {
+            this.author = authorData,
+              this.authBooks = this.author.books;
+          }),
+          this.pageLoading$.next(false);
+      });
+    }
+    );
   }
 
   openModal(content) {
