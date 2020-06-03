@@ -33,7 +33,7 @@
 
         <div class="form-group wdth-49" *ngIf="tags">
           <label class="form-label text-primary" for="tags" i18n="tag @@tag">Tag <i placement="right"
-              ngbTooltip="Required" class="text-warning">*</i></label>
+            class="text-warning" ngbTooltip="Ctrl + click to select multiple tags. Required" >*</i></label>
           <select class="form-control" name="tags" [(ngModel)]="selectedTag" (ngModelChange)="changeTag($event)"
             [ngModelOptions]="{standalone: true}" multiple>
             <option *ngFor="let tag of tags" [ngValue]="tag">
