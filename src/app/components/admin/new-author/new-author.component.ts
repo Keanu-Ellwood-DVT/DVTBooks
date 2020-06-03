@@ -43,28 +43,28 @@ export class NewAuthorComponent implements OnInit {
         this.newAuthor = x;
       });
     } else {
-        this.newAuthor = {
-          href: null,
-          id: null,
-          first_name: '',
-          middle_names: null,
-          last_name: '',
-          name: null,
-          about: '',
-          version: null,
-          books: null
-        };
-        this.cd.detectChanges();
+      this.newAuthor = {
+        href: null,
+        id: null,
+        first_name: '',
+        middle_names: null,
+        last_name: '',
+        name: null,
+        about: '',
+        version: null,
+        books: null
+      };
+      this.cd.detectChanges();
     }
   }
 
   addAuthor() {
     if (this.state !== 'Update') {
       this.authorService.putAuthor(this.newAuthor);
-        this.newAuthor.first_name = '';
-        this.newAuthor.middle_names = null;
-        this.newAuthor.last_name = '';
-        this.newAuthor.about = '';
+      this.newAuthor.first_name = '';
+      this.newAuthor.middle_names = null;
+      this.newAuthor.last_name = '';
+      this.newAuthor.about = '';
     } else {
       this.authorService.putAuthor(this.newAuthor, this.newAuthor.id);
     }
