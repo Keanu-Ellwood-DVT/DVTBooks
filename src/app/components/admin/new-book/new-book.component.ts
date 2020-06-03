@@ -36,7 +36,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
   model: NgbDateStruct;
   file: File;
   time$: Observable<string>;
-  submitted = false;
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
 
@@ -46,13 +45,13 @@ export class NewBookComponent implements OnInit, OnDestroy {
     private tagService: TagsService
   ) {
     this.form = new FormGroup({
-      title: new FormControl('', { validators: [ Validators.required ]}),
+      title: new FormControl('', { validators: [Validators.required] }),
       author: new FormControl(''),
       tag: new FormControl(''),
-      isbn13: new FormControl('', { validators: [ Validators.required, Validators.pattern('[0-9]{3}[-[0-9]{10}|[0-9]{10}]')]}),
+      isbn13: new FormControl('', { validators: [Validators.required, Validators.pattern('[0-9]{3}[-[0-9]{10}|[0-9]{10}]')] }),
       isbn10: new FormControl(''),
-      publisher: new FormControl('', { validators: [ Validators.required ]}),
-      dp: new FormControl('', { validators: [ Validators.required ]}),
+      publisher: new FormControl('', { validators: [Validators.required] }),
+      dp: new FormControl('', { validators: [Validators.required] }),
       about: new FormControl(''),
       filename: new FormControl('')
     });
@@ -118,17 +117,19 @@ export class NewBookComponent implements OnInit, OnDestroy {
     this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-', '');
     this.newBook.date_published = moment([this.model.year, this.model.month - 1, this.model.day]).format();
     if (this.file) {
-      this.bookService.putBook(this.newBook, this.newBook.isbn13, this.file);
+      this.bookService.putBook(this.newBook, this.newBook.isbn13)
+        .subscribe(() => {
+          this.bookService.putPicture(this.newBook.isbn13, this.file).subscribe();
+        });;
     } else {
-      this.bookService.updateBook(this.newBook, this.newBook.isbn13);
+      this.bookService.updateBook(this.newBook, this.newBook.isbn13).subscribe();
     }
-    this.submitted = true;
   }
 
   private fillSelect() {
     this.authorService.getAuthors().subscribe(x => {
       this.authors = x,
-      this.pageLoading$.next(false);
+        this.pageLoading$.next(false);
     });
   }
 
@@ -146,7 +147,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
   }
 
   changeAuth(val: Author) {
-  this.newBook.author = {
+    this.newBook.author = {
       href: val.href,
       id: val.id,
       name: val.name
