@@ -60,13 +60,13 @@ export class NewAuthorComponent implements OnInit {
 
   addAuthor() {
     if (this.state !== 'Update') {
-      this.authorService.putAuthor(this.newAuthor);
+      this.authorService.putAuthor(this.newAuthor).subscribe();
       this.newAuthor.first_name = '';
       this.newAuthor.middle_names = null;
       this.newAuthor.last_name = '';
       this.newAuthor.about = '';
     } else {
-      this.authorService.putAuthor(this.newAuthor, this.newAuthor.id);
+      this.authorService.putAuthor(this.newAuthor, this.newAuthor.id).subscribe();
     }
   }
 
