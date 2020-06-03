@@ -16,8 +16,6 @@ describe('NewAuthorComponent', () => {
   let el: HTMLElement;
   const firstNameKey = 'firstName';
   const lastNameKey = 'lastName';
-  const middleNameKey = 'middleName';
-  const aboutKey = 'about';
   let spyAuthorService: AuthorService;
   const mockAuthor: Author = {
     href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
@@ -76,20 +74,13 @@ describe('NewAuthorComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call putAuthor and set submitted to true', () => {
+  it('should call putAuthor', () => {
     component.state = 'Update';
     component.newAuthor = mockAuthor;
     const spy = spyOn(spyAuthorService, 'putAuthor').and.callFake(() => {});
 
     component.addAuthor();
-
-    expect(component.submitted).toBeTrue();
     expect(spy).toHaveBeenCalled();
-  });
-
-  it('should set submitted to true', async () => {
-    component.addAuthor();
-    expect(component.submitted).toBeTrue();
   });
 
   it('should call the addAuthor method', async () => {
