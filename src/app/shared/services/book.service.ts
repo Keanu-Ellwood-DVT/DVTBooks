@@ -35,7 +35,7 @@ export class BookService {
           this.refreshRequired$.next();
         })
       )
-      .subscribe(() => { this.putPicture(isbn, file) });
+      .subscribe(() => { this.putPicture(isbn, file); });
   }
 
   updateBook(bookObj: Book, isbn: string) {

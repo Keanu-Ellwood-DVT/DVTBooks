@@ -110,7 +110,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "codeCoverageExclude": [
-              "src/app/auth.service.ts"
+              "src/app/shared/services/auth.service.ts"
             ],
             "karmaConfig": "karma.conf.js",
             "assets": [
