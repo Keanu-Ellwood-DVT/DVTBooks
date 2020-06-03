@@ -128,10 +128,12 @@ describe('NewBookComponent', () => {
   });
 
   it('should call the addBook method', async () => {
-    spyOn(component, 'addBook');
-    el = fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click();
-    expect(component.addBook).toHaveBeenCalledTimes(0);
+    const spy = spyOn(component, 'addBook');
+    const input = fixture.debugElement.query(By.css('#addBookBtn'));
+
+    input.triggerEventHandler('click', null);
+
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should call putBook when a file is provided', async () => {
@@ -185,10 +187,12 @@ describe('NewBookComponent', () => {
   });
 
   it('should call the uploadPicture method', async () => {
-    const spy = spyOn(component, 'uploadPicture').and.callThrough();
-    el = fixture.debugElement.query(By.css('#customFile')).nativeElement;
-    el.click();
-    expect(spy).toHaveBeenCalledTimes(0);
+    const spy = spyOn(component, 'uploadPicture');
+    const input = fixture.debugElement.query(By.css('#customFile'));
+
+    input.triggerEventHandler('change', null);
+
+    expect(spy).toHaveBeenCalled();
   });
 
   it('changeTag should return a tag', async () => {
