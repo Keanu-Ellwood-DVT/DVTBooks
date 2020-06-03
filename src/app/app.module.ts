@@ -2,29 +2,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ProfileComponent } from './profile/profile.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './home/home.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BookInfoComponent } from './book-info/book-info.component';
-import { NewBookComponent } from './admin/new-book/new-book.component';
-import { NewAuthorComponent } from './admin/new-author/new-author.component';
-import { SearchResultsListComponent } from './search-results-list/search-results-list.component';
+import { BookInfoComponent } from './components/book-info/book-info.component';
+import { NewBookComponent } from './components/admin/new-book/new-book.component';
+import { NewAuthorComponent } from './components/admin/new-author/new-author.component';
+import { SearchResultsListComponent } from './components/search-results-list/search-results-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AuthorInfoComponent } from './author-info/author-info.component';
-import { AuthorListComponent } from './author-list/author-list.component';
+import { AuthorInfoComponent } from './components/author/author-info/author-info.component';
+import { AuthorListComponent } from './components/author/author-list/author-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    ProfileComponent,
     ForbiddenComponent,
     AdminComponent,
     HomeComponent,
