@@ -1,13 +1,12 @@
 import { Book } from '../../../shared/models/book';
-import { Tag } from '../../../shared/models/tag';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { NewBookComponent } from './new-book.component';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgbModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, of } from 'rxjs';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { Author } from 'src/app/shared/models/author';
 import { BookService } from 'src/app/shared/services/book.service';
@@ -16,9 +15,6 @@ describe('NewBookComponent', () => {
   let component: NewBookComponent;
   let fixture: ComponentFixture<NewBookComponent>;
   let imageNameSubscription: BehaviorSubject<string>;
-  let httpTestingController: HttpTestingController;
-  let de: DebugElement;
-  let el: HTMLElement;
   let spyBookService: BookService;
   const dpKey = 'dp';
   const publisherKey = 'publisher';
@@ -87,7 +83,7 @@ describe('NewBookComponent', () => {
       imports: [HttpClientTestingModule, FormsModule, RouterModule.forRoot([]), ReactiveFormsModule, NgbModule, BrowserModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-      .compileComponents();
+    .compileComponents();
 
     imageNameSubscription = new BehaviorSubject<string>('');
   }));
@@ -100,10 +96,7 @@ describe('NewBookComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    httpTestingController = TestBed.inject(HttpTestingController);
     spyBookService = TestBed.inject(BookService);
-    de = fixture.debugElement.query(By.css('form'));
-    el = de.nativeElement;
     imageNameSubscription = new BehaviorSubject<string>('');
   });
 
@@ -186,14 +179,39 @@ describe('NewBookComponent', () => {
     component.ngOnDestroy();
     expect(imageNameSubscriptionSpy).not.toHaveBeenCalled();
   });
+  describe('uploadPicture()', () => {
+    it('should be called when an image upload event is fired', async () => {
+      const spy = spyOn(component, 'uploadPicture');
+      const input = fixture.debugElement.query(By.css('#customFile'));
 
-  it('should call the uploadPicture method', async () => {
-    const spy = spyOn(component, 'uploadPicture');
-    const input = fixture.debugElement.query(By.css('#customFile'));
+      input.triggerEventHandler('change', { target: null } as Event);
 
-    input.triggerEventHandler('change', null);
+      expect(spy).toHaveBeenCalled();
+    });
 
-    expect(spy).toHaveBeenCalled();
+    it('should set the text content of the imageName label to "Choose File" if no image was uploaded', async () => {
+      const event = { target: { files: [] } };
+      const label = fixture.debugElement.nativeElement.querySelector('#imageName');
+
+      component.uploadPicture(event);
+
+      component.imageName$.subscribe(() => {
+        fixture.detectChanges();
+        expect(label.textContent.trim()).toBe('Choose File');
+      })
+    });
+
+    it('should set the text content of the imageName label to "Uploaded File" if an image was uploaded', fakeAsync(() => {
+      const event = { target: { files: [{ name: 'Uploaded File' },] } };
+      const label = fixture.debugElement.nativeElement.querySelector('#imageName');
+
+      component.uploadPicture(event);
+
+      component.imageName$.subscribe(() => {
+        fixture.detectChanges();
+        expect(label.textContent.trim()).toBe('Uploaded File');
+      })
+    }));
   });
 
   it('changeTag should return a tag', async () => {
@@ -231,14 +249,14 @@ describe('NewBookComponent', () => {
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    }, ]);
+    },]);
 
     const spy = spyOnProperty(component, 'tag').and.callThrough();
     expect(component.tag.value).toEqual([{
       id: 'HTML',
       href: '/Tags/HTML',
       description: 'HTML',
-    }, ]);
+    },]);
     expect(spy).toHaveBeenCalled();
   });
   it('isbn13 property getter should return value set on form', () => {
