@@ -21,7 +21,7 @@ export class BookInfoComponent implements OnInit {
   state = 'Update';
   isbn: string;
   author: Author;
-  authBooks: BookRef[];
+  authBooks: BookRef[] = [];
 
   constructor(
     private bookService: BookService,
