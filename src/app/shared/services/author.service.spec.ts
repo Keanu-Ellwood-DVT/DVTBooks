@@ -141,7 +141,7 @@ describe('AuthorService', () => {
     });
   });
 
-  describe('putBook', () => {
+  describe('putAuthor', () => {
 
     it('should call put with the correct url', () => {
 
@@ -166,7 +166,7 @@ describe('AuthorService', () => {
         ]
       };
 
-      service.putAuthor(mockAuthor, 'd32490d9-ff78-4e08-b04c-cdeabe9de34c');
+      service.putAuthor(mockAuthor, 'd32490d9-ff78-4e08-b04c-cdeabe9de34c').subscribe();
       const req = httpTestingController.expectOne('http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c');
 
       httpTestingController.verify();
@@ -198,7 +198,7 @@ describe('AuthorService', () => {
         ]
       };
 
-      service.putAuthor(mockAuthor);
+      service.putAuthor(mockAuthor).subscribe();;
       const req = httpTestingController.expectOne('http://localhost:4201/Authors/');
 
       httpTestingController.verify();

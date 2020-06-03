@@ -148,7 +148,7 @@ describe('BookService', () => {
 
   it('putBook should call put with the correct url', () => {
 
-    service.putBook(mockBook, '0201633612');
+    service.putBook(mockBook, '0201633612').subscribe();
     const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
 
     httpTestingController.verify();
@@ -159,7 +159,7 @@ describe('BookService', () => {
 
   it('updateBook should call put with the correct url', () => {
 
-    service.updateBook(mockBook, '0201633612');
+    service.updateBook(mockBook, '0201633612').subscribe();
     const req = httpTestingController.expectOne('http://localhost:4201/Books/0201633612');
 
     httpTestingController.verify();

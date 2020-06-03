@@ -28,12 +28,11 @@ export class AuthorService {
   }
 
   putAuthor(authorObj: Author, id?: string) {
-    this.http.put(`${environment.apiUri}/Authors/${id ? id : ''}`, authorObj)
+    return this.http.put(`${environment.apiUri}/Authors/${id ? id : ''}`, authorObj)
       .pipe(
         tap(() => {
           this.refreshRequired$.next();
         })
       )
-      .subscribe();
   }
 }

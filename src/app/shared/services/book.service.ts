@@ -28,28 +28,25 @@ export class BookService {
         `${skip ? 'skip=' + skip + '&' : ''}${top ? 'top=' + top : ''}`);
   }
 
-  putBook(bookObj: Book, isbn: string, file?: File) {
-    this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
+  putBook(bookObj: Book, isbn: string) {
+    return this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
       .pipe(
         tap(() => {
           this.refreshRequired$.next();
         })
       )
-      .subscribe(() => { this.putPicture(isbn, file); });
   }
 
   updateBook(bookObj: Book, isbn: string) {
-    this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
+    return this.http.put(`${environment.apiUri}/Books/${isbn}`, bookObj)
       .pipe(
         tap(() => {
           this.refreshRequired$.next();
         })
       )
-      .subscribe();
   }
 
   putPicture(isbn: string, file: File) {
-    this.http.put(`${environment.apiUri}/Books/${isbn}/picture`, file)
-      .subscribe();
+    return this.http.put(`${environment.apiUri}/Books/${isbn}/picture`, file);
   }
 }
