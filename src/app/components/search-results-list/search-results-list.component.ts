@@ -88,7 +88,6 @@ export class SearchResultsListComponent implements OnInit {
         book.tags.forEach(tag => {
           if (tag.id === e.target.value && !tempBooks.includes(book)) {
             tempBooks.push(book);
-            console.log(book);
             return;
           }
         });
