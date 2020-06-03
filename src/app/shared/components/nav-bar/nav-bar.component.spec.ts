@@ -40,13 +40,13 @@ describe('NavBarComponent', () => {
   describe('navigateToResults()', () => {
     it('should route to /results with no query and cat = All', () => {
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { cat: 'All' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`],{ queryParams: { cat: 'All' } });
     });
 
     it('should route to /results with a query and cat = All', () => {
       component.query = 'Design';
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { q: 'Design', cat: 'All' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`], { queryParams: { q: 'Design', cat: 'All' } });
     });
 
     it('should route to /results with no query and cat = Author', () => {
@@ -54,7 +54,7 @@ describe('NavBarComponent', () => {
       authorCheck.checked = true;
       component.query = '';
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { cat: 'Author' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`],{ queryParams: { cat: 'Author' } });
     });
 
     it('should route to /results with a query = Jon and cat = Author', () => {
@@ -62,7 +62,7 @@ describe('NavBarComponent', () => {
       authorCheck.checked = true;
       component.query = 'Jon';
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { q: 'Jon', cat: 'Author' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`], { queryParams: { q: 'Jon', cat: 'Author' } });
     });
 
     it('should route to /results with no query and cat = Book', () => {
@@ -70,7 +70,7 @@ describe('NavBarComponent', () => {
       bookCheck.checked = true;
       component.query = '';
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { cat: 'Book' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`],{ queryParams: { cat: 'Book' } });
     });
 
     it('should route to /results with query = Design and cat = Book', () => {
@@ -78,7 +78,7 @@ describe('NavBarComponent', () => {
       bookCheck.checked = true;
       component.query = 'Design';
       component.navigateToResults();
-      expect(router.navigate).toHaveBeenCalledWith([`/results`, { q: 'Design', cat: 'Book' }]);
+      expect(router.navigate).toHaveBeenCalledWith([`/results`], { queryParams: { q: 'Design', cat: 'Book' } });
     });
   });
 
