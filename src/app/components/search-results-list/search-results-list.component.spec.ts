@@ -62,16 +62,10 @@ describe('SearchResultsListComponent', () => {
   });
 
   it('should invoke searchBooks()', async () => {
-    // let response: Book[] = [];
-    // let searchBookSpy = jasmine.createSpy('searchBookSpy');
     spyOn(component, 'searchBooks').and.callThrough();
 
     fixture.detectChanges();
-    // spyBookService.refreshRequired$.next();
-    // spyBookService.refreshNeeded$.subscribe(() => {
 
-    // }
-    // )
     expect(component.booksDisplay).toEqual([mockBook, ]);
   });
 
@@ -91,18 +85,6 @@ describe('SearchResultsListComponent', () => {
       tagCheck.click();
       expect(spy).toHaveBeenCalled();
     });
-    // it('should remove tag from array when unchecked', async () => {
-    //   const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
-    //   tagCheck.disabled = false;
-    //   tagCheck.checked = true;
-
-    //   let spy = spyOn(component, 'onCheckboxChange').and.callThrough();
-    //   tagCheck.click();
-    //   console.log(component.checkArray.controls.values);
-    //   expect(component.checkArray[0]).toEqual('Tag');
-    //   expect(tagCheck.checked).toBeFalse();
-    //   expect(spy).toHaveBeenCalled();
-    // });
   });
 
 });
