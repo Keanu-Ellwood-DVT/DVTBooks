@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="row">
+    <div class="container my-4 col-lg-3">
+      <p class="font-weight-bold" i18n="tags @@tags">Tags</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div *ngFor="let tag of tags; let i=index">
+            <label>
+              <input type="checkbox" [value]="tag.id" [id]="tag.id" (change)="onCheckboxChange($event)" />
+              {{tag.description}}
+            </label>
+          </div>
+          <label hidden>
+            <input type="checkbox" value="Tag" id="Tag" (change)="onCheckboxChange($event)" hidden disabled/>
+            Tag
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-9">
+      <ng-container *ngIf="booksDisplay.length > 0; else elseTemplate">
+        <div class="row my-4">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of booksDisplay">
+            <div class="card h-100">
+              <ng-container *ngIf="book.image; else elseTemplate">
+                <a [routerLink]="['/book', book.isbn13]"><img class="card-img-top card-custom" src="{{book.image}}"
+                    alt=""></a>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <a [routerLink]="['/book', book.isbn13]"><img class="card-img-top"
+                    src="../../assets/images/default_list.png" alt=""></a>
+              </ng-template>
+              <div class="card-body">
+                <h4 class="card-title card-link">
+                  <a [routerLink]="['/book', book.isbn13]">{{book.title}}</a>
+                </h4>
+                <h6>by {{book.author.name}}</h6>
+              </div>
+              <div class="card-footer" *ngIf="book.tags.length > 0">
+                <span class="badge badge-warning" *ngFor="let tag of book.tags">{{tag.description}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="booksDisplay.length % 6 === 0" class="btn btn-primary d-flex justify-content-center"
+          (click)="viewMore()">View More</button>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <div class="row my-4">
+          <h1>We could not find any books matching the query!</h1>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+</div>

@@ -109,6 +109,9 @@
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
+            "codeCoverageExclude": [
+              "src/app/shared/services/auth.service.ts"
+            ],
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
@@ -149,5 +152,11 @@
       }
     }
   },
-  "defaultProject": "DVTBooks"
+  "defaultProject": "DVTBooks",
+  "cli": {
+    "analytics": "69fdfcc6-d4fb-4dd9-b056-e1f198dbe622",
+    "warnings": {
+      "versionMismatch": false
+    }
+  }
 }
