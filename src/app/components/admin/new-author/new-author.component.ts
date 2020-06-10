@@ -22,8 +22,8 @@ export class NewAuthorComponent implements OnInit {
   form: FormGroup;
   newAuthor: Author = {} as Author;
   staticAlertClosed = true;
-  toastMessage = "";
-  error: boolean = false;
+  toastMessage = '';
+  error = false;
 
   constructor(
     private authorService: AuthorService,
@@ -74,7 +74,7 @@ export class NewAuthorComponent implements OnInit {
           console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
-          this.toastMessage = "Request failed";
+          this.toastMessage = 'Request failed';
           return throwError(err);
         })
       )
@@ -84,7 +84,7 @@ export class NewAuthorComponent implements OnInit {
           () => {
             this.staticAlertClosed = false;
             this.error = false;
-            this.toastMessage = "Request successful";
+            this.toastMessage = 'Request successful';
             this.newAuthor.first_name = '';
             this.newAuthor.middle_names = null;
             this.newAuthor.last_name = '';
@@ -98,7 +98,7 @@ export class NewAuthorComponent implements OnInit {
           console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
-          this.toastMessage = "Request failed";
+          this.toastMessage = 'Request failed';
           return throwError(err);
         })
       )
@@ -108,7 +108,7 @@ export class NewAuthorComponent implements OnInit {
           () => {
             this.staticAlertClosed = false;
             this.error = false;
-            this.toastMessage = "Request successful";
+            this.toastMessage = 'Request successful';
           }
         );
     }

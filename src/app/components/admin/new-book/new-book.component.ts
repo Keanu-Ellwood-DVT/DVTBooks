@@ -41,8 +41,8 @@ export class NewBookComponent implements OnInit, OnDestroy {
   imageName$ = this.imageName.asObservable();
   staticAlertClosed = true;
   toastMessage = '';
-  error: boolean = false;
-  link: string = '';
+  error = false;
+  link = '';
 
   constructor(
     private authorService: AuthorService,
@@ -136,7 +136,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
           this.staticAlertClosed = false;
           setTimeout(() => this.staticAlertClosed = true, 5000);
           this.error = true;
-          this.toastMessage = "Request failed";
+          this.toastMessage = 'Request failed';
           return throwError(err);
           })
         )
@@ -147,7 +147,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
                 console.log('Handling error locally and rethrowing it...', err);
                 this.staticAlertClosed = false;
                 this.error = true;
-                this.toastMessage = "Request failed";
+                this.toastMessage = 'Request failed';
                 return throwError(err);
               })
             )
@@ -158,7 +158,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
                 this.staticAlertClosed = false,
                 this.error = false,
                 this.link = `/book/${this.newBook.isbn13}`,
-                this.toastMessage = "Request successful",
+                this.toastMessage = 'Request successful',
                 this.newBook = {
                   isbn10: null,
                   isbn13: '',
@@ -180,7 +180,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
                   }],
                   version: null
                 },
-                this.cd.detectChanges()
+                this.cd.detectChanges();
               }
             );
         });
@@ -190,7 +190,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
           console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
-          this.toastMessage = "Request failed";
+          this.toastMessage = 'Request failed';
           return throwError(err);
         })
       )
@@ -200,7 +200,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
           () => {
             this.staticAlertClosed = false;
             this.error = false,
-            this.toastMessage = "Request successful"
+            this.toastMessage = 'Request successful';
           }
         );
     }
