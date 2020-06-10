@@ -19,6 +19,7 @@ import { SearchResultsListComponent } from './components/search-results-list/sea
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthorInfoComponent } from './components/author/author-info/author-info.component';
 import { AuthorListComponent } from './components/author/author-list/author-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,

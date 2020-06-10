@@ -42,9 +42,15 @@
           [(ngModel)]="newAuthor.about" value="newAuthor.about" formControlName="about"></textarea>
       </div>
       <div class="text-center">
+        <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true" class="bg-success">
+          Author was added successfully to the database!
+        </ngb-alert>
         <button type="submit" class="btn btn-primary" (click)="addAuthor()" id="addAuthorBtn" i18n="addAuth @@addAuth" [disabled]="!authorForm.valid">{{state}}
           Author</button>
       </div>
     </form>
   </div>
 </div>
+<ngb-toast *ngIf="!staticAlertClosed" class="toast" [ngClass]="{ 'bg-danger':error, 'bg-success':!error }" [delay]="4000" (hide)="close()" header=" ">
+  {{toastMessage}}
+</ngb-toast>

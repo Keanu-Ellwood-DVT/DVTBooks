@@ -214,14 +214,14 @@ describe('NewBookComponent', () => {
     }));
   });
 
-  it('changeTag should return a tag', async () => {
-    component.changeTag(mockTag);
+  it('setTag should return a tag', async () => {
+    component.setTag(mockTag);
 
     expect(component.newBook.tags).toEqual(mockTag);
   });
 
-  it('changeAuth should set newBook author', async () => {
-    component.changeAuth(mockAuth);
+  it('setAuthor should set newBook author', async () => {
+    component.setAuthor(mockAuth);
 
     expect(component.newBook.author.href).toEqual(mockAuth.href);
     expect(component.newBook.author.id).toEqual(mockAuth.id);

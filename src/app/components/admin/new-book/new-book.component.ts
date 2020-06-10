@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef } from '@angular/core';
 import { Author } from 'src/app/shared/models/author';
 import { Book } from 'src/app/shared/models/book';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { Tag } from 'src/app/shared/models/tag';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -38,11 +39,16 @@ export class NewBookComponent implements OnInit, OnDestroy {
   time$: Observable<string>;
   imageName = new BehaviorSubject<string>('Choose File');
   imageName$ = this.imageName.asObservable();
+  staticAlertClosed = true;
+  toastMessage = '';
+  error: boolean = false;
+  link: string = '';
 
   constructor(
     private authorService: AuthorService,
     private bookService: BookService,
-    private tagService: TagsService
+    private tagService: TagsService,
+    private cd: ChangeDetectorRef
   ) {
     this.form = new FormGroup({
       title: new FormControl('', { validators: [Validators.required] }),
@@ -115,16 +121,88 @@ export class NewBookComponent implements OnInit, OnDestroy {
     }
   }
 
+  close() {
+    this.staticAlertClosed = true;
+  }
+
   addBook() {
     this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-', '');
     this.newBook.date_published = moment([this.model.year, this.model.month - 1, this.model.day]).format();
     if (this.file) {
       this.bookService.putBook(this.newBook, this.newBook.isbn13)
+        .pipe(
+          catchError(err => {
+          console.log('Handling error locally and rethrowing it...', err);
+          this.staticAlertClosed = false;
+          setTimeout(() => this.staticAlertClosed = true, 5000);
+          this.error = true;
+          this.toastMessage = "Request failed";
+          return throwError(err);
+          })
+        )
         .subscribe(() => {
-          this.bookService.putPicture(this.newBook.isbn13, this.file).subscribe();
+          this.bookService.putPicture(this.newBook.isbn13, this.file)
+            .pipe(
+              catchError(err => {
+                console.log('Handling error locally and rethrowing it...', err);
+                this.staticAlertClosed = false;
+                this.error = true;
+                this.toastMessage = "Request failed";
+                return throwError(err);
+              })
+            )
+            .subscribe(
+              res => console.log('HTTP response', res),
+              err => console.log('HTTP Error', err),
+              () => {
+                this.staticAlertClosed = false,
+                this.error = false,
+                this.link = `/book/${this.newBook.isbn13}`,
+                this.toastMessage = "Request successful",
+                this.newBook = {
+                  isbn10: null,
+                  isbn13: '',
+                  title: '',
+                  about: null,
+                  abstract: null,
+                  author: {
+                    href: '',
+                    id: '',
+                    name: '',
+                  },
+                  publisher: '',
+                  date_published: '',
+                  image: null,
+                  tags: [{
+                    id: '',
+                    href: '',
+                    description: '',
+                  }],
+                  version: null
+                },
+                this.cd.detectChanges()
+              }
+            );
         });
     } else {
-      this.bookService.updateBook(this.newBook, this.newBook.isbn13).subscribe();
+      this.bookService.updateBook(this.newBook, this.newBook.isbn13).pipe(
+        catchError(err => {
+          console.log('Handling error locally and rethrowing it...', err);
+          this.staticAlertClosed = false;
+          this.error = true;
+          this.toastMessage = "Request failed";
+          return throwError(err);
+        })
+      )
+        .subscribe(
+          res => console.log('HTTP response', res),
+          err => console.log('HTTP Error', err),
+          () => {
+            this.staticAlertClosed = false;
+            this.error = false,
+            this.toastMessage = "Request successful"
+          }
+        );
     }
   }
 
@@ -144,11 +222,11 @@ export class NewBookComponent implements OnInit, OnDestroy {
     }
   }
 
-  changeTag(val: Tag[]) {
+  setTag(val: Tag[]) {
     this.newBook.tags = val;
   }
 
-  changeAuth(val: Author) {
+  setAuthor(val: Author) {
     this.newBook.author = {
       href: val.href,
       id: val.id,
