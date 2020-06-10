@@ -50,4 +50,10 @@ export class BookInfoComponent implements OnInit {
     this.modalService.open(content, { backdropClass: 'light-blue-backdrop', centered: true });
   }
 
+  closeModal($event) {
+    const close = document.getElementById('closeModalBtn') as HTMLElement;
+    setTimeout(() => close.click()
+    , 5000);
+  }
+
 }

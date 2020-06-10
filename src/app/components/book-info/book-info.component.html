@@ -160,10 +160,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-new-book [state]="state" [currentBook]="book"></app-new-book>
+    <app-new-book [state]="state" [currentBook]="book" (modalEvent)="closeModal($event)"></app-new-book>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" i18n="close @@close">Close</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" id="closeModalBtn" i18n="close @@close">Close</button>
   </div>
 </ng-template>
 
@@ -175,9 +175,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-new-author [state]="state" [currentAuth]="book.author"></app-new-author>
+    <app-new-author [state]="state" [currentAuth]="book.author" (modalEvent)="closeModal($event)"></app-new-author>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" i18n="close @@close">Close</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" id="closeModalBtn" i18n="close @@close">Close</button>
   </div>
 </ng-template>

@@ -18,6 +18,12 @@ export class AuthorInfoComponent implements OnInit {
   author: Author;
   authBooks: BookRef[];
   state = 'Update';
+  message: boolean;
+
+  closeModal($event) {
+    const close = document.getElementById('closeModalBtn') as HTMLElement;
+    setTimeout( () =>  close.click() , 5000 );
+  }
 
   constructor(
     private authorService: AuthorService,

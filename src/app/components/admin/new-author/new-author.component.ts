@@ -1,10 +1,9 @@
-import { async } from '@angular/core/testing';
 import { catchError } from 'rxjs/operators';
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter  } from '@angular/core';
 import { AuthorService } from 'src/app/shared/services/author.service';
 import { Author } from 'src/app/shared/models/author';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
-import { throwError, observable, of } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-new-author',
@@ -18,6 +17,8 @@ export class NewAuthorComponent implements OnInit {
 
   @Input()
   currentAuth?: Author;
+
+  @Output() modalEvent ? = new EventEmitter<null>();
 
   form: FormGroup;
   newAuthor: Author = {} as Author;
@@ -109,9 +110,14 @@ export class NewAuthorComponent implements OnInit {
             this.staticAlertClosed = false;
             this.error = false;
             this.toastMessage = 'Request successful';
+            this.closeModal();
           }
         );
     }
+  }
+
+  private closeModal() {
+    this.modalEvent.emit();
   }
 
 }

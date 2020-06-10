@@ -1,5 +1,5 @@
 import { catchError } from 'rxjs/operators';
-import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { Author } from 'src/app/shared/models/author';
 import { Book } from 'src/app/shared/models/book';
 import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
@@ -23,6 +23,8 @@ export class NewBookComponent implements OnInit, OnDestroy {
 
   @Input()
   currentBook?: Book;
+
+  @Output() modalEvent ? = new EventEmitter<null>();
 
   pageLoading$ = new BehaviorSubject<boolean>(true);
   form: FormGroup;
@@ -201,6 +203,7 @@ export class NewBookComponent implements OnInit, OnDestroy {
             this.staticAlertClosed = false;
             this.error = false,
             this.toastMessage = 'Request successful';
+            this.closeModal();
           }
         );
     }
@@ -232,6 +235,10 @@ export class NewBookComponent implements OnInit, OnDestroy {
       id: val.id,
       name: val.name
     };
+  }
+
+  private closeModal() {
+    this.modalEvent.emit();
   }
 
   ngOnDestroy() {
