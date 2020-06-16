@@ -64,3 +64,5 @@ For consistency with other DVT applications, the web application needs to follow
 10. ~~Used server-side pagination~~
 11. ~~Loaded data & assets from cache when offline (PWA)~~
 12. ~~Practiced using Docker in an Angular web application13. Built a modern app using a web framework that calls a secure back-end service~~
+
+API https://github.com/DVT/dvt-books
