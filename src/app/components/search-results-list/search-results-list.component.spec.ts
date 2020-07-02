@@ -50,13 +50,13 @@ describe('SearchResultsListComponent', () => {
 
   it('should set tags', () => {
     fixture.detectChanges();
-    expect(component.tags).toEqual([{} as Tag,]);
+    expect(component.tags).toEqual([{} as Tag, ]);
   });
 
   it('should invoke searchBooks()', async () => {
     spyOn(component, 'searchBooks').and.callThrough();
     fixture.detectChanges();
-    expect(component.booksDisplay).toEqual([mockBook,]);
+    expect(component.booksDisplay).toEqual([mockBook, ]);
   });
 
   it('sortViaTag should be invoked when radio clicked', () => {
@@ -95,7 +95,7 @@ const mockTag: Tag = {
 
 class MockTagsService {
   getTags(): Observable<Tag[]> {
-    return of([{} as Tag,]);
+    return of([{} as Tag, ]);
   }
 }
 
@@ -131,6 +131,6 @@ class MockBookService {
   }
 
   getBooks(): Observable<Book[]> {
-    return of([mockBook,]);
+    return of([mockBook, ]);
   }
 }

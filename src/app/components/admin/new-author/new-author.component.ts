@@ -18,7 +18,7 @@ export class NewAuthorComponent implements OnInit {
   @Input()
   currentAuth?: Author;
 
-  @Output() modalEvent?= new EventEmitter<null>();
+  @Output() modalEvent ? = new EventEmitter<null>();
 
   form: FormGroup;
   newAuthor: Author = {} as Author;

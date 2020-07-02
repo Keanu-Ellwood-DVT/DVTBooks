@@ -65,7 +65,7 @@ export class SearchResultsListComponent implements OnInit {
   }
 
   sortViaTag() {
-    let taggedBooks = [];
+    const taggedBooks = [];
     this.books.forEach(book => {
       book.tags.forEach(tag => {
         /* istanbul ignore else*/
