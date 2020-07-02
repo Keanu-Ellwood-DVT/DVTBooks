@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <div class="container my-4 col-lg-3">
       <p class="font-weight-bold" i18n="tags @@tags">Tags</p>
@@ -12,16 +11,16 @@
             </label>
           </div>
           <label hidden>
-            <input type="checkbox" value="Tag" id="Tag" (change)="sortViaTag()" hidden disabled/>
+            <input type="checkbox" value="Tag" id="Tag" (change)="sortViaTag()" hidden disabled />
             Tag
           </label>
         </li>
         <li *ngIf="radioSelected" class="list-group-item">
-          <button (click)='resetRadio()' id="resetTags" class="btn btn-primary d-flex justify-content-center">Reset</button>
+          <button (click)='resetRadio()' id="resetTags"
+            class="btn btn-primary d-flex justify-content-center">Reset</button>
         </li>
       </ul>
     </div>
-
     <div class="col-lg-9">
       <ng-container *ngIf="booksDisplay.length > 0; else elseTemplate">
         <div class="row my-4">
@@ -56,10 +55,9 @@
           <h1>We could not find any books matching the query!</h1>
         </div>
         <div class="row my-4" *ngIf="radioSelected">
-          <h1>We could not find any books matching the query with tag "{{radioSelected}}"!</h1>
+          <h1>We could not find any books matching the query "{{currentQuery}}" with tag "{{radioSelected}}"!</h1>
         </div>
       </ng-template>
     </div>
   </div>
-
 </div>

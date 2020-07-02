@@ -20,7 +20,7 @@ export class SearchResultsListComponent implements OnInit {
   books: Book[] = [];
   booksDisplay: Book[] = [];
   authors: Author[] = [];
-  private currentQuery: string;
+  currentQuery: string;
   skip = 0;
   checkArray: FormArray;
   radioSelected: any;
@@ -33,13 +33,14 @@ export class SearchResultsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       this.currentQuery = params.q,
         this.skip = 0,
         this.books.length = 0,
         this.searchBooks();
     });
 
+    console.log(this.route.params);
     this.tagService.getTags().subscribe(x => {
       this.tags = x;
     });
@@ -51,6 +52,7 @@ export class SearchResultsListComponent implements OnInit {
   }
 
   searchBooks() {
+    this.resetRadio();
     this.bookService.getBooks(this.currentQuery, this.skip, 6).subscribe(x => {
       x.forEach(book => {
         this.books.push(book);
