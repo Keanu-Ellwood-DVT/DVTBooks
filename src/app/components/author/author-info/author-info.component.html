@@ -94,9 +94,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-new-author [state]="state" [currentAuth]="author"></app-new-author>
+    <app-new-author [state]="state" [currentAuth]="author" (modalEvent)="closeModal($event)"></app-new-author>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" i18n="close @@close">Close</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')" id="closeModalBtn" i18n="close @@close">Close</button>
   </div>
 </ng-template>

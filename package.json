@@ -9,12 +9,12 @@
     "build": "ng build",
     "build:af": "ng build --configuration=af",
     "build:zu": "ng build --configuration=zu",
-    "test": "ng test",
+    "test": "ng test --codeCoverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "int:extract": "ng xi18n --output-path src/locale",
     "docker:compose": "docker-compose -f docker-compose.yml -f docker-compose.override.yml -p dvt-books up",
-    "docker:start": "docker logs e6de9a09776e -f"
+    "docker:start": "docker logs 9b7719eb245f -f"
   },
   "private": true,
   "dependencies": {

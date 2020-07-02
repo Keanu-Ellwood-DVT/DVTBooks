@@ -14,8 +14,6 @@ import { BookService } from '../../shared/services/book.service';
 describe('SearchResultsListComponent', () => {
   let component: SearchResultsListComponent;
   let fixture: ComponentFixture<SearchResultsListComponent>;
-  let spyBookService: MockBookService;
-  let spyTagsService: MockTagsService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,8 +31,6 @@ describe('SearchResultsListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchResultsListComponent);
     component = fixture.componentInstance;
-    spyTagsService = new MockTagsService();
-    spyBookService = new MockBookService();
     fixture.detectChanges();
   });
 
@@ -47,44 +43,46 @@ describe('SearchResultsListComponent', () => {
   });
 
   it('should be able to increment skip', () => {
-
     component.skip = 0;
-
     component.viewMore();
-
     expect(component.skip).toEqual(6);
   });
 
   it('should set tags', () => {
     fixture.detectChanges();
-
     expect(component.tags).toEqual([{} as Tag, ]);
   });
 
   it('should invoke searchBooks()', async () => {
     spyOn(component, 'searchBooks').and.callThrough();
-
     fixture.detectChanges();
-
     expect(component.booksDisplay).toEqual([mockBook, ]);
   });
 
-  describe('onCheckboxChange', () => {
-    it('should be invoked when checkbox clicked', async () => {
-      const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
-      tagCheck.disabled = false;
-      const spy = spyOn(component, 'onCheckboxChange').and.callThrough();
-      tagCheck.click();
-      expect(spy).toHaveBeenCalled();
-    });
-    it('should be invoked when checkbox clicked', async () => {
-      const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
-      tagCheck.disabled = false;
-      tagCheck.checked = true;
-      const spy = spyOn(component, 'onCheckboxChange').and.callThrough();
-      tagCheck.click();
-      expect(spy).toHaveBeenCalled();
-    });
+  it('sortViaTag should be invoked when radio clicked', () => {
+    component.books = [mockBook];
+    const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
+    tagCheck.disabled = false;
+    tagCheck.checked = true;
+    const spySort = spyOn(component, 'sortViaTag').and.callThrough();
+    tagCheck.click();
+    expect(spySort).toHaveBeenCalled();
+  });
+
+  it('resetRadio should reset active radio tag', () => {
+    component.radioSelected = 'HTML';
+    fixture.detectChanges();
+    const tagCheck = fixture.debugElement.query(By.css('#Tag')).nativeElement;
+    const resetTag = fixture.debugElement.query(By.css('#resetTags')).nativeElement;
+    tagCheck.disabled = false;
+    tagCheck.checked = false;
+    const spySort = spyOn(component, 'sortViaTag').and.callThrough();
+    const spyReset = spyOn(component, 'resetRadio').and.callThrough();
+    tagCheck.click();
+    fixture.detectChanges();
+    resetTag.click();
+    expect(spySort).toHaveBeenCalled();
+    expect(spyReset).toHaveBeenCalled();
   });
 
 });

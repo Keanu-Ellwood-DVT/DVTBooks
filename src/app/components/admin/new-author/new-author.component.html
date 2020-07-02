@@ -5,33 +5,31 @@
 </div>
 <div class="row d-flex justify-content-center">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-    <form id="author-form" class="form" role="form" id="add-author" aria-labelledby="author-tab" [formGroup]="form" #authorForm="ngForm">
+    <form id="author-form" class="form" role="form" id="add-author" aria-labelledby="author-tab" [formGroup]="form"
+      #authorForm="ngForm">
       <div class="form-group">
         <label class="form-label text-primary" for="firstName" i18n="lname @@lname">First Name <i placement="right"
             ngbTooltip="Required" class="text-warning">*</i></label>
-        <input type="text" class="form-control" id="firstName" [formGroup]="form" formControlName="firstName" name="firstName" placeholder="First Name" tabindex="1"
-          required [(ngModel)]="newAuthor.first_name" [ngClass]="{
-            'input-invalid':
-            firstName.touched && firstName.invalid && firstName.errors.required
-          }">
-
-          <div *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
-            <span class="text-danger">First name is required.</span>
-          </div>
+        <input type="text" class="form-control" id="firstName" [formGroup]="form" formControlName="firstName"
+          name="firstName" placeholder="First Name" tabindex="1" required [(ngModel)]="newAuthor.first_name"
+          [ngClass]="{'input-invalid':firstName.touched && firstName.invalid && firstName.errors.required}">
+        <div *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
+          <span class="text-danger">First name is required.</span>
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label text-primary" for="middleName" i18n="mname @@mname">Middle Name(s)</label>
-        <input type="text" class="form-control" id="middleName" [formGroup]="form" formControlName="middleName" name="middleName" placeholder="Middle Name" tabindex="1"
-          [(ngModel)]="newAuthor.middle_names" value="newAuthor.middle_names">
+        <input type="text" class="form-control" id="middleName" [formGroup]="form" formControlName="middleName"
+          name="middleName" placeholder="Middle Name" tabindex="1" [(ngModel)]="newAuthor.middle_names"
+          value="newAuthor.middle_names">
       </div>
       <div class="form-group">
         <label class="form-label text-primary" for="lastName" i18n="lname @@lname">Last Name <i placement="right"
             ngbTooltip="Required" class="text-warning">*</i></label>
-        <input type="text" class="form-control" [formGroup]="form" formControlName="lastName" id="lastName" name="lastName" placeholder="Last Name" tabindex="1"
-          required [(ngModel)]="newAuthor.last_name" value="newAuthor.last_name"
-          [ngClass]="{
-            'input-invalid':  lastName.touched && lastName.invalid && lastName.errors.required}">
-
+        <input type="text" class="form-control" [formGroup]="form" formControlName="lastName" id="lastName"
+          name="lastName" placeholder="Last Name" tabindex="1" required [(ngModel)]="newAuthor.last_name"
+          value="newAuthor.last_name"
+          [ngClass]="{'input-invalid':  lastName.touched && lastName.invalid && lastName.errors.required}">
         <div *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
           <span class="text-danger">Last name is required.</span>
         </div>
@@ -42,9 +40,17 @@
           [(ngModel)]="newAuthor.about" value="newAuthor.about" formControlName="about"></textarea>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-primary" (click)="addAuthor()" id="addAuthorBtn" i18n="addAuth @@addAuth" [disabled]="!authorForm.valid">{{state}}
+        <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true" class="bg-success">
+          Author was added successfully to the database!
+        </ngb-alert>
+        <button type="submit" class="btn btn-primary" (click)="addAuthor()" id="addAuthorBtn" i18n="addAuth @@addAuth"
+          [disabled]="!authorForm.valid">{{state}}
           Author</button>
       </div>
     </form>
   </div>
 </div>
+<ngb-toast *ngIf="!staticAlertClosed" class="toast" [ngClass]="{ 'bg-danger':error, 'bg-success':!error }"
+  [delay]="4000" (hide)="staticAlertClosed = true" header=" ">
+  {{toastMessage}}
+</ngb-toast>

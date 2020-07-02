@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { AuthorService } from 'src/app/shared/services/author.service';
 import { Author } from 'src/app/shared/models/author';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-new-author',
@@ -15,10 +17,14 @@ export class NewAuthorComponent implements OnInit {
 
   @Input()
   currentAuth?: Author;
+
+  @Output() modalEvent ? = new EventEmitter<null>();
+
   form: FormGroup;
   newAuthor: Author = {} as Author;
-
-  submitted = false;
+  staticAlertClosed = true;
+  toastMessage = '';
+  error = false;
 
   constructor(
     private authorService: AuthorService,
@@ -60,14 +66,43 @@ export class NewAuthorComponent implements OnInit {
 
   addAuthor() {
     if (this.state !== 'Update') {
-      this.authorService.putAuthor(this.newAuthor).subscribe();
-      this.newAuthor.first_name = '';
-      this.newAuthor.middle_names = null;
-      this.newAuthor.last_name = '';
-      this.newAuthor.about = '';
+      this.authorService.putAuthor(this.newAuthor).pipe(
+        catchError(err => {
+          this.staticAlertClosed = false;
+          this.error = true;
+          this.toastMessage = 'Request failed';
+          return throwError(err);
+        })
+      )
+        .subscribe(
+          () => {
+            this.staticAlertClosed = false;
+            this.error = false;
+            this.toastMessage = 'Request successful';
+            this.newAuthor.first_name = '';
+            this.newAuthor.middle_names = null;
+            this.newAuthor.last_name = '';
+            this.newAuthor.about = '';
+            this.cd.detectChanges();
+          }
+        );
     } else {
-      this.authorService.putAuthor(this.newAuthor, this.newAuthor.id).subscribe();
+      this.authorService.putAuthor(this.newAuthor, this.newAuthor.id).pipe(
+        catchError(err => {
+          this.staticAlertClosed = false;
+          this.error = true;
+          this.toastMessage = 'Request failed';
+          return throwError(err);
+        })
+      )
+        .subscribe(
+          () => {
+            this.staticAlertClosed = false;
+            this.error = false;
+            this.toastMessage = 'Request successful';
+            this.modalEvent.emit();
+          }
+        );
     }
   }
-
 }

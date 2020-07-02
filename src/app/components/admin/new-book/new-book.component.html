@@ -23,7 +23,7 @@
         <div class="form-group wdth-49" *ngIf="authors">
           <label class="form-label text-primary" for="author" i18n="auth @@pblshr">Author <i placement="right"
               ngbTooltip="Required" class="text-warning">*</i></label>
-          <select class="form-control" name="author" [(ngModel)]="selectedAuth" (ngModelChange)="changeAuth($event)"
+          <select class="form-control" name="author" [(ngModel)]="selectedAuth" (ngModelChange)="setAuthor($event)"
             [ngModelOptions]="{standalone: true}">
             <option *ngFor="let author of authors" [ngValue]="author">
               {{author.name}}
@@ -33,8 +33,8 @@
 
         <div class="form-group wdth-49" *ngIf="tags">
           <label class="form-label text-primary" for="tags" i18n="tag @@tag">Tag <i placement="right"
-            class="text-warning" ngbTooltip="Ctrl + click to select multiple tags. Required" >*</i></label>
-          <select class="form-control" name="tags" [(ngModel)]="selectedTag" (ngModelChange)="changeTag($event)"
+              class="text-warning" ngbTooltip="Ctrl + click to select multiple tags. Required">*</i></label>
+          <select class="form-control" name="tags" [(ngModel)]="selectedTag" (ngModelChange)="setTag($event)"
             [ngModelOptions]="{standalone: true}" multiple>
             <option *ngFor="let tag of tags" [ngValue]="tag">
               {{tag.description}}
@@ -49,7 +49,8 @@
               class="text-warning">*</i></label>
           <input type="email" class="form-control" id="isbn13" name="isbn13" placeholder="ISBN-13" tabindex="2" required
             [(ngModel)]="newBook.isbn13" value="newBook.isbn13" formControlName="isbn13" [ngClass]="{
-              'input-invalid':  isbn13.touched && isbn13.invalid && isbn13.errors.required}" minlength="13" maxlength="14">
+              'input-invalid':  isbn13.touched && isbn13.invalid && isbn13.errors.required}" minlength="13"
+            maxlength="14">
           <div *ngIf="isbn13.touched && isbn13.invalid && isbn13.errors.required">
             <span class="text-danger">Please enter a valid isbn13.</span>
           </div>
@@ -102,9 +103,9 @@
 
       <div class="form-group">
         <label class="form-label text-primary" for="abstract" i18n="abt @@abt">About <i placement="right"
-          ngbTooltip="A brief summary of the book" class="text-warning">(?)</i></label>
-        <textarea rows="5" cols="50" name="abstract" class="form-control" id="abstract" placeholder="Abstract..." tabindex="4"
-          [(ngModel)]="newBook.abstract" formControlName="abstract"></textarea>
+            ngbTooltip="A brief summary of the book" class="text-warning">(?)</i></label>
+        <textarea rows="5" cols="50" name="abstract" class="form-control" id="abstract" placeholder="Abstract..."
+          tabindex="4" [(ngModel)]="newBook.abstract" formControlName="abstract"></textarea>
       </div>
 
       <div class="form-group" *ngIf="state != 'Update'">
@@ -119,9 +120,19 @@
       </div>
 
       <div class="text-center">
-        <button type="submit" id="addBookBtn" class="btn btn-primary" (click)="addBook()" i18n="addBook @@addBook"
-          [disabled]="!bookForm.valid">{{state}} Book</button>
+        <ngb-alert *ngIf="!staticAlertClosed && !error" (close)="staticAlertClosed = true" class="bg-success">
+          Book was added successfully to the database!
+        </ngb-alert>
+        <button [disabled]="!bookForm.valid" type="submit" id="addBookBtn" class="btn btn-primary" (click)="addBook()"
+          i18n="addBook @@addBook">{{state}} Book</button>
       </div>
     </form>
   </div>
 </div>
+
+<ngb-toast *ngIf="!staticAlertClosed" class="toast" [ngClass]="{ 'bg-danger':error, 'bg-success':!error }" [delay]="4000" (hide)="staticAlertClosed = true" header=" ">
+    {{toastMessage}}
+    <div *ngIf="link.length > 0">
+      <a *ngIf="!error" [routerLink]="link">View Book</a>
+    </div>
+</ngb-toast>
