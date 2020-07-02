@@ -123,10 +123,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
     }
   }
 
-  close() {
-    this.staticAlertClosed = true;
-  }
-
   addBook() {
     this.newBook.isbn13 = this.newBook.isbn13.trim().replace('-', '');
     this.newBook.date_published = moment([this.model.year, this.model.month - 1, this.model.day]).format();
@@ -134,7 +130,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
       this.bookService.putBook(this.newBook, this.newBook.isbn13)
         .pipe(
           catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           setTimeout(() => this.staticAlertClosed = true, 5000);
           this.error = true;
@@ -146,7 +141,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
           this.bookService.putPicture(this.newBook.isbn13, this.file)
             .pipe(
               catchError(err => {
-                console.log('Handling error locally and rethrowing it...', err);
                 this.staticAlertClosed = false;
                 this.error = true;
                 this.toastMessage = 'Request failed';
@@ -154,8 +148,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
               })
             )
             .subscribe(
-              res => console.log('HTTP response', res),
-              err => console.log('HTTP Error', err),
               () => {
                 this.staticAlertClosed = false,
                 this.error = false,
@@ -189,7 +181,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
     } else {
       this.bookService.updateBook(this.newBook, this.newBook.isbn13).pipe(
         catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
           this.toastMessage = 'Request failed';
@@ -197,8 +188,6 @@ export class NewBookComponent implements OnInit, OnDestroy {
         })
       )
         .subscribe(
-          res => console.log('HTTP response', res),
-          err => console.log('HTTP Error', err),
           () => {
             this.staticAlertClosed = false;
             this.error = false,

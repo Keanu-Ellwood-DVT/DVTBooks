@@ -1,5 +1,5 @@
 import { catchError } from 'rxjs/operators';
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { AuthorService } from 'src/app/shared/services/author.service';
 import { Author } from 'src/app/shared/models/author';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
@@ -18,7 +18,7 @@ export class NewAuthorComponent implements OnInit {
   @Input()
   currentAuth?: Author;
 
-  @Output() modalEvent ? = new EventEmitter<null>();
+  @Output() modalEvent?= new EventEmitter<null>();
 
   form: FormGroup;
   newAuthor: Author = {} as Author;
@@ -64,15 +64,10 @@ export class NewAuthorComponent implements OnInit {
     }
   }
 
-  close() {
-    this.staticAlertClosed = true;
-  }
-
   addAuthor() {
     if (this.state !== 'Update') {
       this.authorService.putAuthor(this.newAuthor).pipe(
         catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
           this.toastMessage = 'Request failed';
@@ -80,8 +75,6 @@ export class NewAuthorComponent implements OnInit {
         })
       )
         .subscribe(
-          res => console.log('HTTP response', res),
-          err => console.log('HTTP Error', err),
           () => {
             this.staticAlertClosed = false;
             this.error = false;
@@ -96,7 +89,6 @@ export class NewAuthorComponent implements OnInit {
     } else {
       this.authorService.putAuthor(this.newAuthor, this.newAuthor.id).pipe(
         catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
           this.staticAlertClosed = false;
           this.error = true;
           this.toastMessage = 'Request failed';
@@ -104,20 +96,13 @@ export class NewAuthorComponent implements OnInit {
         })
       )
         .subscribe(
-          res => console.log('HTTP response', res),
-          err => console.log('HTTP Error', err),
           () => {
             this.staticAlertClosed = false;
             this.error = false;
             this.toastMessage = 'Request successful';
-            this.closeModal();
+            this.modalEvent.emit();
           }
         );
     }
   }
-
-  private closeModal() {
-    this.modalEvent.emit();
-  }
-
 }

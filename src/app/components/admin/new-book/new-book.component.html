@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<ngb-toast *ngIf="!staticAlertClosed" class="toast" [ngClass]="{ 'bg-danger':error, 'bg-success':!error }" [delay]="4000" (hide)="close()" header=" ">
+<ngb-toast *ngIf="!staticAlertClosed" class="toast" [ngClass]="{ 'bg-danger':error, 'bg-success':!error }" [delay]="4000" (hide)="staticAlertClosed = true" header=" ">
     {{toastMessage}}
     <div *ngIf="link.length > 0">
       <a *ngIf="!error" [routerLink]="link">View Book</a>

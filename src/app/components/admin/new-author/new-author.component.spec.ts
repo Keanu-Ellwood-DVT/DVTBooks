@@ -17,26 +17,6 @@ describe('NewAuthorComponent', () => {
   const firstNameKey = 'firstName';
   const lastNameKey = 'lastName';
   let spyAuthorService: AuthorService;
-  const mockAuthor: Author = {
-    href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
-    id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
-    first_name: 'Robin',
-    middle_names: 'Patricia',
-    last_name: 'Williams',
-    name: 'Robin Patricia Williams',
-    about: `Robin Patricia Williams is an American educator who has authored many popular computer-related
-    books, as well as the book Sweet Swan of Avon: Did a Woman Write Shakespeare?.`,
-    version: 'AAAAAAAAB9Q=',
-    books: [
-      {
-        title: '',
-        href: 'http://localhost:4201/Books/$9780133966153',
-        id: '9780133966153',
-        isbn10: '0133966151',
-        isbn13: '9780133966153'
-      }
-    ]
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -68,9 +48,7 @@ describe('NewAuthorComponent', () => {
     component.state = 'Update';
     component.currentAuth = mockAuthor;
     spyOn(spyAuthorService, 'getAuthor').and.returnValue(of(mockAuthor));
-
     component.ngOnInit();
-
     expect(component.newAuthor).toEqual(mockAuthor);
     expect(component).toBeTruthy();
   });
@@ -79,18 +57,14 @@ describe('NewAuthorComponent', () => {
     component.state = 'Update';
     const spy = spyOn(spyAuthorService, 'putAuthor');
     const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
-
     input.triggerEventHandler('click', null);
-
     expect(spy).toHaveBeenCalled();
   });
 
   it('should call the addAuthor method', fakeAsync(() => {
     const onClickSpy = spyOn(component, 'addAuthor');
     const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
-
     input.triggerEventHandler('click', null);
-
     expect(onClickSpy).toHaveBeenCalled();
   }));
 
@@ -107,7 +81,6 @@ describe('NewAuthorComponent', () => {
   });
 
   it('form should return correct values', async () => {
-
     component.form.controls.firstName.setValue('Harry');
     component.form.controls.middleName.setValue('Henry');
     component.form.controls.lastName.setValue('Henrison');
@@ -121,35 +94,65 @@ describe('NewAuthorComponent', () => {
 
   it('firstName property getter should return value set on form', () => {
     component.form.controls.firstName.setValue('Harry');
-
     const spy = spyOnProperty(component, 'firstName').and.callThrough();
-
     expect(component.firstName.value).toBe('Harry');
     expect(spy).toHaveBeenCalled();
   });
+
   it('middleName property getter should return value set on form', () => {
     component.form.controls.middleName.setValue('James');
-
     const spy = spyOnProperty(component, 'middleName').and.callThrough();
-
     expect(component.middleName.value).toBe('James');
     expect(spy).toHaveBeenCalled();
   });
+
   it('lastName property getter should return value set on form', () => {
     component.form.controls.lastName.setValue('Henry');
-
     const spy = spyOnProperty(component, 'lastName').and.callThrough();
-
     expect(component.lastName.value).toBe('Henry');
     expect(spy).toHaveBeenCalled();
   });
+
   it('about property getter should return value set on form', () => {
     component.form.controls.about.setValue('Harry is a writer');
-
     const spy = spyOnProperty(component, 'about').and.callThrough();
-
     expect(component.about.value).toBe('Harry is a writer');
     expect(spy).toHaveBeenCalled();
   });
 
+  it('should call putAuthor when state !== "Update"', () => {
+    const spyPutAuthor = spyOn(spyAuthorService, 'putAuthor');
+    const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
+    input.triggerEventHandler('click', null);
+    expect(spyPutAuthor).toHaveBeenCalled();
+  });
+
+  it('should call putAuthor when state === "Update"', () => {
+    component.state = 'Update';
+    const spyPutAuthor = spyOn(spyAuthorService, 'putAuthor');
+    const input = fixture.debugElement.query(By.css('#addAuthorBtn'));
+    input.triggerEventHandler('click', null);
+    expect(spyPutAuthor).toHaveBeenCalled();
+  });
 });
+
+const mockAuthor: Author = {
+  href: 'http://localhost:4201/Authors/d32490d9-ff78-4e08-b04c-cdeabe9de34c',
+  id: 'd32490d9-ff78-4e08-b04c-cdeabe9de34c',
+  first_name: 'Robin',
+  middle_names: 'Patricia',
+  last_name: 'Williams',
+  name: 'Robin Patricia Williams',
+  about: `Robin Patricia Williams is an American educator who has authored many popular computer-related
+  books, as well as the book Sweet Swan of Avon: Did a Woman Write Shakespeare?.`,
+  version: 'AAAAAAAAB9Q=',
+  books: [
+    {
+      title: '',
+      href: 'http://localhost:4201/Books/$9780133966153',
+      id: '9780133966153',
+      isbn10: '0133966151',
+      isbn13: '9780133966153'
+    }
+  ]
+};
