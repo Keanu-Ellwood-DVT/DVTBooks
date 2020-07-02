@@ -5,16 +5,19 @@
       <p class="font-weight-bold" i18n="tags @@tags">Tags</p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <div *ngFor="let tag of tags; let i=index">
-            <label>
-              <input type="checkbox" [value]="tag.id" [id]="tag.id" (change)="onCheckboxChange($event)" />
+          <div *ngFor="let tag of tags">
+            <label for="{{tag.id}}">
+              <input id="{{tag.id}}" [value]='tag.id' type="radio" [(ngModel)]="radioSelected" (change)="sortViaTag()">
               {{tag.description}}
             </label>
           </div>
           <label hidden>
-            <input type="checkbox" value="Tag" id="Tag" (change)="onCheckboxChange($event)" hidden disabled/>
+            <input type="checkbox" value="Tag" id="Tag" (change)="sortViaTag()" hidden disabled/>
             Tag
           </label>
+        </li>
+        <li *ngIf="radioSelected" class="list-group-item">
+          <button (click)='resetRadio()' id="resetTags" class="btn btn-primary d-flex justify-content-center">Reset</button>
         </li>
       </ul>
     </div>
@@ -49,8 +52,11 @@
       </ng-container>
 
       <ng-template #elseTemplate>
-        <div class="row my-4">
+        <div class="row my-4" *ngIf="!radioSelected">
           <h1>We could not find any books matching the query!</h1>
+        </div>
+        <div class="row my-4" *ngIf="radioSelected">
+          <h1>We could not find any books matching the query with tag "{{radioSelected}}"!</h1>
         </div>
       </ng-template>
     </div>

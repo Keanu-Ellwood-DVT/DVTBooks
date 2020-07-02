@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tag } from 'src/app/shared/models/tag';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { Book } from 'src/app/shared/models/book';
 import { ActivatedRoute } from '@angular/router';
 import { Author } from 'src/app/shared/models/author';
@@ -23,17 +23,14 @@ export class SearchResultsListComponent implements OnInit {
   private currentQuery: string;
   skip = 0;
   checkArray: FormArray;
+  radioSelected: any;
 
   constructor(
     private bookService: BookService,
     private tagService: TagsService,
     private fb: FormBuilder,
     private route: ActivatedRoute
-  ) {
-    this.form = this.fb.group({
-      checkArray: this.fb.array([])
-    });
-  }
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -67,35 +64,22 @@ export class SearchResultsListComponent implements OnInit {
     this.searchBooks();
   }
 
-  onCheckboxChange(e) {
-    this.checkArray = this.form.get('checkArray') as FormArray;
-    if (e.target.checked) {
-      this.checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i = 0;
-      this.checkArray.controls.forEach((item: FormControl) => {
-        if (item.value === e.target.value) {
-          this.checkArray.removeAt(i);
+  sortViaTag() {
+    let taggedBooks = [];
+    this.books.forEach(book => {
+      book.tags.forEach(tag => {
+        /* istanbul ignore else*/
+        if (tag.id === this.radioSelected) {
+          taggedBooks.push(book);
           return;
         }
-        i++;
       });
-    }
-    if (this.checkArray.length > 0) {
-      const tempBooks: Book[] = [];
-
-      this.books.forEach(book => {
-        book.tags.forEach(tag => {
-          if (tag.id === e.target.value && !tempBooks.includes(book)) {
-            tempBooks.push(book);
-            return;
-          }
-        });
-        this.booksDisplay = tempBooks;
-      });
-    } else {
-      this.booksDisplay = this.books;
-    }
+      this.booksDisplay = taggedBooks;
+    });
   }
 
+  resetRadio() {
+    this.radioSelected = null;
+    this.booksDisplay = this.books;
+  }
 }
